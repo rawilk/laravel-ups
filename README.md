@@ -4,8 +4,6 @@
 ![Tests](https://github.com/rawilk/laravel-ups/workflows/Tests/badge.svg?style=flat-square)
 [![Total Downloads](https://img.shields.io/packagist/dt/rawilk/laravel-ups.svg?style=flat-square)](https://packagist.org/packages/rawilk/laravel-ups)
 
-**Note:** Replace ```Randall Wilk``` ```rawilk``` ```randall@randallwilk.dev``` ```laravel-ups``` ```UPS api wrapper for Laravel.``` with their correct values in [README.md](README.md), [CHANGELOG.md](CHANGELOG.md), [CONTRIBUTING.md](CONTRIBUTING.md), [LICENSE.md](LICENSE.md) and [composer.json](composer.json) files, then delete this line. You can also run `configure-laravel-ups.sh` to do this automatically.
-
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
 
 ## Installation
