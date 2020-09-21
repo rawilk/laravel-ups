@@ -3,7 +3,8 @@
     "description": "UPS api wrapper for Laravel.",
     "keywords": [
         "rawilk",
-        "laravel-ups"
+        "laravel-ups",
+        "UPS Api"
     ],
     "homepage": "https://github.com/rawilk/laravel-ups",
     "license": "MIT",
@@ -29,13 +30,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Rawilk\\LaravelUps\\": "src",
-            "Rawilk\\LaravelUps\\Database\\Factories\\": "database/factories"
+            "Rawilk\\Ups\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Rawilk\\LaravelUps\\Tests\\": "tests"
+            "Rawilk\\Ups\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -50,11 +50,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Rawilk\\LaravelUps\\LaravelUpsServiceProvider"
-            ],
-            "aliases": {
-                "LaravelUps": "Rawilk\\LaravelUps\\Facades\\LaravelUpsFacade"
-            }
+                "Rawilk\\Ups\\UpsServiceProvider"
+            ]
         }
     },
     "minimum-stability": "dev",
