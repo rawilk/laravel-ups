@@ -1,6 +1,6 @@
 <?php
 
-namespace Rawilk\Skeleton\Tests;
+namespace Rawilk\LaravelUps\Tests;
 
 class ExampleTest extends TestCase
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Rawilk\Skeleton\Commands;
+namespace Rawilk\LaravelUps\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaravelUpsCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-ups';
 
     public $description = 'My command';
 

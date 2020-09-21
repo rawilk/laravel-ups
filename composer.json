@@ -1,16 +1,16 @@
 {
-    "name": ":vendor_name/:package_name",
-    "description": ":package_description",
+    "name": "rawilk/laravel-ups",
+    "description": "UPS api wrapper for Laravel.",
     "keywords": [
-        ":vendor_name",
-        ":package_name"
+        "rawilk",
+        "laravel-ups"
     ],
-    "homepage": "https://github.com/rawilk/:package_name",
+    "homepage": "https://github.com/rawilk/laravel-ups",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
+            "name": "Randall Wilk",
+            "email": "randall@randallwilk.dev",
             "homepage": "https://randallwilk.dev",
             "role": "Developer"
         }
@@ -28,13 +28,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Rawilk\\Skeleton\\": "src",
-            "Rawilk\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Rawilk\\LaravelUps\\": "src",
+            "Rawilk\\LaravelUps\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Rawilk\\Skeleton\\Tests\\": "tests"
+            "Rawilk\\LaravelUps\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -49,10 +49,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Rawilk\\Skeleton\\SkeletonServiceProvider"
+                "Rawilk\\LaravelUps\\LaravelUpsServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "Rawilk\\Skeleton\\Facades\\SkeletonFacade"
+                "LaravelUps": "Rawilk\\LaravelUps\\Facades\\LaravelUpsFacade"
             }
         }
     },
