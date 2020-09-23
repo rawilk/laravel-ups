@@ -53,7 +53,6 @@ class ShipmentServiceOptionsTest extends TestCase
 
         self::assertXmlStringEqualsXmlString(
             $expected,
-
             $entity->toSimpleXml(null, false)->asXML()
         );
     }
