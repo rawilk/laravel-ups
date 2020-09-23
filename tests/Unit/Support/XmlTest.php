@@ -7,7 +7,6 @@ namespace Rawilk\Ups\Tests\Unit\Support;
 use Rawilk\Ups\Support\Xml;
 use Rawilk\Ups\Tests\Concerns\UsesFilesystem;
 use Rawilk\Ups\Tests\TestCase;
-use SimpleXMLElement;
 
 class XmlTest extends TestCase
 {

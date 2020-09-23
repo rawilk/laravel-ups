@@ -8,5 +8,4 @@ use Rawilk\Ups\Entity\Entity;
 
 class RelatedEntity extends Entity
 {
-
 }
