@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<LocatorRequest>
+    <!-- REQUEST OPTION INFORMATION -->
+    <Request>
+        <RequestAction>Locator</RequestAction>
+        <RequestOption>1</RequestOption>
+        <TransactionReference>
+            <CustomerContext>Your Test Case Summary Description</CustomerContext>
+            <XpciVersion>1.0014</XpciVersion>
+        </TransactionReference>
+    </Request>
+    <!--  ORIGIN ADDRESS INFORMATION -->
+    <OriginAddress>
+        <PhoneNumber>
+            <StructuredPhoneNumber>
+                <PhoneDialPlanNumber/>
+                <PhoneLineNumber/>
+            </StructuredPhoneNumber>
+        </PhoneNumber>
+        <AddressKeyFormat>
+            <AddressLine>200 warsaw rd</AddressLine>
+            <PoliticalDivision2>Atlanta</PoliticalDivision2>
+            <PoliticalDivision1>GA</PoliticalDivision1>
+            <PostcodePrimaryLow>85281</PostcodePrimaryLow>
+            <PostcodeExtendedLow>4510</PostcodeExtendedLow>
+            <CountryCode>US</CountryCode>
+        </AddressKeyFormat>
+
+        <MaximumListSize/>
+
+    </OriginAddress>
+
+    <!--  REQUIRED INFORMATION -->
+    <Translate>
+        <LanguageCode>ENG</LanguageCode>
+    </Translate>
+    <UnitOfMeasurement>
+        <Code>MI</Code>
+    </UnitOfMeasurement>
+
+    <!--  DRIVING DIRECTIONS AND MAP LOCATIONID -->
+    <LocationID/>
+
+    <!--  LOCATION TYPE SEARCH CRITERIA -->
+    <LocationSearchCriteria>
+        <SearchOption>
+            <OptionType>
+                <Code>02</Code>
+            </OptionType>
+            <OptionCode>
+                <Code>01</Code>
+            </OptionCode>
+            <OptionCode>
+                <Code>03</Code>
+            </OptionCode>
+            <OptionCode>
+                <Code>04</Code>
+            </OptionCode>
+            <OptionCode>
+                <Code>05</Code>
+            </OptionCode>
+        </SearchOption>
+        <SearchOption>
+            <OptionType>
+                <Code>03</Code>
+            </OptionType>
+            <OptionCode>
+                <Code>002</Code>
+            </OptionCode>
+        </SearchOption>
+
+        <!--  SERVICE SEARCH CRITERIA -->
+        <MaximumListSize/>
+        <SearchRadius/>
+        <ServiceSearch>
+            <Time>1600</Time>
+            <ServiceCode>
+                <Code>01</Code>
+            </ServiceCode>
+            <ServiceCode>
+                <Code>02</Code>
+            </ServiceCode>
+            <ServiceOptionCode>
+                <Code>01</Code>
+            </ServiceOptionCode>
+        </ServiceSearch>
+    </LocationSearchCriteria>
+</LocatorRequest>

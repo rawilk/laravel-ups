@@ -48,3 +48,8 @@ jobs:
 
             -   name: Execute tests
                 run: vendor/bin/phpunit
+                env:
+                    UPS_ACCESS_KEY: ${{ secrets.UPS_ACCESS_KEY }}
+                    UPS_USER_ID: ${{ secrets.UPS_USER_ID }}
+                    UPS_PASSWORD: ${{ secrets.UPS_PASSWORD }}
+                    UPS_SHIPPER_NUMBER:  ${{ secrets.UPS_SHIPPER_NUMBER }}

@@ -20,7 +20,9 @@
         "php": "^7.4",
         "ext-json": "*",
         "ext-simplexml": "*",
+        "guzzlehttp/guzzle": "^7.1",
         "illuminate/contracts": "^8.0",
+        "illuminate/http": "^8.0",
         "illuminate/support": "^8.0"
     },
     "require-dev": {
