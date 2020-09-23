@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<AddressKeyFormat>
+    <AddressLine>7510 AIRWAY RD</AddressLine>
+    <AddressLine>STE 7</AddressLine>
+    <Region>SAN DIEGO CA 92154-8034</Region>
+    <PoliticalDivision2>SAN DIEGO</PoliticalDivision2>
+    <PoliticalDivision1>CA</PoliticalDivision1>
+    <PostcodePrimaryLow>92154</PostcodePrimaryLow>
+    <PostcodeExtendedLow>8034</PostcodeExtendedLow>
+    <CountryCode>US</CountryCode>
+</AddressKeyFormat>

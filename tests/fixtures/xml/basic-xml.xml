@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<BasicXml>
+    <Foo>bar</Foo>
+    <HasNestedValue>
+        <NestedValue>Hello world</NestedValue>
+    </HasNestedValue>
+</BasicXml>
