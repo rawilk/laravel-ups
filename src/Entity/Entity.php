@@ -143,7 +143,7 @@ abstract class Entity implements ArrayAccess, Arrayable, Jsonable, JsonSerializa
 
         if (JSON_ERROR_NONE !== json_last_error()) {
             throw new JsonEncodingException(
-                'Error encoding UPS entity [' . get_class($this) . '] to JSON: ' . $message
+                'Error encoding UPS entity [' . get_class($this) . '] to JSON: ' . json_last_error_msg()
             );
         }
 
