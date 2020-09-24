@@ -6,7 +6,7 @@ use SimpleXMLElement;
 
 interface Xmlable
 {
-    public function toSimpleXml(?SimpleXMLElement $parent = null, bool $createChild = true): SimpleXMLElement;
+    public function toSimpleXml(?SimpleXMLElement $parent = null, bool $asChild = true): SimpleXMLElement;
 
     public static function fromXml(SimpleXMLElement $xml): self;
 }

@@ -18,4 +18,10 @@
     <plugins>
         <pluginClass class="Psalm\LaravelPlugin\Plugin"/>
     </plugins>
+
+    <issueHandlers>
+        <UndefinedThisPropertyFetch errorLevel="suppress"/>
+        <TooManyArguments errorLevel="suppress"/>
+        <UnusedVariable errorLevel="suppress"/>
+    </issueHandlers>
 </psalm>

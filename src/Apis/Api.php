@@ -119,7 +119,7 @@ abstract class Api
         $xml->addChild('UserId', $this->userId);
         $xml->addChild('Password', $this->password);
 
-        return $xml->asXML();
+        return (string) $xml->asXML();
     }
 
     protected function appendTransactionReference(SimpleXMLElement $parent): void

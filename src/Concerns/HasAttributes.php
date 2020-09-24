@@ -39,7 +39,7 @@ trait HasAttributes
 
             if ($this->hasRelationship($relationship = Str::camel((string) $key))) {
                 if (! $value instanceof Entity) {
-                    $value = $this->createRelationshipFromArray($relationship, $value, $key);
+                    $value = $this->createRelationshipFromArray($relationship, $value, (string) $key);
                 }
 
                 if (is_array($value)) {
@@ -50,14 +50,14 @@ trait HasAttributes
             }
 
             if (is_array($value) && ! is_null($key)) {
-                $value = $this->convertPropertyNamesToSnakeCase($value, $key);
+                $value = $this->convertPropertyNamesToSnakeCase($value, (string) $key);
             }
 
             if ($this->shouldFlattenArrayValue($value)) {
                 $value = Arr::flatten($value);
             }
 
-            if (is_null($key) && ! $this->hasRelationshipParentKeyMapped((string) $parentKey, $originalKey)) {
+            if (is_null($key) && ! $this->hasRelationshipParentKeyMapped((string) $parentKey, (string) $originalKey)) {
                 $key = $originalKey;
             }
 
