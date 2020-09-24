@@ -8,6 +8,7 @@ use Rawilk\Ups\Apis\Api;
 use Rawilk\Ups\Entity\Shipment\Label\LabelSpecification;
 use Rawilk\Ups\Entity\Shipment\ShipmentServiceOptions\LabelDelivery;
 use Rawilk\Ups\Entity\Translate;
+use Rawilk\Ups\Responses\Shipping\LabelRecoveryResponse;
 use SimpleXMLElement;
 
 class LabelRecovery extends Api
@@ -20,8 +21,9 @@ class LabelRecovery extends Api
     protected ?LabelDelivery $labelDelivery = null;
     protected string $trackingNumber = '';
 
-    public function recover()
+    public function recover(): LabelRecoveryResponse
     {
+        return LabelRecoveryResponse::fromXml($this->processRequest()->response());
     }
 
     public function withLabelSpecification(LabelSpecification $labelSpecification): self
