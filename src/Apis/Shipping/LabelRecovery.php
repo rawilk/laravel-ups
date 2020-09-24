@@ -22,7 +22,6 @@ class LabelRecovery extends Api
 
     public function recover()
     {
-
     }
 
     public function withLabelSpecification(LabelSpecification $labelSpecification): self
