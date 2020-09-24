@@ -23,5 +23,6 @@
         <UndefinedThisPropertyFetch errorLevel="suppress"/>
         <TooManyArguments errorLevel="suppress"/>
         <UnusedVariable errorLevel="suppress"/>
+        <UndefinedMethod errorLevel="suppress"/>
     </issueHandlers>
 </psalm>
