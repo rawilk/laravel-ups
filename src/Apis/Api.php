@@ -18,6 +18,13 @@ abstract class Api
     /** @var string */
     protected const SANDBOX_BASE_URI = 'https://wwwcie.ups.com/ups.app/xml';
 
+    /**
+     * This should be overridden in the concrete api implementations.
+     *
+     * @var string
+     */
+    protected const ENDPOINT = '/';
+
     protected string $accessKey;
     protected string $userId;
     protected string $password;
@@ -37,7 +44,11 @@ abstract class Api
     }
 
     abstract protected function generateRequestXml();
-    abstract protected function requestUri(): string;
+
+    protected function requestUri(): string
+    {
+        return $this->endpoint(static::ENDPOINT);
+    }
 
     public function usingAccessKey(string $accessKey): self
     {

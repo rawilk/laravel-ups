@@ -295,4 +295,13 @@ abstract class Entity implements ArrayAccess, Arrayable, Jsonable, JsonSerializa
     {
         return false;
     }
+
+    /*
+     * Overridden to prevent Laravel from thinking we need to
+     * query for a relationship.
+     */
+    protected function getRelationshipFromMethod(): string
+    {
+        return '';
+    }
 }

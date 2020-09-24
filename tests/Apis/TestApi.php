@@ -11,7 +11,7 @@ use Rawilk\Ups\Responses\Response;
 class TestApi extends Api
 {
     /** @var string */
-    private const ENDPOINT = '/Locator';
+    protected const ENDPOINT = '/Locator';
 
     public function sendRequest(): Response
     {

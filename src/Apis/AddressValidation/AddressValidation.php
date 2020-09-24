@@ -92,11 +92,6 @@ class AddressValidation extends Api
             ->toSimpleXml($xml, false);
     }
 
-    protected function requestUri(): string
-    {
-        return $this->endpoint(self::ENDPOINT);
-    }
-
     protected function guardAgainstInvalidMaxSuggestions(int $max): void
     {
         if ($max < 1) {

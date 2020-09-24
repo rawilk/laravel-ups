@@ -40,6 +40,7 @@ use Rawilk\Ups\Entity\Shipment\ShipmentServiceOptions\ShipmentServiceOptions;
  * @property null|\Rawilk\Ups\Entity\Payment\PaymentInformation $payment_information
  * @property null|\Rawilk\Ups\Entity\Payment\ItemizedPaymentInformation $itemized_payment_information
  * @property null|\Rawilk\Ups\Entity\Payment\PromotionalDiscountInformation $promotional_discount_information
+ * @property null|\Rawilk\Ups\Entity\Payment\RateInformation $rate_information
  * @property \Rawilk\Ups\Entity\Shipment\Service $service
  * @property \Rawilk\Ups\Entity\Payment\InvoiceLineTotal $invoice_line_total
  * @property \Rawilk\Ups\Entity\Shipment\ShipmentServiceOptions\ShipmentServiceOptions $shipment_service_options
