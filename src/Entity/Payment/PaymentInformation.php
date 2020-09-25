@@ -18,6 +18,23 @@ class PaymentInformation extends Entity
         'consignee_billed' => 'boolean',
     ];
 
+    /**
+     * Convenience method to use "prepaid bill shipper".
+     *
+     * @param string $accountNumber
+     * @return $this
+     */
+    public static function prepaidForAccount(string $accountNumber): self
+    {
+        return new static([
+            'prepaid' => new Prepaid([
+                'bill_shipper' => new BillShipper([
+                    'account_number' => $accountNumber,
+                ]),
+            ]),
+        ]);
+    }
+
     protected function startingSimpleXml(): void
     {
         // Only one of these elements can be present for a request.
