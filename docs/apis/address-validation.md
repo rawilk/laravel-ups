@@ -90,4 +90,4 @@ $api->classificationOnly();
 $api->classificationAndValidation();
 ```
 
-For more information on these options, see [the documentation](https://www.ups.com/upsdeveloperkit/downloadresource?loc=en_US).
+For more information on these options, see [the documentation](https://www.ups.com/upsdeveloperkit?loc=en_US).
