@@ -136,6 +136,57 @@ $response->shipment_identification_number;
 // Returns a collection of packages returned from the api
 // Wrapped in our \Rawilk\Ups\Entity\Shipment\PackageResult entity.
 $response->packages;
+
+// Each package has a tracking number
+// The first package's tracking number should match the shipment identification number.
+$response->packages->first()->tracking_number;
+```
+
+## Charges
+Any charges from UPS will be available through the `ShipAcceptResponse::charges` attribute. You will receive a collection of 
+`Rawilk\Ups\Entity\Payment\Charge` instances.
+
+```php
+$charge = $response->charges->first();
+
+$charge->monetary_value;
+
+$charge->description;
+```
+
+## Billing Weight
+The billing weight can be retrieved through the `ShipAcceptResponse::billing_weight` attribute. 
+
+```php
+$weight = $reponse->billing_weight;
+
+$weight->weight;
+$weight->unit_of_measurement->code; // LBS
+```
+
+## Labels
+A label is created for each package. You can retrieve the label's off each `PackageResult` entity instance.
+
+```php
+$image = $package->label_image;
+
+// Base 64 encoded graphic image
+$image->graphic_image;
+
+// Base 64 encoded html browser image rendering software. This is only returned for GIF image formats.
+$image->html_image;
+
+// This is only returned if the label link is requested to be returned and only at the first package result.
+$image->url;
+```
+
+### Label URLs
+To receive a URL of the label, you can request it through shipment service options in the shipment confirmation phase.
+
+```php
+$shipment->shipment_service_options->label_delivery = new LabelDelivery([
+    'label_links' => true,
+]);
 ```
 
 ## Options
