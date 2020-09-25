@@ -7,6 +7,7 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Database\Eloquent\Concerns\HasAttributes;
 use Illuminate\Database\Eloquent\JsonEncodingException;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use JsonSerializable;
 use Rawilk\Ups\Concerns\HasAttributes as EntityHasAttributes;
@@ -125,7 +126,7 @@ abstract class Entity implements ArrayAccess, Arrayable, Jsonable, JsonSerializa
                     return $item instanceof Entity
                         ? $item->toArray()
                         : $item;
-                }, $value);
+                }, $value instanceof Collection ? $value->toArray() : $value);
             }
 
             return $value;

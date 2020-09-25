@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Rawilk\Ups\Entity\Shipment;
 
+use Illuminate\Support\Collection;
 use Rawilk\Ups\Entity\Activity\Activity;
 use Rawilk\Ups\Entity\Entity;
 use Rawilk\Ups\Entity\Shipment\PackageServiceOptions\PackageServiceOptions;
+use Rawilk\Ups\Entity\Tracking\EstimatedDeliveryWindow;
 
 /**
  * @property bool $additional_handling Additional handling required.
@@ -26,6 +28,8 @@ use Rawilk\Ups\Entity\Shipment\PackageServiceOptions\PackageServiceOptions;
  * @property \Rawilk\Ups\Entity\Shipment\PackageWeight $package_weight
  * @property \Rawilk\Ups\Entity\Shipment\ReferenceNumber $reference_number
  * @property \Rawilk\Ups\Entity\Shipment\ReferenceNumber $reference_number2
+ * @property null|\Rawilk\Ups\Entity\Tracking\EstimatedDeliveryWindow $estimated_delivery_window
+ *      Only applies to tracking api responses.
  */
 class Package extends Entity
 {
@@ -81,6 +85,11 @@ class Package extends Entity
         return ReferenceNumber::class;
     }
 
+    public function estimatedDeliveryWindow(): string
+    {
+        return EstimatedDeliveryWindow::class;
+    }
+
     protected function booted(): void
     {
         $relationsToDefault = [
@@ -93,15 +102,71 @@ class Package extends Entity
         }
     }
 
-    /**
-     * Convenience method for testing purposes.
-     *
-     * @return $this
-     */
-    public function withoutDefaults(): self
+    public function getActivitiesAttribute($activities): Collection
     {
-        unset($this->package_weight, $this->package_service_options);
+        return $activities ?? collect();
+    }
 
-        return $this;
+    public function setActivityAttribute($activity): void
+    {
+        if ($activity instanceof Activity || $this->isAssociativeArray($activity)) {
+            $activity = [$activity];
+        }
+
+        $this->attributes['activities'] = collect($activity);
+    }
+
+    /**
+     * Indicates if the package has been delivered.
+     * This method is only applicable when using the tracking api.
+     *
+     * @return bool
+     */
+    public function isDelivered(): bool
+    {
+        if ($this->activities->count() === 0) {
+            return false;
+        }
+
+        return $this->activities
+            ->filter(fn (Activity $a) => $a->isDelivered())
+            ->count() > 0;
+    }
+
+    /**
+     * Indicates if the package has been picked up.
+     * Only applicable when using the tracking api.
+     *
+     * @return bool
+     */
+    public function isPickedUp(): bool
+    {
+        if ($this->activities->count() === 0) {
+            return false;
+        }
+
+        return $this->activities
+            ->filter(fn (Activity $a) => $a->isPickup())
+            ->count() > 0;
+    }
+
+    /**
+     * Returns the name of the person who signed for the package if
+     * it has been delivered when using the tracking api.
+     *
+     * @return string|null
+     */
+    public function signedForByName(): ?string
+    {
+        if (! $this->isDelivered()) {
+            return null;
+        }
+
+        /** @var \Rawilk\Ups\Entity\Activity\Activity $activity */
+        $activity = $this->activities
+            ->filter(fn (Activity $a) => $a->isDelivered())
+            ->first();
+
+        return $activity->signed_for_by_name;
     }
 }

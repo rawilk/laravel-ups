@@ -18,4 +18,14 @@ class StatusType extends Entity
     public const EXCEPTION = 'X';
     public const PICKUP = 'P';
     public const MANIFEST_PICKUP = 'M';
+
+    public function isPickup(): bool
+    {
+        return $this->code === static::PICKUP;
+    }
+
+    public function isDelivered(): bool
+    {
+        return $this->code === static::DELIVERED;
+    }
 }

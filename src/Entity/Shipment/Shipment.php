@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Rawilk\Ups\Entity\Shipment;
 
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
 use Rawilk\Ups\Entity\Entity;
@@ -46,6 +47,11 @@ use Rawilk\Ups\Entity\Shipment\ShipmentServiceOptions\ShipmentServiceOptions;
  * @property \Rawilk\Ups\Entity\Shipment\ShipmentServiceOptions\ShipmentServiceOptions $shipment_service_options
  * @property \Illuminate\Support\Collection|\Rawilk\Ups\Entity\Shipment\Package[] $packages
  * @property null|\Rawilk\Ups\Entity\Shipment\ShipmentIndicationType $shipment_indication_type
+ * @property null|\Rawilk\Ups\Entity\Shipment\ReferenceNumber $reference_number
+ *      Shipment reference number. Applies to tracking api responses.
+ * @property null|\Carbon\Carbon $pickup_date
+ *      Date shipment was picked up. Only applies to tracking api responses. Format: YYYYMMDD.
+ * @property null|string $shipment_identification_number Only applies to tracking api responses.
  */
 class Shipment extends Entity
 {
@@ -133,6 +139,11 @@ class Shipment extends Entity
         return Package::class;
     }
 
+    public function referenceNumber(): string
+    {
+        return ReferenceNumber::class;
+    }
+
     public function paymentInformation(): string
     {
         return PaymentInformation::class;
@@ -190,17 +201,25 @@ class Shipment extends Entity
 
     public function getPackagesAttribute($packages): Collection
     {
-        if (is_null($packages)) {
-            return collect();
-        }
+        return $packages ?? collect();
+    }
 
-        if (! is_array($packages)) {
+    public function setPackagesAttribute($packages): void
+    {
+        if ($packages instanceof Package || $this->isAssociativeArray($packages)) {
             $packages = [$packages];
         }
 
-        return collect($packages)
-            ->flatten()
-            ->map(fn ($package) => $package instanceof Package ? $package : new Package($package));
+        $this->attributes['packages'] = collect($packages)
+            ->map(static function ($data) {
+                if ($data instanceof Package) {
+                    return $data;
+                }
+
+                $instance = new Package;
+
+                return $instance->fill($instance->convertPropertyNamesToSnakeCase($data));
+            });
     }
 
     public function addPackage($package): self
@@ -213,8 +232,36 @@ class Shipment extends Entity
             throw new InvalidArgumentException('$package must be an instance of ' . Package::class);
         }
 
-        $this->packages = $this->packages->push($package);
+        $packages = $this->packages->push($package)->toArray();
+
+        $this->setAttribute('packages', $packages);
 
         return $this;
+    }
+
+    public function setPackageAttribute($package): void
+    {
+        // In a tracking response, the packages are returned as a "Package" element.
+        $this->setAttribute('packages', $package);
+    }
+
+    public function getPickupDateAttribute($date): ?Carbon
+    {
+        if (! $date) {
+            return null;
+        }
+
+        return Carbon::createFromFormat('Ymd', $date, 'UTC')->startOfDay();
+    }
+
+    /**
+     * Indicates if the shipment has been picked up.
+     * Only applies to tracking api requests.
+     *
+     * @return bool
+     */
+    public function isPickedUp(): bool
+    {
+        return ! is_null($this->pickup_date);
     }
 }
