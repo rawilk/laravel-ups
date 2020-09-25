@@ -21,13 +21,13 @@
         "ext-json": "*",
         "ext-simplexml": "*",
         "guzzlehttp/guzzle": "^7.1",
-        "illuminate/contracts": "^8.0",
-        "illuminate/http": "^8.0",
-        "illuminate/support": "^8.0"
+        "illuminate/contracts": "^7.0|^8.0",
+        "illuminate/http": "^7.0|^8.0",
+        "illuminate/support": "^7.0|^8.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.16",
-        "orchestra/testbench": "^6.0",
+        "orchestra/testbench": "^5.0|^6.0",
         "phpunit/phpunit": "^9.3",
         "psalm/plugin-laravel": "^1.4",
         "vimeo/psalm": "^3.11"
