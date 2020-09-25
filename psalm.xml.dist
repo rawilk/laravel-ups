@@ -24,5 +24,6 @@
         <TooManyArguments errorLevel="suppress"/>
         <UnusedVariable errorLevel="suppress"/>
         <UndefinedMethod errorLevel="suppress"/>
+        <FalsableReturnStatement errorLevel="suppress"/>
     </issueHandlers>
 </psalm>
