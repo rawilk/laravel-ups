@@ -13,9 +13,21 @@ return [
     'access_key' => env('UPS_ACCESS_KEY'),
     'user_id' => env('UPS_USER_ID'),
     'password' => env('UPS_PASSWORD'),
-    'sandbox' => env('UPS_SANDBOX', true),
     'shipper_number' => env('UPS_SHIPPER_NUMBER'),
     'negotiated_rates' => env('UPS_NEGOTIATED_RATES', false),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Sandbox
+    |--------------------------------------------------------------------------
+    |
+    | Enabling "sandbox" mode instructs the package to send any api requests
+    | to the customer integrated environment (testing environment) instead
+    | of the production api, with the exception of the address validation
+    | api.
+    |
+    */
+    'sandbox' => env('UPS_SANDBOX', true),
 
     /*
     |--------------------------------------------------------------------------
