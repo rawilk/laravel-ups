@@ -21,9 +21,9 @@
         "ext-json": "*",
         "ext-simplexml": "*",
         "guzzlehttp/guzzle": "^7.1",
-        "illuminate/contracts": "^7.2|^8.0",
-        "illuminate/http": "^7.2|^8.0",
-        "illuminate/support": "^7.2|^8.0"
+        "illuminate/contracts": "^7.28|^8.0",
+        "illuminate/http": "^7.28|^8.0",
+        "illuminate/support": "^7.28|^8.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.16",
