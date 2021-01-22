@@ -17,7 +17,7 @@ The shipping flow consists of two steps:
 This is a basic example of how you can create a shipment through UPS. Your use case might demand more or less information to be sent to UPS.
 Please consult [the developer documentation](https://www.ups.com/upsdeveloperkit?loc=en_US) to see what can all be sent.
 
-**Note:** All entities, like `Shipment` can be found in `Rawilk/Ups/Entity`.
+> {tip} All entities, like `Shipment` can be found in `Rawilk/Ups/Entity`.
 
 ```php
 // You can get this a different way if you have it stored somewhere else.
@@ -96,8 +96,7 @@ if (Config::get('ups.negotiated_rates')) {
 }
 ```
 
-{.tip}
-> **Note:** For return shipments, **only one package is allowed per shipment**, so you will need to create multiple return shipments for more than one package.
+> {note} For return shipments, **only one package is allowed per shipment**, so you will need to create multiple return shipments for more than one package.
 
 Once you have your shipment entity created with all the necessary information, you need to generate a shipment digest with UPS.
 

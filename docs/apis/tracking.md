@@ -125,7 +125,7 @@ $api->allActivity(); // TrackingOptions::ALL_ACTIVITY
 $api->lastActivity(); // TrackingOptions::LAST_ACTIVITY
 ```
 
-**Note:** There are more options available, found in `Rawilk/Ups/Apis/Tracking/TrackingOptions`. We've just added convenience methods
+> {tip} There are more options available, found in `Rawilk/Ups/Apis/Tracking/TrackingOptions`. We've just added convenience methods
 for our common use cases.
 
 ## Error Handling

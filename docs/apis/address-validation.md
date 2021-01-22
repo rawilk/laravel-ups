@@ -8,8 +8,7 @@ sort: 1
 The Address Validation (Street Level) allows you to validate an address at street level. Suggestions are given when
 an address is invalid.
 
-{.tip}
-> **Note:** Currently, only US & Puerto Rico are supported.
+> {note} Currently, only US & Puerto Rico are supported.
 
 ## Usage
 
