@@ -30,7 +30,7 @@ abstract class Api
     protected string $password;
     protected bool $sandbox;
     protected string $context = '';
-    protected null | Request $request = null;
+    protected null|Request $request = null;
     protected bool $allowRequestErrors = false;
 
     public function __construct()
