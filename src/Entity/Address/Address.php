@@ -26,11 +26,9 @@ class Address extends Entity
         'residential' => 'boolean',
     ];
 
-    /**
+    /*
      * Used internally by the AddressValidationApi to correctly map out
      * certain property xml tags.
-     *
-     * @return $this
      */
     public function isForValidation(): self
     {

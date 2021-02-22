@@ -7,7 +7,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | Here are the credentials needed when making requests through the
-    } the UPS api.
+    | the UPS api.
     |
     */
     'access_key' => env('UPS_ACCESS_KEY'),

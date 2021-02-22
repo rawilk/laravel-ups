@@ -102,7 +102,7 @@ abstract class Entity implements ArrayAccess, Arrayable, Jsonable, JsonSerializa
 
     public function offsetSet($key, $value): void
     {
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 
     public function offsetUnset($key): void
@@ -273,7 +273,7 @@ abstract class Entity implements ArrayAccess, Arrayable, Jsonable, JsonSerializa
         $accessorFunctionName = "get{$tag}XmlTag";
 
         if (method_exists($this, $accessorFunctionName)) {
-            return $this->$accessorFunctionName();
+            return $this->{$accessorFunctionName}();
         }
 
         return $tag;

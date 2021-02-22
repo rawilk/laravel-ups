@@ -91,8 +91,7 @@ class Request
         $responseCode = (int) $xml->Response->ResponseStatusCode;
 
         if (! $this->throwExceptionOnError || $responseCode === self::RESPONSE_CODE_OK) {
-            return Response::fromXml($xml)
-                ->withText($body);
+            return Response::fromXml($xml)->withText($body);
         }
 
         if ($responseCode === self::RESPONSE_CODE_ERROR) {

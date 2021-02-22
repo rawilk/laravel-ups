@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Rawilk\Ups\Apis\Tracking;
 
-/**
+/*
  * These numbers can be used when testing to ensure your application can handle different tracking
  * scenarios.
  */

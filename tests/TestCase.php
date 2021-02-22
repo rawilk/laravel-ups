@@ -26,9 +26,11 @@ abstract class TestCase extends Orchestra
 
     protected function loadEnvironmentVariables(): void
     {
-        // File won't exist when running tests on GitHub actions.
-        // .env variables are loaded in through workflow file instead
-        // utilizing GitHub secrets.
+        /*
+         * File won't exist when running tests on GitHub actions.
+         * .env variables are loaded in through workflow file instead
+         * utilizing GitHub secrets.
+         */
         if (! file_exists(__DIR__ . '/../.env')) {
             return;
         }

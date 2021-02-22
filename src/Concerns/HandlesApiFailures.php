@@ -12,8 +12,6 @@ trait HandlesApiFailures
 {
     /**
      * The code returned from the api when the request failed.
-     *
-     * @var string
      */
     protected static string $failureCode = '0';
 

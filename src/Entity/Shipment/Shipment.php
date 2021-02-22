@@ -254,11 +254,9 @@ class Shipment extends Entity
         return Carbon::createFromFormat('Ymd', $date, 'UTC')->startOfDay();
     }
 
-    /**
+    /*
      * Indicates if the shipment has been picked up.
      * Only applies to tracking api requests.
-     *
-     * @return bool
      */
     public function isPickedUp(): bool
     {

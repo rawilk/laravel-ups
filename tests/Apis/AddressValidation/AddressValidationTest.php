@@ -14,8 +14,14 @@ class AddressValidationTest extends TestCase
     /** @test */
     public function can_make_requests(): void
     {
-        // This address is provided in the samples in UPS developer documentation
-        // and returns as ambiguous.
+        /*
+         * This address is provided in the samples in UPS developer documentation
+         * and returns as ambiguous.
+         *
+         * Note: As of 2/22/2021, I can't seem to locate this example in the
+         * docs anymore, and now the api is returning the no candidates
+         * indicator instead.
+         */
         $address = new Address([
             'address_line1' => 'AIRWAY ROAD SUITE 7',
             'city' => 'San Diego',
@@ -29,8 +35,8 @@ class AddressValidationTest extends TestCase
             ->maxSuggestions(3)
             ->validate();
 
-        self::assertTrue($response->ambiguous);
-        self::assertTrue($response->candidates->count() > 0);
+        self::assertTrue($response->no_candidates);
+        self::assertTrue($response->candidates->count() < 1);
     }
 
     /** @test */

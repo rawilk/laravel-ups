@@ -6,9 +6,7 @@ namespace Rawilk\Ups\Entity\Shipment\ShipmentServiceOptions;
 
 use Rawilk\Ups\Entity\Entity;
 
-/**
- * @property int $dcis_type
- */
+/** @property int $dcis_type */
 class DeliveryConfirmation extends Entity
 {
     // Valid types:

@@ -9,7 +9,7 @@ use Rawilk\Ups\Exceptions\BadRequest;
 use Rawilk\Ups\Responses\Shipping\ShipAcceptResponse;
 use SimpleXMLElement;
 
-/**
+/*
  * ShipAccept finalizes a shipment with UPS and requires a shipment digest from ShipConfirm.
  */
 class ShipAccept extends Api

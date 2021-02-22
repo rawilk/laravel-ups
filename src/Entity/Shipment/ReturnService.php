@@ -6,9 +6,7 @@ namespace Rawilk\Ups\Entity\Shipment;
 
 use Rawilk\Ups\Entity\Entity;
 
-/**
- * @property string $code Type of return service.
- */
+/** @property string $code Type of return service. */
 class ReturnService extends Entity
 {
     // Return service codes (types):

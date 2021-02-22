@@ -116,11 +116,9 @@ class Package extends Entity
         $this->attributes['activities'] = collect($activity);
     }
 
-    /**
+    /*
      * Indicates if the package has been delivered.
      * This method is only applicable when using the tracking api.
-     *
-     * @return bool
      */
     public function isDelivered(): bool
     {
@@ -133,11 +131,9 @@ class Package extends Entity
             ->count() > 0;
     }
 
-    /**
+    /*
      * Indicates if the package has been picked up.
      * Only applicable when using the tracking api.
-     *
-     * @return bool
      */
     public function isPickedUp(): bool
     {
@@ -150,13 +146,11 @@ class Package extends Entity
             ->count() > 0;
     }
 
-    /**
+    /*
      * Returns the name of the person who signed for the package if
      * it has been delivered when using the tracking api.
-     *
-     * @return string|null
      */
-    public function signedForByName(): ?string
+    public function signedForByName(): null|string
     {
         if (! $this->isDelivered()) {
             return null;

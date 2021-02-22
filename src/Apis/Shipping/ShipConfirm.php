@@ -13,7 +13,7 @@ use Rawilk\Ups\Exceptions\BadRequest;
 use Rawilk\Ups\Responses\Shipping\ShipConfirmResponse;
 use SimpleXMLElement;
 
-/**
+/*
  * ShipConfirm generates a shipment digest needed to create a shipment with UPS.
  */
 class ShipConfirm extends Api
@@ -22,9 +22,9 @@ class ShipConfirm extends Api
     protected const ENDPOINT = '/ShipConfirm';
 
     protected string $requestOption = ShipConfirmOptions::NON_VALIDATE;
-    protected ?Shipment $shipment = null;
-    protected ?LabelSpecification $labelSpecification = null;
-    protected ?ReceiptSpecification $receiptSpecification = null;
+    protected null|Shipment $shipment = null;
+    protected null|LabelSpecification $labelSpecification = null;
+    protected null|ReceiptSpecification $receiptSpecification = null;
 
     public function getDigest(): ShipConfirmResponse
     {
