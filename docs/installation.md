@@ -1,6 +1,6 @@
 ---
 title: Installation & Setup
-sort: 3
+sort: 4
 ---
 
 ## Installation
