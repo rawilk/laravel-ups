@@ -150,7 +150,7 @@ class Package extends Entity
      * Returns the name of the person who signed for the package if
      * it has been delivered when using the tracking api.
      */
-    public function signedForByName(): null|string
+    public function signedForByName(): null | string
     {
         if (! $this->isDelivered()) {
             return null;
