@@ -25,5 +25,6 @@
         <UnusedVariable errorLevel="suppress"/>
         <UndefinedMethod errorLevel="suppress"/>
         <FalsableReturnStatement errorLevel="suppress"/>
+        <RedundantPropertyInitializationCheck errorLevel="suppress"/>
     </issueHandlers>
 </psalm>
