@@ -18,7 +18,8 @@ use SimpleXMLElement;
 
 abstract class Entity implements ArrayAccess, Arrayable, Jsonable, JsonSerializable, Xmlable
 {
-    use EntityHasAttributes, HasRelationships;
+    use EntityHasAttributes;
+    use HasRelationships;
 
     use HasAttributes {
         setAttribute as hasAttributesSetAttribute;
