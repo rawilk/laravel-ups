@@ -73,6 +73,7 @@ class AddressValidation extends Api
         $request->addChild('RequestAction', 'XAV');
         $request->addChild('RequestOption', (string) $this->requestOption);
 
+        /* @psalm-suppress RedundantPropertyInitializationCheck */
         if (isset($this->maxSuggestions)) {
             $xml->addChild('MaximumListSize', (string) $this->maxSuggestions);
         }
