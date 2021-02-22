@@ -33,10 +33,8 @@ class Activity extends Entity
         return Status::class;
     }
 
-    /**
+    /*
      * Indicates if this activity is a pickup activity.
-     *
-     * @return bool
      */
     public function isPickup(): bool
     {
@@ -47,10 +45,8 @@ class Activity extends Entity
         return $this->status->isPickup();
     }
 
-    /**
+    /*
      * Indicates if this activity is a delivered activity.
-     *
-     * @return bool
      */
     public function isDelivered(): bool
     {
@@ -61,7 +57,7 @@ class Activity extends Entity
         return $this->status->isDelivered();
     }
 
-    public function getSignedForByNameAttribute(): ?string
+    public function getSignedForByNameAttribute(): null|string
     {
         return $this->activity_location->signed_for_by_name ?? null;
     }

@@ -42,13 +42,13 @@ jobs:
                 uses: shivammathur/setup-php@v2
                 with:
                     php-version: ${{ matrix.php }}
-                    extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
+                    extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, fileinfo
                     coverage: none
 
             -   name: Install dependencies
                 run: |
                     composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
-                    composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction --no-suggest
+                    composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
 
             -   name: Execute tests
                 run: vendor/bin/phpunit
@@ -56,4 +56,4 @@ jobs:
                     UPS_ACCESS_KEY: ${{ secrets.UPS_ACCESS_KEY }}
                     UPS_USER_ID: ${{ secrets.UPS_USER_ID }}
                     UPS_PASSWORD: ${{ secrets.UPS_PASSWORD }}
-                    UPS_SHIPPER_NUMBER:  ${{ secrets.UPS_SHIPPER_NUMBER }}
+                    UPS_SHIPPER_NUMBER: ${{ secrets.UPS_SHIPPER_NUMBER }}
