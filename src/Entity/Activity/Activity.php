@@ -57,7 +57,7 @@ class Activity extends Entity
         return $this->status->isDelivered();
     }
 
-    public function getSignedForByNameAttribute(): null|string
+    public function getSignedForByNameAttribute(): null | string
     {
         return $this->activity_location->signed_for_by_name ?? null;
     }
