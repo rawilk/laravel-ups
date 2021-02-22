@@ -5,14 +5,14 @@ sort: 2
 
 ## General Requirements
 
-- PHP **7.4** or greater
-- Laravel **7.28** or greater
+- PHP **8.0** or greater
+- Laravel **8.0** or greater
 - A [UPS Account](https://www.ups.com/upsdeveloperkit?loc=en_US)
 - At least a basic understanding of the UPS Api
 
 ## Version Matrix
 
-| Laravel | Minimum Version |
-| --- | --- |
-| 7.28 | 1.0.0 |
-| 8.0 | 1.0.0 |
+| Laravel | Minimum Version | Maximum Version |
+| --- | --- | --- |
+| 7.28 | 1.0.0 | 1.0.0 |
+| 8.0 | 1.0.0 | |
