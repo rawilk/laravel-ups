@@ -24,6 +24,15 @@ class PackageResult extends Entity
         return LabelImage::class;
     }
 
+    public function getDecodedImageContent(): null|string
+    {
+        if (! $this->label_image->graphic_image) {
+            return null;
+        }
+
+        return base64_decode($this->label_image->graphic_image);
+    }
+
     public function storeLabel(): null|string
     {
         $disk = Config::get('ups.label_storage_disk', 'default');
