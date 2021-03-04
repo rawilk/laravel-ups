@@ -32,6 +32,7 @@
         "vimeo/psalm": "^4.6"
     },
     "suggest": {
+        "ext-imagick": "Required for rotating shipping labels.",
         "guzzlehttp/guzzle": "^7.2"
     },
     "autoload": {

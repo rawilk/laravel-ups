@@ -39,4 +39,25 @@ return [
     |
     */
     'logging' => env('UPS_LOGGING', false),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Label Storage Disk
+    |--------------------------------------------------------------------------
+    |
+    | Enter the disk name to use for storing generated shipping labels.
+    |
+    */
+    'label_storage_disk' => env('UPS_LABEL_DISK', 'default'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Rotate Stored Labels
+    |--------------------------------------------------------------------------
+    |
+    | Set to true to automatically rotate stored shipping labels to be
+    | stored vertically. Requires the Imagick extension.
+    |
+    */
+    'rotate_stored_labels' => true,
 ];
