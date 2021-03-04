@@ -2,6 +2,11 @@
 
 All notable changes to `laravel-ups` will be documented in this file
 
+## 2.1.1 - 2021-03-04
+### Updated
+- Update `ShipAcceptResponse` to set negotiated rates
+- Stop `ShipAcceptResponse` from filtering out $0.00 charges
+
 ## 2.1.0 - 2021-03-04
 ### Added
 - Add ability to store generated label images automatically ([#1](https://github.com/rawilk/laravel-ups/issues/1))
