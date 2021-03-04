@@ -8,11 +8,13 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Rawilk\Ups\Entity\Entity;
 use Rawilk\Ups\Entity\Payment\Charge;
+use Rawilk\Ups\Entity\Payment\NegotiatedRates;
 use Rawilk\Ups\Entity\Shipment\BillingWeight;
 use Rawilk\Ups\Entity\Shipment\PackageResult;
 
 /**
  * @property \Illuminate\Support\Collection|\Rawilk\Ups\Entity\Payment\Charge[] $shipment_charges
+ * @property \Illuminate\Support\Collection|\Rawilk\Ups\Entity\Payment\Charge[] $negotiated_rates
  * @property string $shipment_identification_number
  *      Returned UPS shipment ID number; 1Z number of the first package in the shipment.
  * @property \Illuminate\Support\Collection|\Rawilk\Ups\Entity\Shipment\PackageResult[] $packages
@@ -27,6 +29,7 @@ class ShipAcceptResponse extends Entity
             'shipment_identification_number',
             'package_results',
             'billing_weight',
+            'negotiated_rates',
         ];
 
         foreach ($keysToPopulate as $key) {
@@ -62,6 +65,18 @@ class ShipAcceptResponse extends Entity
             });
     }
 
+    protected function setNegotiatedRates(array $rates): void
+    {
+        $this->attributes['negotiated_rates'] = collect($rates['net_summary_charges'] ?? [])
+            ->filter(fn ($charge) => is_array($charge))
+            ->map(static function (array $charge, string $key) {
+                return new Charge(array_merge($charge, [
+                    'description' => (string) Str::of($key)->upper()->replace('_', ' '),
+                ]));
+            })
+            ->values();
+    }
+
     protected function setShipmentCharges(array $charges): void
     {
         $this->attributes['shipment_charges'] = collect($charges)
@@ -71,7 +86,6 @@ class ShipAcceptResponse extends Entity
                     'description' => (string) Str::of($key)->upper()->replace('_', ' '),
                 ]));
             })
-            ->filter(fn (Charge $charge) => $charge->monetary_value > 0)
             ->values();
     }
 
@@ -88,6 +102,11 @@ class ShipAcceptResponse extends Entity
     public function getShipmentChargesAttribute($charges): Collection
     {
         return $charges ?? collect();
+    }
+
+    public function getNegotiatedRatesAttribute($rates): Collection
+    {
+        return $rates ?? collect();
     }
 
     public function billingWeight(): string
