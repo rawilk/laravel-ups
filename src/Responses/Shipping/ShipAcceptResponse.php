@@ -8,7 +8,6 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Rawilk\Ups\Entity\Entity;
 use Rawilk\Ups\Entity\Payment\Charge;
-use Rawilk\Ups\Entity\Payment\NegotiatedRates;
 use Rawilk\Ups\Entity\Shipment\BillingWeight;
 use Rawilk\Ups\Entity\Shipment\PackageResult;
 
