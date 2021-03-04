@@ -188,6 +188,59 @@ $shipment->shipment_service_options->label_delivery = new LabelDelivery([
 ]);
 ```
 
+### Retrieving Decoded Labels
+When a label is returned from UPS, it is base64 encoded. As of version `2.1.0`, the package can return the decoded
+version of the image label for you off of each `PackageResult` entity.
+
+```php
+$image = $package->getDecodedImageContent();
+```
+
+If you want to decode it yourself, you can do it like this:
+
+```php
+$image = base64_decode($package->label_image->graphic_image);
+```
+
+### Storing Labels
+If you would like, as of version `2.1.0`, you can have each `PackageResult` entity instance storage an image of the generated shipping
+label automatically for you instead of having to `base64_decode` and store the image yourself. All that is required
+providing a storage disk name in the configuration file (defaults to `default`), and then telling each package result
+to store the image.
+
+```php
+$fileName = $package->storeLabel();
+```
+
+The `storeLabel` method will return the name of the file created on your configured disk, which defaults to: `TRACKING_NUMBER.png`
+
+> {note} This will store the label as a .png file, regardless of the image format you requested from UPS.
+
+I personally prefer to configure a storage disk for most items. Here's an example of a custom storage disk in `config/filesystems.php`:
+
+```php
+'disks' => [
+    // ...
+    'shipment-labels' => [
+        'driver' => 'local',
+        'root' => storage_path('app/shipment-labels'),
+        'url' => env('APP_URL') . '/shipment-labels',
+    ],
+],
+
+'links' => [
+    // ...
+    public_path('shipment-labels') => storage_path('app/shipment-labels'),
+],
+```
+
+> {tip} Be sure to add your custom disk name to the `label_storage_disk` key in the package configuration.
+
+### Rotating Stored Labels
+I personally prefer to rotate stored shipping labels vertically. If you have the Imagick extension installed,
+you can have the `PackageResult` entity do this automatically for you by setting the package configuration
+key `rotate_stored_labels` to `true`.
+
 ## Options
 
 For the `ShipConfirm` api phase, you can either validate the addresses, or skip the address validation. We have it defaulted to not validate
