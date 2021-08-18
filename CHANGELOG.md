@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-ups` will be documented in this file
 
+## 2.1.2 - 2021-08-18
+### Fixed
+- Encode special characters with `htmlspecialchars` when converting entities to xml
+
 ## 2.1.1 - 2021-03-04
 ### Updated
 - Update `ShipAcceptResponse` to set negotiated rates
