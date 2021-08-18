@@ -263,7 +263,7 @@ abstract class Entity implements ArrayAccess, Arrayable, Jsonable, JsonSerializa
         if ($value === true) {
             $xml->addChild($key);
         } elseif (! empty($value) && $value !== false) {
-            $xml->addChild($key, $value);
+            $xml->addChild($key, htmlspecialchars($value));
         }
     }
 

@@ -43,7 +43,10 @@ class ShipAccept extends Api
 
         $xml->addChild('ShipmentDigest', $this->shipmentDigest);
 
-        return (string) $xml->asXML();
+        $search = ['&amp;', '&num;', '&lt;', '&gt;', '&quot;', '&apos;'];
+        $replacements = ['&', '#', '<', '>', '"', "'"];
+
+        return str_replace($search, $replacements, $xml->asXML());
     }
 
     protected function validateRequest(): void
