@@ -13,17 +13,18 @@ $finder = Symfony\Component\Finder\Finder::create()
     ->ignoreDotFiles(true)
     ->ignoreVCS(true);
 
-return PhpCsFixer\Config::create()
+return (new PhpCsFixer\Config)
     ->setRules([
-        '@PSR2' => true,
+        '@PSR12' => true,
         'array_syntax' => ['syntax' => 'short'],
-        'ordered_imports' => ['sortAlgorithm' => 'alpha'],
+        'ordered_imports' => ['sort_algorithm' => 'alpha'],
         'no_unused_imports' => true,
         'not_operator_with_successor_space' => true,
-        'trailing_comma_in_multiline_array' => true,
+        'trailing_comma_in_multiline' => true,
         'phpdoc_scalar' => true,
         'unary_operator_spaces' => true,
-        'binary_operator_spaces' => ['operators' => ['|' => 'no_space']],
+        'binary_operator_spaces' => true,
+        'new_with_braces' => false,
         'blank_line_before_statement' => [
             'statements' => ['break', 'continue', 'declare', 'return', 'throw', 'try'],
         ],
@@ -31,13 +32,17 @@ return PhpCsFixer\Config::create()
         'phpdoc_var_without_name' => true,
         'class_attributes_separation' => [
             'elements' => [
-                'method',
+                'method' => 'one',
             ],
         ],
         'method_argument_space' => [
             'on_multiline' => 'ensure_fully_multiline',
             'keep_multiple_spaces_after_comma' => true,
         ],
-        'single_trait_insert_per_statement' => true,
+        // TODO: enable once the github action uses the 3.1.0 release of php-cs-fixer
+        // 'types_spaces' => [
+        //     'space' => 'none',
+        // ],
+        'single_trait_insert_per_statement' => false,
     ])
     ->setFinder($finder);
