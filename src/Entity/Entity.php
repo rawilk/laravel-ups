@@ -96,7 +96,7 @@ abstract class Entity implements ArrayAccess, Arrayable, Jsonable, JsonSerializa
         return ! is_null($this->getAttribute($key));
     }
 
-    public function offsetGet($key): mixed
+    public function offsetGet(mixed $key): mixed
     {
         return $this->getAttribute($key);
     }
