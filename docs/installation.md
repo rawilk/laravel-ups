@@ -21,7 +21,7 @@ You may publish the config file like this:
 php artisan vendor:publish --provider="Rawilk\Ups\UpsServiceProvider" --tag="config"
 ```
 
-See the default configuration values [here](https://github.com/rawilk/laravel-ups/blob/master/config/ups.php).
+See the default configuration values [here](https://github.com/rawilk/laravel-ups/blob/main/config/ups.php).
 
 ### Configuring the package
 
