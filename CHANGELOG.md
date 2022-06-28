@@ -2,6 +2,11 @@
 
 All notable changes to `laravel-ups` will be documented in this file
 
+## v2.1.4 - 2022-06-28
+### Updated
+- Store shipping labels in GIF format instead of PNG
+- Use `imagerotate` instead of `Imagick` to rotate shipping labels
+
 ## 2.1.3 - 2022-02-22
 ### Updated
 - Add Laravel 9.* support - [#3](https://github.com/rawilk/laravel-ups/issues/3)
