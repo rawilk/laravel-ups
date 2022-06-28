@@ -6,8 +6,6 @@ namespace Rawilk\Ups\Entity\Shipment;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Storage;
-use Imagick;
-use ImagickPixel;
 use Rawilk\Ups\Entity\Entity;
 use Rawilk\Ups\Entity\Shipment\Label\LabelImage;
 
@@ -33,30 +31,34 @@ class PackageResult extends Entity
         return base64_decode($this->label_image->graphic_image);
     }
 
-    public function storeLabel(): null|string
+    public function storeLabel(): string
     {
         $disk = Config::get('ups.label_storage_disk', 'default');
 
-        $fileName = "{$this->tracking_number}.png";
+        $fileName = "{$this->tracking_number}.gif";
 
-        Storage::disk($disk)->put($fileName, base64_decode($this->label_image->graphic_image));
+        $content = Config::get('ups.rotate_stored_labels', true)
+            ? $this->rotateLabel($this->label_image->graphic_image)
+            : base64_decode($this->label_image->graphic_image);
 
-        if (Config::get('ups.rotate_stored_labels', true)) {
-            $this->rotateLabel(Storage::disk($disk)->path($fileName));
-        }
+        Storage::disk($disk)->put($fileName, $content);
 
         return $fileName;
     }
 
-    private function rotateLabel(string $path): void
+    private function rotateLabel(string $gif): string
     {
-        if (! class_exists(Imagick::class)) {
-            return;
-        }
+        // See: https://pjstrnad.com/rotation-image-ups-php/
+        $image = imagecreatefromgif('data://text/plain;base64,' . $gif);
+        $image = imagerotate($image, 270, 0);
 
-        $imagick = new Imagick($path);
-        $imagick->rotateImage(new ImagickPixel, 90);
+        ob_start();
 
-        $imagick->writeImage();
+        imagegif($image);
+        $imageBase64 = base64_encode(ob_get_contents());
+
+        ob_end_clean();
+
+        return base64_decode($imageBase64);
     }
 }

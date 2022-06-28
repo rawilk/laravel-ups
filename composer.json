@@ -30,7 +30,7 @@
         "phpunit/phpunit": "^9.0"
     },
     "suggest": {
-        "ext-imagick": "Required for rotating shipping labels.",
+        "ext-gd": "Required for rotating labels",
         "guzzlehttp/guzzle": "^7.2"
     },
     "autoload": {
