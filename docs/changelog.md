@@ -3,4 +3,4 @@ title: Changelog
 sort: 5
 ---
 
-All notable changes for laravel-ups are documented [on Github](https://github.com/rawilk/laravel-ups/blob/main/CHANGELOG.md).
+All notable changes for laravel-ups are documented [on GitHub](https://github.com/rawilk/laravel-ups/blob/main/CHANGELOG.md).
