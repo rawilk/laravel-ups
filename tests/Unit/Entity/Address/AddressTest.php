@@ -66,7 +66,7 @@ class AddressTest extends TestCase
     /** @test */
     public function residential_is_omitted_in_the_xml_when_it_is_false(): void
     {
-        $expectedXml = <<<XML
+        $expectedXml = <<<'XML'
         <Address>
             <City>Foo</City>
         </Address>
@@ -83,7 +83,7 @@ class AddressTest extends TestCase
     /** @test */
     public function residential_is_included_as_a_self_closing_empty_tag_in_xml_when_it_is_true(): void
     {
-        $expectedXml = <<<XML
+        $expectedXml = <<<'XML'
         <Address>
             <City>Foo</City>
             <ResidentialAddress />

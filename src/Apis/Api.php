@@ -26,11 +26,17 @@ abstract class Api
     protected const ENDPOINT = '/';
 
     protected string $accessKey;
+
     protected string $userId;
+
     protected string $password;
+
     protected bool $sandbox;
+
     protected string $context = '';
+
     protected null|Request $request = null;
+
     protected bool $allowRequestErrors = false;
 
     public function __construct()

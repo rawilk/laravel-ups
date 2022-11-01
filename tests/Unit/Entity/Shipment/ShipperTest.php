@@ -14,7 +14,7 @@ class ShipperTest extends TestCase
     /** @test */
     public function converts_to_xml(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <Shipper>
             <Name>foo</Name>
             <AttentionName>foo</AttentionName>
@@ -71,7 +71,8 @@ class ShipperTest extends TestCase
     /**
      * @test
      * @dataProvider invalidShipperNumbers
-     * @param string $shipperNumber
+     *
+     * @param  string  $shipperNumber
      */
     public function throws_an_exception_for_invalid_shipper_numbers(string $shipperNumber): void
     {

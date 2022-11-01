@@ -13,7 +13,7 @@ class LabelMethodTest extends TestCase
     /** @test */
     public function converts_to_xml(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <LabelDelivery>
             <Code>01</Code>
             <Description>foo</Description>

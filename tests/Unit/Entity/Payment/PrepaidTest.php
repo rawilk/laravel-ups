@@ -13,7 +13,7 @@ class PrepaidTest extends TestCase
     /** @test */
     public function converts_to_xml(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <Prepaid>
             <BillShipper>
                 <AccountNumber>123</AccountNumber>

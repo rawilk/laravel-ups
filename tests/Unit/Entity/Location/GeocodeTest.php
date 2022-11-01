@@ -13,7 +13,7 @@ class GeocodeTest extends TestCase
     /** @test */
     public function converts_to_xml(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <Geocode>
             <Latitude>123456</Latitude>
             <Longitude>654321</Longitude>
@@ -34,7 +34,7 @@ class GeocodeTest extends TestCase
     /** @test */
     public function creates_from_xml(): void
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
         <Geocode>
             <Latitude>123456</Latitude>
             <Longitude>654321</Longitude>

@@ -14,7 +14,7 @@ class BillThirdPartyShipperTest extends TestCase
     /** @test */
     public function converts_to_xml(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <BillThirdPartyShipper>
             <AccountNumber>123</AccountNumber>
             <ThirdParty>

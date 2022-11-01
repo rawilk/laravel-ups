@@ -14,11 +14,13 @@ class HasMonetaryValueTest extends TestCase
     /**
      * @test
      * @dataProvider invalidValues
-     * @param int|float $value
+     *
+     * @param  int|float  $value
      */
     public function throws_exception_for_invalid_monetary_values($value): void
     {
-        $class = new class extends Entity {
+        $class = new class extends Entity
+        {
             use HasMonetaryValue;
         };
 

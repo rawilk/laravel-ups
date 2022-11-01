@@ -18,7 +18,9 @@ class ShipmentCharge extends Entity
 {
     // Shipment charge types:
     public const TRANSPORTATION = '01';
+
     public const DUTIES_AND_TAXES = '02';
+
     public const BROKER_OF_CHOICE = '03';
 
     protected $casts = [

@@ -7,7 +7,9 @@ use Rawilk\Ups\Exceptions\InvalidMaxListSize;
 trait HasFixedListSize
 {
     protected static int $minListSize = 1;
+
     protected static int $maxListSize = 50;
+
     protected static int $defaultListSize = 10;
 
     protected function bootHasFixedListSize(): void

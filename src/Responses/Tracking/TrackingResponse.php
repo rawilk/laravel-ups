@@ -14,6 +14,7 @@ class TrackingResponse extends Entity
     use HandlesApiFailures;
 
     private const NO_TRACKING_CODE = '151044';
+
     private const INVALID_TRACKING_CODE = '151018';
 
     public function shipment(): string

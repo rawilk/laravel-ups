@@ -13,7 +13,7 @@ class BillShipperTest extends TestCase
     /** @test */
     public function converts_to_xml(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <BillShipper>
             <AccountNumber>123</AccountNumber>
         </BillShipper>
@@ -32,7 +32,7 @@ class BillShipperTest extends TestCase
     /** @test */
     public function can_use_credit_card(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <BillShipper>
             <CreditCard>
                 <Number>4111</Number>
@@ -55,7 +55,7 @@ class BillShipperTest extends TestCase
     /** @test */
     public function omits_credit_card_if_account_number_present(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <BillShipper>
             <AccountNumber>123</AccountNumber>
         </BillShipper>

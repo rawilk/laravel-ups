@@ -20,7 +20,6 @@ abstract class Entity implements ArrayAccess, Arrayable, Jsonable, JsonSerializa
 {
     use EntityHasAttributes;
     use HasRelationships;
-
     use HasAttributes {
         setAttribute as hasAttributesSetAttribute;
         getAttribute as hasAttributesGetAttribute;

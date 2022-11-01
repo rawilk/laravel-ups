@@ -4,6 +4,7 @@ namespace Rawilk\Ups\Concerns;
 
 /**
  * @mixin \Rawilk\Ups\Entity\Entity
+ *
  * @property array $response
  * @property null|string $error_code
  * @property null|string $error_description

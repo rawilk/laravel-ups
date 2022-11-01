@@ -13,7 +13,7 @@ class VoidStatusTest extends TestCase
     /** @test */
     public function can_be_partially_voided(): void
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
         <VoidStatus>
             <StatusCode>
                 <Code>2</Code>
@@ -33,7 +33,7 @@ class VoidStatusTest extends TestCase
     /** @test */
     public function can_be_successful(): void
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
         <VoidStatus>
             <StatusCode>
                 <Code>1</Code>
@@ -51,7 +51,7 @@ class VoidStatusTest extends TestCase
     /** @test */
     public function can_be_failed(): void
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
         <VoidStatus>
             <StatusCode>
                 <Code>0</Code>

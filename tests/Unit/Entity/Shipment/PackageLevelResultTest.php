@@ -13,7 +13,7 @@ class PackageLevelResultTest extends TestCase
     /** @test */
     public function creates_from_xml(): void
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
         <Element>
             <TrackingNumber>1Z...</TrackingNumber>
             <StatusCode>1</StatusCode>
@@ -34,7 +34,7 @@ class PackageLevelResultTest extends TestCase
     /** @test */
     public function can_handle_complex_status_code(): void
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
         <Element>
             <TrackingNumber>1Z...</TrackingNumber>
             <StatusCode>

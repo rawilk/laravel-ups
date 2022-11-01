@@ -34,7 +34,9 @@ use Rawilk\Ups\Entity\Tracking\EstimatedDeliveryWindow;
 class Package extends Entity
 {
     public const OVERSIZE1 = '1';
+
     public const OVERSIZE2 = '2';
+
     public const LARGE = '4';
 
     protected array $attributeKeyMap = [

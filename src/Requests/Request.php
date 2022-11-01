@@ -23,8 +23,11 @@ class Request
     protected const RESPONSE_CODE_ERROR = 0;
 
     protected string $accessXml = '';
+
     protected string $endpoint = '';
+
     protected string $requestXml = '';
+
     protected bool $throwExceptionOnError = true;
 
     public function send(): Response

@@ -11,6 +11,7 @@ class DeliveryConfirmation extends Entity
 {
     // Valid types:
     public const SIGNATURE_REQUIRED = 1;
+
     public const ADULT_SIGNATURE_REQUIRED = 2;
 
     public function signatureRequired(): self

@@ -14,10 +14,15 @@ class LabelPrintMethod extends Entity
 {
     // Valid codes:
     public const EPL = 'EPL';
+
     public const SPL = 'SPL';
+
     public const ZPL = 'ZPL';
+
     public const STAR = 'STAR';
+
     public const STARPL = 'STARPL';
+
     public const IMAGE = 'GIF';
 
     public function needsLabelStockSize(): bool

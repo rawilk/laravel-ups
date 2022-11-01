@@ -13,7 +13,7 @@ class BillingWeightTest extends TestCase
     /** @test */
     public function uom_defaults_to_lbs(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <BillingWeight>
             <UnitOfMeasurement>
                 <Code>LBS</Code>
@@ -35,7 +35,7 @@ class BillingWeightTest extends TestCase
     /** @test */
     public function uom_can_be_customized(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <BillingWeight>
             <UnitOfMeasurement>
                 <Code>KGS</Code>

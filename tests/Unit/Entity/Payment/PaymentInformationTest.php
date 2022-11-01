@@ -20,7 +20,7 @@ class PaymentInformationTest extends TestCase
     /** @test */
     public function converts_to_xml(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <PaymentInformation>
             <ConsigneeBilled />
         </PaymentInformation>
@@ -39,7 +39,7 @@ class PaymentInformationTest extends TestCase
     /** @test */
     public function omits_bill_third_party_and_freight_collect_if_prepaid_present(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <PaymentInformation>
             <Prepaid>
                 <BillShipper>
@@ -86,7 +86,7 @@ class PaymentInformationTest extends TestCase
     /** @test */
     public function omits_freight_collect_if_bill_third_party_present(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <PaymentInformation>
             <BillThirdParty>
                 <BillThirdPartyShipper>

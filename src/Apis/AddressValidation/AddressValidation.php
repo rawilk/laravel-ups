@@ -19,8 +19,11 @@ class AddressValidation extends Api
     protected const MAX_ALLOWED_SUGGESTIONS = 50;
 
     protected int $maxSuggestions;
+
     protected int $requestOption = AddressValidationOption::ADDRESS_VALIDATION;
+
     protected null|Address $address = null;
+
     protected static array $supportedCountries = ['US', 'PR'];
 
     public function validate(Address $address = null): AddressValidationResponse

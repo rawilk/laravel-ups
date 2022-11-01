@@ -13,7 +13,7 @@ class ActivityLocationTest extends TestCase
     /** @test */
     public function converts_to_xml(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <ActivityLocation>
             <AddressArtifactFormat>
                 <Country>US</Country>

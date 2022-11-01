@@ -14,7 +14,7 @@ class ShipFromTest extends TestCase
     /** @test */
     public function converts_to_xml(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <ShipFrom>
             <CompanyName>foo</CompanyName>
             <AttentionName>foo</AttentionName>
@@ -43,7 +43,7 @@ class ShipFromTest extends TestCase
     /** @test */
     public function can_have_tax_id_number(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <ShipFrom>
             <TaxIdentificationNumber>123</TaxIdentificationNumber>
             <TaxIDType>

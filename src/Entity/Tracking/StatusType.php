@@ -14,9 +14,13 @@ class StatusType extends Entity
 {
     // Valid codes:
     public const IN_TRANSIT = 'I';
+
     public const DELIVERED = 'D';
+
     public const EXCEPTION = 'X';
+
     public const PICKUP = 'P';
+
     public const MANIFEST_PICKUP = 'M';
 
     public function isPickup(): bool

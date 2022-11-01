@@ -36,6 +36,7 @@ class VoidTestNumbers
      * @var string
      */
     public const SHIPMENT_VOIDED_AT_SHIPMENT_LEVEL = '1Z12345E0390856432';
+
     public const SHIPMENT_VOIDED_AT_SHIPMENT_LEVEL2 = '1Z12345E0193081456';
 
     /**

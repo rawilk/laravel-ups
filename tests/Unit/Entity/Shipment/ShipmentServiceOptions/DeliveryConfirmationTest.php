@@ -12,7 +12,7 @@ class DeliveryConfirmationTest extends TestCase
     /** @test */
     public function converts_to_xml(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <DeliveryConfirmation>
             <DCISType>1</DCISType>
         </DeliveryConfirmation>
@@ -31,7 +31,7 @@ class DeliveryConfirmationTest extends TestCase
     /** @test */
     public function can_create_new_instance_with_signature_required(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <DeliveryConfirmation>
             <DCISType>1</DCISType>
         </DeliveryConfirmation>
@@ -48,7 +48,7 @@ class DeliveryConfirmationTest extends TestCase
     /** @test */
     public function can_create_new_instance_with_adult_signature_required(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <DeliveryConfirmation>
             <DCISType>2</DCISType>
         </DeliveryConfirmation>

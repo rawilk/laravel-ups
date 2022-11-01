@@ -17,6 +17,7 @@ class PackageLevelResult extends Entity
 {
     // Statuses:
     protected const VOIDED = '1';
+
     protected const NOT_VOIDED = '0';
 
     public function notVoided(): bool

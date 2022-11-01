@@ -17,7 +17,7 @@ class LabelRecoveryResponseTest extends TestCase
     /** @test */
     public function creates_from_xml(): void
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
         <LabelRecoveryResponse>
             <Response>
                 <ResponseStatusCode>1</ResponseStatusCode>

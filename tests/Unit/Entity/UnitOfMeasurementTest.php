@@ -31,7 +31,7 @@ class UnitOfMeasurementTest extends TestCase
     /** @test */
     public function converts_to_xml(): void
     {
-        $expectedXml = <<<XML
+        $expectedXml = <<<'XML'
         <UnitOfMeasurement>
             <Code>LBS</Code>
             <Description>Pounds</Description>

@@ -21,7 +21,7 @@ class AddressKeyFormatTest extends TestCase
             'country_code' => 'US',
         ]);
 
-        $expectedXml = <<<XML
+        $expectedXml = <<<'XML'
         <AddressKeyFormat>
             <AddressLine1>200 warsaw rd</AddressLine1>
             <City>Atlanta</City>

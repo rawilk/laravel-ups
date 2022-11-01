@@ -16,7 +16,7 @@ class BillThirdPartyTest extends TestCase
     /** @test */
     public function converts_to_xml(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <BillThirdParty>
             <BillThirdPartyConsignee>
                 <AccountNumber>123</AccountNumber>
@@ -33,9 +33,9 @@ class BillThirdPartyTest extends TestCase
             'bill_third_party_consignee' => new BillThirdPartyConsignee([
                 'account_number' => '123',
                 'third_party' => new ThirdParty([
-                     'address' => new Address([
-                         'city' => 'foo',
-                     ]),
+                    'address' => new Address([
+                        'city' => 'foo',
+                    ]),
                 ]),
             ]),
         ]);
@@ -49,7 +49,7 @@ class BillThirdPartyTest extends TestCase
     /** @test */
     public function omits_consignee_if_shipper_present(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <BillThirdParty>
             <BillThirdPartyShipper>
                 <AccountNumber>123</AccountNumber>

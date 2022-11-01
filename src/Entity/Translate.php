@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Rawilk\Ups\Entity;
 
 /**
- * @property null|String $language_code
+ * @property null|string $language_code
  * @property null|string $dialect_code
  * @property null|string $code
  * @property null|string $locale

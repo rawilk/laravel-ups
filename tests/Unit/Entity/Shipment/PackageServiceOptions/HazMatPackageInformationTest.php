@@ -12,7 +12,7 @@ class HazMatPackageInformationTest extends TestCase
     /** @test */
     public function converts_to_xml(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <HazMatPackageInformation>
             <AllPackedInOneIndicator />
             <OverPackedIndicator />

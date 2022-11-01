@@ -14,6 +14,8 @@ class TaxIDType extends Entity
 {
     // Tax ID type codes:
     public const EIN = 'EIN';
+
     public const DNS = 'DNS';
+
     public const FGN = 'FGN';
 }

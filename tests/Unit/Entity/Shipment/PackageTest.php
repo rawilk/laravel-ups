@@ -12,7 +12,7 @@ class PackageTest extends TestCase
     /** @test */
     public function converts_to_xml(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <Package>
             <PackageWeight>
                 <UnitOfMeasurement>
