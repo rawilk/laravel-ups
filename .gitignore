@@ -1,8 +1,9 @@
 .env
+.envault.json
 .idea
+.php-cs-fixer.cache
 .php_cs
 .php_cs.cache
-.php-cs-fixer.cache
 .phpunit.result.cache
 build
 composer.lock
