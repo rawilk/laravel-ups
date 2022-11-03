@@ -68,5 +68,5 @@ it('throws an exception for invalid shipper numbers', function (string $shipperN
 dataset('invalidShipperNumbers', [
     '',
     str_repeat('1', Shipper::SHIPPER_NUMBER_LENGTH - 1),
-    str_repeat('1', Shipper::SHIPPER_NUMBER_LENGTH + 1)
+    str_repeat('1', Shipper::SHIPPER_NUMBER_LENGTH + 1),
 ]);
