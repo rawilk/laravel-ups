@@ -46,8 +46,11 @@ jobs:
                     composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
                     composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
 
+            -   name: List Installed Dependencies
+                run: composer show -D
+
             -   name: Execute tests
-                run: vendor/bin/phpunit
+                run: vendor/bin/pest -p
                 env:
                     UPS_ACCESS_KEY: ${{ secrets.UPS_ACCESS_KEY }}
                     UPS_USER_ID: ${{ secrets.UPS_USER_ID }}
