@@ -2,21 +2,15 @@
 
 namespace Rawilk\Ups;
 
-use Illuminate\Support\ServiceProvider;
+use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class UpsServiceProvider extends ServiceProvider
+class UpsServiceProvider extends PackageServiceProvider
 {
-    public function boot(): void
+    public function configurePackage(Package $package): void
     {
-        if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__ . '/../config/ups.php' => config_path('ups.php'),
-            ], 'config');
-        }
-    }
-
-    public function register(): void
-    {
-        $this->mergeConfigFrom(__DIR__ . '/../config/ups.php', 'ups');
+        $package
+            ->name('laravel-ups')
+            ->hasConfigFile();
     }
 }
