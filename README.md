@@ -19,6 +19,7 @@ composer require rawilk/laravel-ups
 ```
 
 You can publish the config file with:
+
 ```bash
 php artisan vendor:publish --provider="Rawilk\Ups\UpsServiceProvider" --tag="config"
 ```
@@ -31,7 +32,7 @@ For documentation, please visit: https://randallwilk.dev/docs/laravel-ups.
 
 ## Testing
 
-``` bash
+```bash
 composer test
 ```
 
@@ -49,8 +50,8 @@ Please review [my security policy](.github/SECURITY.md) on how to report securit
 
 ## Credits
 
-- [Randall Wilk](https://github.com/rawilk)
-- [All Contributors](../../contributors)
+-   [Randall Wilk](https://github.com/rawilk)
+-   [All Contributors](../../contributors)
 
 ## License
 

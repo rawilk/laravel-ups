@@ -9,8 +9,8 @@ The Shipping Api allows you to register shipments, including return shipments.
 
 The shipping flow consists of two steps:
 
-- **Confirm:** Send information to UPS to get it validated and get a digest you can use to accept the shipment.
-- **Accept:** Finalize the shipment, mark it as will be shipped. Get label and additional information.
+-   **Confirm:** Send information to UPS to get it validated and get a digest you can use to accept the shipment.
+-   **Accept:** Finalize the shipment, mark it as will be shipped. Get label and additional information.
 
 ## Usage
 
@@ -65,7 +65,7 @@ $shipment = new Shipment([
 
     // Uncomment for return shipment
     // 'return_service' => new ReturnService, // defaults to ReturnService::PRINT_RETURN_LABEL for the 'code'
-    
+
     // Payment info - for other options, see the developer docs
     'payment_information' => PaymentInformation::prepaidForAccount($shipperNumber),
 
@@ -76,7 +76,7 @@ $shipment = new Shipment([
             'reference_number' => new ReferenceNumber([
                 'value' => 'My reference',
                 // 'barcode' => true, // Uncomment to have outputted as barcode on bottom of label
-            ]),  
+            ]),
             'package_weight' => new PackageWeight([
                 'weight' => '5.0', // UOM defaults to LBS
             ]),
@@ -142,7 +142,8 @@ $response->packages->first()->tracking_number;
 ```
 
 ## Charges
-Any charges from UPS will be available through the `ShipAcceptResponse::charges` attribute. You will receive a collection of 
+
+Any charges from UPS will be available through the `ShipAcceptResponse::charges` attribute. You will receive a collection of
 `Rawilk\Ups\Entity\Payment\Charge` instances.
 
 ```php
@@ -154,7 +155,8 @@ $charge->description;
 ```
 
 ## Billing Weight
-The billing weight can be retrieved through the `ShipAcceptResponse::billing_weight` attribute. 
+
+The billing weight can be retrieved through the `ShipAcceptResponse::billing_weight` attribute.
 
 ```php
 $weight = $reponse->billing_weight;
@@ -164,6 +166,7 @@ $weight->unit_of_measurement->code; // LBS
 ```
 
 ## Labels
+
 A label is created for each package. You can retrieve the label's off each `PackageResult` entity instance.
 
 ```php
@@ -180,6 +183,7 @@ $image->url;
 ```
 
 ### Label URLs
+
 To receive a URL of the label, you can request it through shipment service options in the shipment confirmation phase.
 
 ```php
@@ -189,6 +193,7 @@ $shipment->shipment_service_options->label_delivery = new LabelDelivery([
 ```
 
 ### Retrieving Decoded Labels
+
 When a label is returned from UPS, it is base64 encoded. As of version `2.1.0`, the package can return the decoded
 version of the image label for you off of each `PackageResult` entity.
 
@@ -203,6 +208,7 @@ $image = base64_decode($package->label_image->graphic_image);
 ```
 
 ### Storing Labels
+
 If you would like, as of version `2.1.0`, you can have each `PackageResult` entity instance storage an image of the generated shipping
 label automatically for you instead of having to `base64_decode` and store the image yourself. All that is required
 providing a storage disk name in the configuration file (defaults to `default`), and then telling each package result
@@ -237,6 +243,7 @@ I personally prefer to configure a storage disk for most items. Here's an exampl
 > {tip} Be sure to add your custom disk name to the `label_storage_disk` key in the package configuration.
 
 ### Rotating Stored Labels
+
 I personally prefer to rotate stored shipping labels vertically. If you have the Imagick extension installed,
 you can have the `PackageResult` entity do this automatically for you by setting the package configuration
 key `rotate_stored_labels` to `true`.

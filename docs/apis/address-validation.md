@@ -71,9 +71,10 @@ $response = (new AddressValidation)
 ### Request Option
 
 There are three request options available:
-- Address Validation (default)
-- Address Classification
-- Address Validation and Classification
+
+-   Address Validation (default)
+-   Address Classification
+-   Address Validation and Classification
 
 There are a couple ways to set the request option:
 
