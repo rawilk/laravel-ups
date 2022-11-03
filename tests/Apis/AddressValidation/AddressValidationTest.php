@@ -2,86 +2,54 @@
 
 declare(strict_types=1);
 
-namespace Rawilk\Ups\Tests\Apis\AddressValidation;
-
 use Rawilk\Ups\Apis\AddressValidation\AddressValidation;
 use Rawilk\Ups\Entity\Address\Address;
 use Rawilk\Ups\Exceptions\BadRequest;
-use Rawilk\Ups\Tests\TestCase;
 
-class AddressValidationTest extends TestCase
-{
-    /** @test */
-    public function can_make_requests(): void
-    {
-        /*
-         * This address is provided in the samples in UPS developer documentation
-         * and returns as ambiguous.
-         *
-         * Note: As of 2/22/2021, I can't seem to locate this example in the
-         * docs anymore, and now the api is returning the no candidates
-         * indicator instead.
-         */
-        $address = new Address([
-            'address_line1' => 'AIRWAY ROAD SUITE 7',
-            'city' => 'San Diego',
-            'state' => 'CA',
-            'postal_code' => '92154',
-            'country_code' => 'US',
-        ]);
-
-        $response = (new AddressValidation)
-            ->usingAddress($address)
-            ->maxSuggestions(3)
-            ->validate();
-
-        self::assertTrue($response->no_candidates);
-        self::assertTrue($response->candidates->count() < 1);
-    }
-
-    /** @test */
-    public function address_is_required(): void
-    {
-        $this->expectException(BadRequest::class);
-
-        (new AddressValidation)->validate();
-    }
-
-    /** @test */
-    public function at_least_one_suggestion_must_be_requested(): void
-    {
-        $this->expectException(BadRequest::class);
-
-        (new AddressValidation)->maxSuggestions(0);
-    }
-
-    /** @test */
-    public function no_more_than_50_suggestions_are_allowed(): void
-    {
-        $this->expectException(BadRequest::class);
-
-        (new AddressValidation)->maxSuggestions(51);
-    }
-
-    /**
-     * @test
-     * @dataProvider invalidRequestOptions
+it('can make requests', function () {
+    /*
+     * This address is provided in the samples in UPS developer documentation
+     * and returns as ambiguous.
      *
-     * @param  int  $option
+     * Note: As of 2/22/2021, I can't seem to locate this example in the
+     * docs anymore, and now the api is returning the no candidates
+     * indicator instead.
      */
-    public function invalid_request_options_are_not_allowed(int $option): void
-    {
-        $this->expectException(BadRequest::class);
+    $address = new Address([
+        'address_line1' => 'AIRWAY ROAD SUITE 7',
+        'city' => 'San Diego',
+        'state' => 'CA',
+        'postal_code' => '92154',
+        'country_code' => 'US',
+    ]);
 
-        (new AddressValidation)->usingRequestOption($option);
-    }
+    $response = (new AddressValidation)
+        ->usingAddress($address)
+        ->maxSuggestions(3)
+        ->validate();
 
-    public function invalidRequestOptions(): array
-    {
-        return [
-            [-1],
-            [0],
-            [4],
-        ];
-    }
-}
+    expect($response->no_candidates)->toBeTrue()
+        ->and($response->candidates)->toHaveCount(0);
+});
+
+it('requires address', function () {
+    (new AddressValidation)->validate();
+})->expectException(BadRequest::class);
+
+it('requires at least one suggestion to be requested', function () {
+    (new AddressValidation)->maxSuggestions(0);
+})->expectException(BadRequest::class);
+
+it('does not allow more than 50 suggestions', function () {
+    (new AddressValidation)->maxSuggestions(51);
+})->expectException(BadRequest::class);
+
+it('does not allow invalid request options', function (int $option) {
+    (new AddressValidation)->usingRequestOption($option);
+})->with('invalidRequestOptions')->expectException(BadRequest::class);
+
+dataset('invalidRequestOptions', [
+    -1,
+    0,
+    4,
+]);

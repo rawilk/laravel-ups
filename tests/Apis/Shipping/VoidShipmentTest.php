@@ -2,239 +2,181 @@
 
 declare(strict_types=1);
 
-namespace Rawilk\Ups\Tests\Apis\Shipping;
-
 use Illuminate\Support\Collection;
 use Rawilk\Ups\Apis\Shipping\Support\VoidTestNumbers;
 use Rawilk\Ups\Apis\Shipping\VoidShipment;
 use Rawilk\Ups\Entity\Shipment\PackageLevelResult;
 use Rawilk\Ups\Exceptions\BadRequest;
-use Rawilk\Ups\Tests\TestCase;
 
-class VoidShipmentTest extends TestCase
-{
-    /**
-     * @test
-     * @dataProvider validShipmentVoidNumbers
-     *
-     * @param  string  $shipmentIdentificationNumber
-     */
-    public function can_void_shipments(string $shipmentIdentificationNumber): void
-    {
-        $response = (new VoidShipment)
-            ->usingShipmentIdentificationNumber($shipmentIdentificationNumber)
-            ->void();
+it('can void shipments', function (string $shipmentIdentificationNumber) {
+    $response = (new VoidShipment)
+        ->usingShipmentIdentificationNumber($shipmentIdentificationNumber)
+        ->void();
 
-        self::assertTrue($response->status->successful());
-        self::assertFalse($response->failed());
-    }
+    expect($response->status->successful())->toBeTrue()
+        ->and($response->failed())->toBeFalse();
+})->with('validShipmentVoidNumbers');
 
-    /** @test */
-    public function can_void_the_lead_package(): void
-    {
-        $response = (new VoidShipment)
-            ->usingShipmentIdentificationNumber(VoidTestNumbers::$partialVoidLeadPackage['shipment_id'])
-            ->usingTrackingNumbers([VoidTestNumbers::$partialVoidLeadPackage['tracking_number']])
-            ->void();
+it('can void the lead package', function () {
+    $response = (new VoidShipment)
+        ->usingShipmentIdentificationNumber(VoidTestNumbers::$partialVoidLeadPackage['shipment_id'])
+        ->usingTrackingNumbers([VoidTestNumbers::$partialVoidLeadPackage['tracking_number']])
+        ->void();
 
-        self::assertTrue($response->status->successful());
-        self::assertInstanceOf(Collection::class, $response->package_level_results);
-        self::assertContainsOnlyInstancesOf(PackageLevelResult::class, $response->package_level_results);
-        self::assertCount(1, $response->package_level_results);
-        self::assertTrue($response->package_level_results->first()->voided());
-    }
+    expect($response->status->successful())->toBeTrue()
+        ->and($response->package_level_results)->toBeInstanceOf(Collection::class)
+        ->and($response->package_level_results)->toHaveCount(1)
+        ->and($response->package_level_results->first()->voided())->toBeTrue();
 
-    /** @test */
-    public function can_void_remaining_package(): void
-    {
-        $response = (new VoidShipment)
-            ->usingShipmentIdentificationNumber(
-                VoidTestNumbers::$multiPackageShipmentVoidRemainingPackage['shipment_id']
-            )
-            ->usingTrackingNumbers(
-                [VoidTestNumbers::$multiPackageShipmentVoidRemainingPackage['tracking_number']]
-            )
-            ->void();
+    $this->assertContainsOnlyInstancesOf(PackageLevelResult::class, $response->package_level_results);
+});
 
-        self::assertTrue($response->status->successful());
-        self::assertNull($response->package_level_results);
-    }
+it('can void remaining package', function () {
+    $response = (new VoidShipment)
+        ->usingShipmentIdentificationNumber(
+            VoidTestNumbers::$multiPackageShipmentVoidRemainingPackage['shipment_id']
+        )
+        ->usingTrackingNumbers(
+            [VoidTestNumbers::$multiPackageShipmentVoidRemainingPackage['tracking_number']]
+        )
+        ->void();
 
-    /** @test */
-    public function can_void_all_remaining_packages(): void
-    {
-        $response = (new VoidShipment)
-            ->usingShipmentIdentificationNumber(
-                VoidTestNumbers::$multiPackageWithTwoRemainingUnvoided['shipment_id']
-            )
-            ->usingTrackingNumbers(
-                VoidTestNumbers::$multiPackageWithTwoRemainingUnvoided['tracking_numbers']
-            )
-            ->void();
+    expect($response->status->successful())->toBeTrue()
+        ->and($response->package_level_results)->toBeNull();
+});
 
-        self::assertTrue($response->status->successful());
-        self::assertFalse($response->status->partiallyVoided());
-        self::assertNull($response->package_level_results);
-    }
+it('can void all remaining packages', function () {
+    $response = (new VoidShipment)
+        ->usingShipmentIdentificationNumber(
+            VoidTestNumbers::$multiPackageWithTwoRemainingUnvoided['shipment_id']
+        )
+        ->usingTrackingNumbers(
+            VoidTestNumbers::$multiPackageWithTwoRemainingUnvoided['tracking_numbers']
+        )
+        ->void();
 
-    /** @test */
-    public function can_void_packages_even_if_some_sent_packages_cannot_be_voided(): void
-    {
-        $response = (new VoidShipment)
-            ->usingShipmentIdentificationNumber(
-                VoidTestNumbers::$multiPackageShipmentWithNonVoidablePackage['shipment_id']
-            )
-            ->usingTrackingNumbers(
-                VoidTestNumbers::$multiPackageShipmentWithNonVoidablePackage['tracking_numbers']
-            )
-            ->void();
+    expect($response->status->successful())->toBeTrue()
+        ->and($response->status->partiallyVoided())->toBeFalse()
+        ->and($response->package_level_results)->toBeNull();
+});
 
-        self::assertTrue($response->status->successful());
-        self::assertTrue($response->status->partiallyVoided());
-        self::assertCount(2, $response->package_level_results);
+it('can void packages even if some of the sent packages cannot be voided', function () {
+    $response = (new VoidShipment)
+        ->usingShipmentIdentificationNumber(
+            VoidTestNumbers::$multiPackageShipmentWithNonVoidablePackage['shipment_id']
+        )
+        ->usingTrackingNumbers(
+            VoidTestNumbers::$multiPackageShipmentWithNonVoidablePackage['tracking_numbers']
+        )
+        ->void();
 
-        /** @var \Rawilk\Ups\Entity\Shipment\PackageLevelResult $shouldBeVoided */
-        $shouldBeVoided = $response->package_level_results
-            ->firstWhere('tracking_number', VoidTestNumbers::$multiPackageShipmentWithNonVoidablePackage['tracking_numbers'][0]);
+    expect($response->status->successful())->toBeTrue()
+        ->and($response->status->partiallyVoided())->toBeTrue()
+        ->and($response->package_level_results)->toHaveCount(2);
 
-        self::assertTrue($shouldBeVoided->voided());
+    /** @var \Rawilk\Ups\Entity\Shipment\PackageLevelResult $shouldBeVoided */
+    $shouldBeVoided = $response->package_level_results
+        ->firstWhere('tracking_number', VoidTestNumbers::$multiPackageShipmentWithNonVoidablePackage['tracking_numbers'][0]);
 
-        /** @var \Rawilk\Ups\Entity\Shipment\PackageLevelResult $shouldNotBeVoided */
-        $shouldNotBeVoided = $response->package_level_results
-            ->firstWhere('tracking_number', VoidTestNumbers::$multiPackageShipmentWithNonVoidablePackage['tracking_numbers'][1]);
+    expect($shouldBeVoided->voided())->toBeTrue();
 
-        self::assertTrue($shouldNotBeVoided->notVoided());
-    }
+    /** @var \Rawilk\Ups\Entity\Shipment\PackageLevelResult $shouldNotBeVoided */
+    $shouldNotBeVoided = $response->package_level_results
+        ->firstWhere('tracking_number', VoidTestNumbers::$multiPackageShipmentWithNonVoidablePackage['tracking_numbers'][1]);
 
-    /** @test */
-    public function expired_shipments_will_not_be_voided(): void
-    {
-        $response = (new VoidShipment)
-            ->usingShipmentIdentificationNumber(
-                VoidTestNumbers::GROUND_SINGLE_PACKAGE_SHIPMENT_VOIDING_EXPIRED
-            )
-            ->void();
+    expect($shouldNotBeVoided->notVoided())->toBeTrue();
+});
 
-        self::assertTrue($response->failed());
-        self::assertNotEmpty($response->error_description);
-        self::assertEquals('190101', $response->error_code);
-    }
+it('will not void expired shipments', function () {
+    $response = (new VoidShipment)
+        ->usingShipmentIdentificationNumber(
+            VoidTestNumbers::GROUND_SINGLE_PACKAGE_SHIPMENT_VOIDING_EXPIRED
+        )
+        ->void();
 
-    /** @test */
-    public function shipments_already_picked_up_will_not_be_voided(): void
-    {
-        $response = (new VoidShipment)
-            ->usingShipmentIdentificationNumber(
-                VoidTestNumbers::SHIPMENT_ALREADY_PICKED_UP
-            )
-            ->void();
+    expect($response->failed())->toBeTrue()
+        ->and($response->error_description)->not()->toBeEmpty()
+        ->and($response->error_code)->toEqual('190101');
+});
 
-        self::assertTrue($response->failed());
-        self::assertNotEmpty($response->error_description);
-        self::assertEquals('190103', $response->error_code);
-    }
+test('shipments already picked up will not be voided', function () {
+    $response = (new VoidShipment)
+        ->usingShipmentIdentificationNumber(
+            VoidTestNumbers::SHIPMENT_ALREADY_PICKED_UP
+        )
+        ->void();
 
-    /** @test */
-    public function shipments_older_than_28_days_will_not_be_voided(): void
-    {
-        $response = (new VoidShipment)
-            ->usingShipmentIdentificationNumber(
-                VoidTestNumbers::SHIPMENT_OLDER_THAN_28_DAYS
-            )
-            ->void();
+    expect($response->failed())->toBeTrue()
+        ->and($response->error_description)->not()->toBeEmpty()
+        ->and($response->error_code)->toEqual('190103');
+});
 
-        self::assertTrue($response->failed());
-        self::assertNotEmpty($response->error_description);
-        self::assertEquals('190101', $response->error_code);
-    }
+test('shipments older than 28 days will not be voided', function () {
+    $response = (new VoidShipment)
+        ->usingShipmentIdentificationNumber(
+            VoidTestNumbers::SHIPMENT_OLDER_THAN_28_DAYS
+        )
+        ->void();
 
-    /** @test */
-    public function a_package_not_in_a_shipment_will_not_be_voided(): void
-    {
-        $response = (new VoidShipment)
-            ->usingShipmentIdentificationNumber(
-                VoidTestNumbers::$trackingNumberNotInShipment['shipment_id']
-            )
-            ->usingTrackingNumbers(
-                [VoidTestNumbers::$trackingNumberNotInShipment['tracking_number']]
-            )
-            ->void();
+    expect($response->failed())->toBeTrue()
+        ->and($response->error_description)->not()->toBeEmpty()
+        ->and($response->error_code)->toEqual('190101');
+});
 
-        self::assertTrue($response->failed());
-        self::assertNotEmpty($response->error_description);
-        self::assertEquals('190110', $response->error_code);
-    }
+test('a package not in a shipment will not be voided', function () {
+    $response = (new VoidShipment)
+        ->usingShipmentIdentificationNumber(
+            VoidTestNumbers::$trackingNumberNotInShipment['shipment_id']
+        )
+        ->usingTrackingNumbers(
+            [VoidTestNumbers::$trackingNumberNotInShipment['tracking_number']]
+        )
+        ->void();
 
-    /** @test */
-    public function return_shipments_cannot_be_voided_at_the_package_level(): void
-    {
-        $response = (new VoidShipment)
-            ->usingShipmentIdentificationNumber(
-                VoidTestNumbers::$returnShipmentFailAtPackageLevel['shipment_id']
-            )
-            ->usingTrackingNumbers(
-                [VoidTestNumbers::$returnShipmentFailAtPackageLevel['tracking_number']]
-            )
-            ->void();
+    expect($response->failed())->toBeTrue()
+        ->and($response->error_description)->not()->toBeEmpty()
+        ->and($response->error_code)->toEqual('190110');
+});
 
-        self::assertTrue($response->failed());
-        self::assertNotEmpty($response->error_description);
-        self::assertEquals('190112', $response->error_code);
-    }
+test('return shipments cannot be voided at the package level', function () {
+    $response = (new VoidShipment)
+        ->usingShipmentIdentificationNumber(
+            VoidTestNumbers::$returnShipmentFailAtPackageLevel['shipment_id']
+        )
+        ->usingTrackingNumbers(
+            [VoidTestNumbers::$returnShipmentFailAtPackageLevel['tracking_number']]
+        )
+        ->void();
 
-    /** @test */
-    public function shipment_identification_number_is_required(): void
-    {
-        $this->expectException(BadRequest::class);
+    expect($response->failed())->toBeTrue()
+        ->and($response->error_description)->not()->toBeEmpty()
+        ->and($response->error_code)->toEqual('190112');
+});
 
-        (new VoidShipment)->void();
-    }
+it('requires a shipment identification number', function () {
+    (new VoidShipment)->void();
+})->expectException(BadRequest::class);
 
-    /**
-     * @test
-     * @dataProvider invalidShipmentIdNumbers
-     *
-     * @param  string  $id
-     */
-    public function requires_a_valid_shipment_identification_number(string $id): void
-    {
-        $this->expectException(BadRequest::class);
+it('requires a valid shipment identification number', function (string $id) {
+    (new VoidShipment)->usingShipmentIdentificationNumber($id)->void();
+})->with('invalidShipmentNumbers')->expectException(BadRequest::class);
 
-        (new VoidShipment)->usingShipmentIdentificationNumber($id)->void();
-    }
+it('requires valid tracking numbers', function (string $id) {
+    (new VoidShipment)
+        ->usingShipmentIdentificationNumber(VoidTestNumbers::GROUND_SINGLE_PACKAGE_SHIPMENT_PROCESSED_AND_VOIDED)
+        ->usingTrackingNumbers([$id])
+        ->void();
+})->with('invalidShipmentNumbers')->expectException(BadRequest::class);
 
-    /**
-     * @test
-     * @dataProvider invalidShipmentIdNumbers
-     *
-     * @param  string  $id
-     */
-    public function requires_valid_tracking_numbers(string $id): void
-    {
-        $this->expectException(BadRequest::class);
+dataset('validShipmentVoidNumbers', [
+    VoidTestNumbers::GROUND_SINGLE_PACKAGE_SHIPMENT_PROCESSED_AND_VOIDED,
+    VoidTestNumbers::SHIPMENT_VOIDED_AT_SHIPMENT_LEVEL,
+    VoidTestNumbers::SHIPMENT_VOIDED_AT_SHIPMENT_LEVEL2,
+    VoidTestNumbers::NEXT_DAY_AIR_SINGLE_PACKAGE_SHIPMENT_PROCESSED_AND_VOIDED,
+]);
 
-        (new VoidShipment)
-            ->usingShipmentIdentificationNumber(VoidTestNumbers::GROUND_SINGLE_PACKAGE_SHIPMENT_PROCESSED_AND_VOIDED)
-            ->usingTrackingNumbers([$id])
-            ->void();
-    }
-
-    public function validShipmentVoidNumbers(): array
-    {
-        return [
-            [VoidTestNumbers::GROUND_SINGLE_PACKAGE_SHIPMENT_PROCESSED_AND_VOIDED],
-            [VoidTestNumbers::SHIPMENT_VOIDED_AT_SHIPMENT_LEVEL],
-            [VoidTestNumbers::SHIPMENT_VOIDED_AT_SHIPMENT_LEVEL2],
-            [VoidTestNumbers::NEXT_DAY_AIR_SINGLE_PACKAGE_SHIPMENT_PROCESSED_AND_VOIDED],
-        ];
-    }
-
-    public function invalidShipmentIdNumbers(): array
-    {
-        return [
-            ['foo'],
-            ['1Z'],
-            ['1Zabc'],
-        ];
-    }
-}
+dataset('invalidShipmentNumbers', [
+    'foo',
+    '1Z',
+    '1Zabc',
+]);

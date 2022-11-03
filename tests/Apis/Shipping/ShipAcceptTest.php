@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-namespace Rawilk\Ups\Tests\Apis\Shipping;
-
 use Rawilk\Ups\Apis\Shipping\ShipAccept;
 use Rawilk\Ups\Apis\Shipping\ShipConfirm;
 use Rawilk\Ups\Entity\Address\Address;
@@ -23,108 +21,100 @@ use Rawilk\Ups\Entity\Shipment\Shipper;
 use Rawilk\Ups\Entity\Shipment\ShipTo;
 use Rawilk\Ups\Exceptions\BadRequest;
 use Rawilk\Ups\Responses\Shipping\ShipConfirmResponse;
-use Rawilk\Ups\Tests\TestCase;
 
-class ShipAcceptTest extends TestCase
+it('can make api calls', function () {
+    $shipConfirm = shipConfirmResponse();
+
+    $response = (new ShipAccept)
+        ->usingShipmentDigest($shipConfirm->shipment_digest)
+        ->createShipment();
+
+    expect($response->shipment_identification_number)->not()->toBeEmpty()
+        ->and($response->packages)->toHaveCount(1);
+
+    $this->assertContainsOnlyInstancesOf(PackageResult::class, $response->packages);
+});
+
+it('requires a shipment digest', function () {
+    (new ShipAccept)->createShipment();
+})->expectException(BadRequest::class);
+
+// Helpers
+function shipConfirmResponse(): ShipConfirmResponse
 {
-    /** @test */
-    public function can_make_api_calls(): void
-    {
-        $shipConfirm = $this->getShipConfirmResponse();
+    $account = config('ups.shipper_number');
 
-        $response = (new ShipAccept)
-            ->usingShipmentDigest($shipConfirm->shipment_digest)
-            ->createShipment();
+    $shipment = new Shipment([
+        'shipper' => new Shipper([
+            'shipper_number' => $account,
+            'name' => 'Shipper Name',
+            'address' => new Address([
+                'address_line1' => '1401 E Main St',
+                'city' => 'Merrill',
+                'state' => 'WI',
+                'postal_code' => '54452',
+                'country_code' => 'US',
+            ]),
+        ]),
 
-        self::assertNotEmpty($response->shipment_identification_number);
-        self::assertCount(1, $response->packages);
-        self::assertContainsOnlyInstancesOf(PackageResult::class, $response->packages);
-    }
+        'ship_to' => new ShipTo([
+            'company_name' => 'Ship To Company Name',
+            'attention_name' => 'Ship To Attn Name',
+            'address' => new Address([
+                'address_line1' => '5017 N 28th Ave',
+                'city' => 'Wausau',
+                'state' => 'WI',
+                'postal_code' => '54401',
+                'country_code' => 'US',
+                'residential' => true,
+            ]),
+        ]),
 
-    /** @test */
-    public function shipment_digest_is_required(): void
-    {
-        $this->expectException(BadRequest::class);
+        'ship_from' => new ShipFrom([
+            'company_name' => 'Ship From Company Name',
+            'attention_name' => 'Ship From Attn Name',
+            'address' => new Address([
+                'address_line1' => '1401 E Main St',
+                'city' => 'Merrill',
+                'state' => 'WI',
+                'postal_code' => '54452',
+                'country_code' => 'US',
+            ]),
+        ]),
 
-        (new ShipAccept)->createShipment();
-    }
+        'description' => 'Shipment description',
 
-    protected function getShipConfirmResponse(): ShipConfirmResponse
-    {
-        $account = $this->app['config']['ups.shipper_number'];
-
-        $shipment = new Shipment([
-            'shipper' => new Shipper([
-                'shipper_number' => $account,
-                'name' => 'Shipper Name',
-                'address' => new Address([
-                    'address_line1' => '1401 E Main St',
-                    'city' => 'Merrill',
-                    'state' => 'WI',
-                    'postal_code' => '54452',
-                    'country_code' => 'US',
+        'payment_information' => new PaymentInformation([
+            'prepaid' => new Prepaid([
+                'bill_shipper' => new BillShipper([
+                    'account_number' => $account,
                 ]),
             ]),
+        ]),
 
-            'ship_to' => new ShipTo([
-                'company_name' => 'Ship To Company Name',
-                'attention_name' => 'Ship To Attn Name',
-                'address' => new Address([
-                    'address_line1' => '5017 N 28th Ave',
-                    'city' => 'Wausau',
-                    'state' => 'WI',
-                    'postal_code' => '54401',
-                    'country_code' => 'US',
-                    'residential' => true,
+        'packages' => [
+            new Package([
+                'packaging_type' => new PackagingType, // Customer supplied package
+                'description' => 'Package description',
+                'reference_number' => new ReferenceNumber([
+                    'value' => 'Package',
                 ]),
+                'package_weight' => new PackageWeight([
+                    'weight' => '60.0',
+                ]),
+                'is_large_package' => true,
             ]),
+        ],
+    ]);
 
-            'ship_from' => new ShipFrom([
-                'company_name' => 'Ship From Company Name',
-                'attention_name' => 'Ship From Attn Name',
-                'address' => new Address([
-                    'address_line1' => '1401 E Main St',
-                    'city' => 'Merrill',
-                    'state' => 'WI',
-                    'postal_code' => '54452',
-                    'country_code' => 'US',
-                ]),
-            ]),
-
-            'description' => 'Shipment description',
-
-            'payment_information' => new PaymentInformation([
-                'prepaid' => new Prepaid([
-                    'bill_shipper' => new BillShipper([
-                        'account_number' => $account,
-                    ]),
-                ]),
-            ]),
-
-            'packages' => [
-                new Package([
-                    'packaging_type' => new PackagingType, // Customer supplied package
-                    'description' => 'Package description',
-                    'reference_number' => new ReferenceNumber([
-                        'value' => 'Package',
-                    ]),
-                    'package_weight' => new PackageWeight([
-                        'weight' => '60.0',
-                    ]),
-                    'is_large_package' => true,
-                ]),
-            ],
+    if (config('ups.negotiated_rates')) {
+        $shipment->rate_information = new RateInformation([
+            'negotiated_rates' => true,
         ]);
-
-        if ($this->app['config']['ups.negotiated_rates']) {
-            $shipment->rate_information = new RateInformation([
-                'negotiated_rates' => true,
-            ]);
-        }
-
-        return (new ShipConfirm)
-            ->withShipment($shipment)
-            ->withLabelSpecification(LabelSpecification::asGIF())
-            ->getDigest();
     }
+
+    return (new ShipConfirm)
+        ->withShipment($shipment)
+        ->withLabelSpecification(LabelSpecification::asGIF())
+        ->getDigest();
 }
