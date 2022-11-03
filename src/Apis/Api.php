@@ -35,7 +35,7 @@ abstract class Api
 
     protected string $context = '';
 
-    protected null|Request $request = null;
+    protected ?Request $request = null;
 
     protected bool $allowRequestErrors = false;
 

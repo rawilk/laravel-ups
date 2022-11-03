@@ -8,13 +8,10 @@ use SimpleXMLElement;
 
 class Response
 {
-    protected SimpleXMLElement $responseXml;
-
     protected string $rawText = '';
 
-    public function __construct(SimpleXMLElement $responseXml)
+    public function __construct(protected SimpleXMLElement $responseXml)
     {
-        $this->responseXml = $responseXml;
     }
 
     public static function fromXml(SimpleXMLElement $responseXml): self

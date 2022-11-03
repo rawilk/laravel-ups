@@ -29,7 +29,7 @@ class LabelRecoveryResponse extends Entity
         }
 
         $this->attributes['labels'] = collect($labelResults)
-            ->map(static function (array $data) {
+            ->map(function (array $data) {
                 $instance = new LabelResult;
 
                 return $instance->fill($instance->convertPropertyNamesToSnakeCase($data));

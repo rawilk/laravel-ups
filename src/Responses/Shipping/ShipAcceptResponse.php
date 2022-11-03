@@ -57,7 +57,7 @@ class ShipAcceptResponse extends Entity
         }
 
         $this->attributes['packages'] = collect($packageResults)
-            ->map(static function (array $data) {
+            ->map(function (array $data) {
                 $instance = new PackageResult;
 
                 return $instance->fill($instance->convertPropertyNamesToSnakeCase($data));
@@ -68,7 +68,7 @@ class ShipAcceptResponse extends Entity
     {
         $this->attributes['negotiated_rates'] = collect($rates['net_summary_charges'] ?? [])
             ->filter(fn ($charge) => is_array($charge))
-            ->map(static function (array $charge, string $key) {
+            ->map(function (array $charge, string $key) {
                 return new Charge(array_merge($charge, [
                     'description' => (string) Str::of($key)->upper()->replace('_', ' '),
                 ]));
@@ -80,7 +80,7 @@ class ShipAcceptResponse extends Entity
     {
         $this->attributes['shipment_charges'] = collect($charges)
             ->filter(fn ($charge) => is_array($charge))
-            ->map(static function (array $charge, string $key) {
+            ->map(function (array $charge, string $key) {
                 return new Charge(array_merge($charge, [
                     'description' => (string) Str::of($key)->upper()->replace('_', ' '),
                 ]));
