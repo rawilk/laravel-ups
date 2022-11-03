@@ -2,67 +2,53 @@
 
 declare(strict_types=1);
 
-namespace Rawilk\Ups\Tests\Unit\Entity\Shipment;
-
 use Rawilk\Ups\Entity\Shipment\VoidStatus;
-use Rawilk\Ups\Tests\TestCase;
-use SimpleXMLElement;
 
-class VoidStatusTest extends TestCase
-{
-    /** @test */
-    public function can_be_partially_voided(): void
-    {
-        $xml = <<<'XML'
-        <VoidStatus>
-            <StatusCode>
-                <Code>2</Code>
-            </StatusCode>
-        </VoidStatus>
-        XML;
+it('can be partially voided', function () {
+    $xml = <<<'XML'
+    <VoidStatus>
+        <StatusCode>
+            <Code>2</Code>
+        </StatusCode>
+    </VoidStatus>
+    XML;
 
-        $voidStatus = VoidStatus::fromXml(new SimpleXMLElement($xml));
+    $voidStatus = VoidStatus::fromXml(new SimpleXMLElement($xml));
 
-        self::assertTrue($voidStatus->partiallyVoided());
-        self::assertFalse($voidStatus->failed());
+    expect($voidStatus->partiallyVoided())->toBeTrue()
+        ->and($voidStatus->failed())->toBeFalse()
+        // A partial void should also show as "successful".
+        ->and($voidStatus->successful())->toBeTrue();
+});
 
-        // A partial void will also show as "successful"
-        self::assertTrue($voidStatus->successful());
-    }
+it('can be successful', function () {
+    $xml = <<<'XML'
+    <VoidStatus>
+        <StatusCode>
+            <Code>1</Code>
+        </StatusCode>
+    </VoidStatus>
+    XML;
 
-    /** @test */
-    public function can_be_successful(): void
-    {
-        $xml = <<<'XML'
-        <VoidStatus>
-            <StatusCode>
-                <Code>1</Code>
-            </StatusCode>
-        </VoidStatus>
-        XML;
+    $voidStatus = VoidStatus::fromXml(new SimpleXMLElement($xml));
 
-        $voidStatus = VoidStatus::fromXml(new SimpleXMLElement($xml));
+    expect($voidStatus->successful())->toBeTrue()
+        ->and($voidStatus->failed())->toBeFalse()
+        ->and($voidStatus->partiallyVoided())->toBeFalse();
+});
 
-        self::assertTrue($voidStatus->successful());
-        self::assertFalse($voidStatus->failed());
-        self::assertFalse($voidStatus->partiallyVoided());
-    }
+it('can fail', function () {
+    $xml = <<<'XML'
+    <VoidStatus>
+        <StatusCode>
+            <Code>0</Code>
+        </StatusCode>
+    </VoidStatus>
+    XML;
 
-    /** @test */
-    public function can_be_failed(): void
-    {
-        $xml = <<<'XML'
-        <VoidStatus>
-            <StatusCode>
-                <Code>0</Code>
-            </StatusCode>
-        </VoidStatus>
-        XML;
+    $voidStatus = VoidStatus::fromXml(new SimpleXMLElement($xml));
 
-        $voidStatus = VoidStatus::fromXml(new SimpleXMLElement($xml));
-
-        self::assertFalse($voidStatus->successful());
-        self::assertTrue($voidStatus->failed());
-        self::assertFalse($voidStatus->partiallyVoided());
-    }
-}
+    expect($voidStatus->successful())->toBeFalse()
+        ->and($voidStatus->failed())->toBeTrue()
+        ->and($voidStatus->partiallyVoided())->toBeFalse();
+});

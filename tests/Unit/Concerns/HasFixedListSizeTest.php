@@ -2,52 +2,32 @@
 
 declare(strict_types=1);
 
-namespace Rawilk\Ups\Tests\Unit\Concerns;
-
 use Rawilk\Ups\Concerns\HasFixedListSize;
 use Rawilk\Ups\Entity\Entity;
 use Rawilk\Ups\Exceptions\InvalidMaxListSize;
-use Rawilk\Ups\Tests\TestCase;
 
-class HasFixedListSizeTest extends TestCase
-{
-    /** @test */
-    public function sets_a_default_list_size_automatically(): void
+it('sets a default list size automatically', function () {
+    $class = new class extends Entity
     {
-        $class = new class extends Entity
-        {
-            use HasFixedListSize;
-        };
+        use HasFixedListSize;
+    };
 
-        $entity = new $class;
+    $entity = new $class;
 
-        self::assertEquals(10, $entity->maximum_list_size);
-    }
+    expect($entity->maximum_list_size)->toBe(10);
+});
 
-    /**
-     * @test
-     * @dataProvider invalidMaxListSizes
-     *
-     * @param  int  $size
-     */
-    public function throws_an_exception_for_invalid_list_sizes(int $size): void
+it('throws an exception for invalid list sizes', function (int $size) {
+    $class = new class extends Entity
     {
-        $this->expectException(InvalidMaxListSize::class);
+        use HasFixedListSize;
+    };
 
-        $class = new class extends Entity
-        {
-            use HasFixedListSize;
-        };
+    $entity = new $class;
+    $entity->maximum_list_size = $size;
+})->with('invalidMaxListSizes')->expectException(InvalidMaxListSize::class);
 
-        $entity = new $class;
-        $entity->maximum_list_size = $size;
-    }
-
-    public function invalidMaxListSizes(): array
-    {
-        return  [
-            [-1],
-            [51],
-        ];
-    }
-}
+dataset('invalidMaxListSizes', [
+    -1,
+    51,
+]);

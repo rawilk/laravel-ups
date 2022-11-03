@@ -2,102 +2,82 @@
 
 declare(strict_types=1);
 
-namespace Rawilk\Ups\Tests\Unit\Entity\Address;
-
 use Rawilk\Ups\Entity\Address\Address;
-use Rawilk\Ups\Tests\Concerns\UsesFilesystem;
-use Rawilk\Ups\Tests\TestCase;
 
-class AddressTest extends TestCase
-{
-    use UsesFilesystem;
+it('can convert to xml', function () {
+    $address = new Address([
+        'address_line1' => '7510 AIRWAY RD',
+        'address_line2' => 'STE 7',
+        'city' => 'SAN DIEGO',
+        'state' => 'CA',
+        'postal_code' => '92154',
+        'country_code' => 'US',
+    ]);
 
-    /** @test */
-    public function can_convert_to_xml(): void
-    {
-        $expectedXml = $this->getXmlContent('address')->asXML();
+    $this->assertXmlStringEqualsXmlString(
+        getXmlContent('address')->asXML(),
+        $address->toSimpleXml()->asXML(),
+    );
+});
 
-        $address = new Address([
-            'address_line1' => '7510 AIRWAY RD',
-            'address_line2' => 'STE 7',
-            'city' => 'SAN DIEGO',
-            'state' => 'CA',
-            'postal_code' => '92154',
-            'country_code' => 'US',
-        ]);
+it('can convert to xml for validation', function () {
+    $address = new Address([
+        'address_line1' => '7510 AIRWAY RD',
+        'address_line2' => 'STE 7',
+        'city' => 'SAN DIEGO',
+        'state' => 'CA',
+        'postal_code' => '92154',
+        'country_code' => 'US',
+    ]);
 
-        self::assertXmlStringEqualsXmlString(
-            $expectedXml,
-            $address->toSimpleXml()->asXML()
-        );
-    }
+    $this->assertXmlStringEqualsXmlString(
+        getXmlContent('address-for-validation')->asXML(),
+        $address->isForValidation()->toSimpleXml()->asXML(),
+    );
+});
 
-    /** @test */
-    public function can_convert_to_xml_for_validation(): void
-    {
-        $expectedXml = $this->getXmlContent('address-for-validation')->asXML();
+test('residential property is boolean', function () {
+    $address = new Address([
+        'residential' => 1,
+    ]);
 
-        $address = new Address([
-            'address_line1' => '7510 AIRWAY RD',
-            'address_line2' => 'STE 7',
-            'city' => 'SAN DIEGO',
-            'state' => 'CA',
-            'postal_code' => '92154',
-            'country_code' => 'US',
-        ]);
+    expect($address->residential)->toBeBool()
+        ->and($address->residential)->toBeTrue();
+});
 
-        self::assertXmlStringEqualsXmlString(
-            $expectedXml,
-            $address->isForValidation()->toSimpleXml()->asXML()
-        );
-    }
+it('omits the residential property in the xml when it is false', function () {
+    $expectedXml = <<<'XML'
+    <Address>
+        <City>Foo</City>
+    </Address>
+    XML;
 
-    /** @test */
-    public function residential_is_boolean(): void
-    {
-        $address = new Address([
-            'residential' => 1,
-        ]);
+    $address = new Address([
+        'city' => 'Foo',
+        'residential' => false,
+    ]);
 
-        self::assertIsBool($address->residential);
-        self::assertTrue($address->residential);
-    }
+    $this->assertXmlStringEqualsXmlString(
+        $expectedXml,
+        $address->toSimpleXml(null, false)->asXML(),
+    );
+});
 
-    /** @test */
-    public function residential_is_omitted_in_the_xml_when_it_is_false(): void
-    {
-        $expectedXml = <<<'XML'
-        <Address>
-            <City>Foo</City>
-        </Address>
-        XML;
+test('residential property is included as a self closing empty tag in xml when it is true', function () {
+    $expectedXml = <<<'XML'
+    <Address>
+        <City>Foo</City>
+        <ResidentialAddress />
+    </Address>
+    XML;
 
-        $address = new Address([
-            'city' => 'Foo',
-            'residential' => false,
-        ]);
+    $address = new Address([
+        'city' => 'Foo',
+        'residential' => true,
+    ]);
 
-        self::assertXmlStringEqualsXmlString($expectedXml, $address->toSimpleXml(null, false)->asXML());
-    }
-
-    /** @test */
-    public function residential_is_included_as_a_self_closing_empty_tag_in_xml_when_it_is_true(): void
-    {
-        $expectedXml = <<<'XML'
-        <Address>
-            <City>Foo</City>
-            <ResidentialAddress />
-        </Address>
-        XML;
-
-        $address = new Address([
-            'city' => 'Foo',
-            'residential' => true,
-        ]);
-
-        self::assertXmlStringEqualsXmlString(
-            $expectedXml,
-            $address->toSimpleXml(null, false)->asXML()
-        );
-    }
-}
+    $this->assertXmlStringEqualsXmlString(
+        $expectedXml,
+        $address->toSimpleXml(null, false)->asXML(),
+    );
+});

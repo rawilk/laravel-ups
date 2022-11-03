@@ -8,7 +8,7 @@ use Dotenv\Dotenv;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Rawilk\Ups\UpsServiceProvider;
 
-abstract class TestCase extends Orchestra
+class TestCase extends Orchestra
 {
     protected function setUp(): void
     {

@@ -2,52 +2,39 @@
 
 declare(strict_types=1);
 
-namespace Rawilk\Ups\Tests\Unit\Entity\Shipment;
-
 use Rawilk\Ups\Entity\Shipment\PackageLevelResult;
-use Rawilk\Ups\Tests\TestCase;
-use SimpleXMLElement;
 
-class PackageLevelResultTest extends TestCase
-{
-    /** @test */
-    public function creates_from_xml(): void
-    {
-        $xml = <<<'XML'
-        <Element>
-            <TrackingNumber>1Z...</TrackingNumber>
-            <StatusCode>1</StatusCode>
-            <Description>Voided</Description>
-        </Element>
-        XML;
+it('creates from xml', function () {
+    $xml = <<<'XML'
+    <Element>
+        <TrackingNumber>1Z...</TrackingNumber>
+        <StatusCode>1</StatusCode>
+        <Description>Voided</Description>
+    </Element>
+    XML;
 
-        $entity = PackageLevelResult::fromXml(new SimpleXMLElement($xml));
+    $entity = PackageLevelResult::fromXml(new SimpleXMLElement($xml));
 
-        self::assertEquals('1Z...', $entity->tracking_number);
-        self::assertEquals('1', $entity->status_code);
-        self::assertEquals('Voided', $entity->description);
+    expect($entity->tracking_number)->toBe('1Z...')
+        ->and($entity->status_code)->toBe('1')
+        ->and($entity->description)->toBe('Voided')
+        ->and($entity->voided())->toBeTrue()
+        ->and($entity->notVoided())->toBeFalse();
+});
 
-        self::assertTrue($entity->voided());
-        self::assertFalse($entity->notVoided());
-    }
+it('can handle complex status codes', function () {
+    $xml = <<<'XML'
+    <Element>
+        <TrackingNumber>1Z...</TrackingNumber>
+        <StatusCode>
+            <Code>0</Code>
+        </StatusCode>
+    </Element>
+    XML;
 
-    /** @test */
-    public function can_handle_complex_status_code(): void
-    {
-        $xml = <<<'XML'
-        <Element>
-            <TrackingNumber>1Z...</TrackingNumber>
-            <StatusCode>
-                <Code>0</Code>
-            </StatusCode>
-        </Element>
-        XML;
+    $entity = PackageLevelResult::fromXml(new SimpleXMLElement($xml));
 
-        $entity = PackageLevelResult::fromXml(new SimpleXMLElement($xml));
-
-        self::assertTrue($entity->notVoided());
-        self::assertFalse($entity->voided());
-
-        self::assertEquals('0', $entity->getStatusCode());
-    }
-}
+    expect($entity->notVoided())->toBeTrue()
+        ->and($entity->voided())->toBeFalse()
+        ->and($entity->getStatusCode())->toBe('0');
+});

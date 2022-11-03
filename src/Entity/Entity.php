@@ -25,6 +25,8 @@ abstract class Entity implements ArrayAccess, Arrayable, Jsonable, JsonSerializa
         getAttribute as hasAttributesGetAttribute;
     }
 
+    public $exists = false;
+
     public function __construct(array $attributes = [])
     {
         $this->boot();

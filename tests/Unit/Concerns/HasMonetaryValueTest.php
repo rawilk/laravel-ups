@@ -2,41 +2,23 @@
 
 declare(strict_types=1);
 
-namespace Rawilk\Ups\Tests\Unit\Concerns;
-
 use Rawilk\Ups\Concerns\HasMonetaryValue;
 use Rawilk\Ups\Entity\Entity;
 use Rawilk\Ups\Exceptions\InvalidMonetaryValue;
-use Rawilk\Ups\Tests\TestCase;
 
-class HasMonetaryValueTest extends TestCase
-{
-    /**
-     * @test
-     * @dataProvider invalidValues
-     *
-     * @param  int|float  $value
-     */
-    public function throws_exception_for_invalid_monetary_values($value): void
+it('throws an exception for invalid monetary values', function (int|float $value) {
+    $class = new class extends Entity
     {
-        $class = new class extends Entity
-        {
-            use HasMonetaryValue;
-        };
+        use HasMonetaryValue;
+    };
 
-        $this->expectException(InvalidMonetaryValue::class);
+    new $class([
+        'monetary_value' => $value,
+    ]);
+})->with('invalidValues')->expectException(InvalidMonetaryValue::class);
 
-        new $class([
-            'monetary_value' => $value,
-        ]);
-    }
-
-    public function invalidValues(): array
-    {
-        return [
-            [0],
-            [999_999_999],
-            [0.99],
-        ];
-    }
-}
+dataset('invalidValues', [
+    0,
+    999_999_999,
+    0.99,
+]);

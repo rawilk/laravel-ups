@@ -2,41 +2,31 @@
 
 declare(strict_types=1);
 
-namespace Rawilk\Ups\Tests\Unit\Responses;
-
 use Rawilk\Ups\Responses\Response;
-use Rawilk\Ups\Tests\TestCase;
-use SimpleXMLElement;
 
-class ResponseTest extends TestCase
-{
-    /** @test */
-    public function accepts_a_simple_xml_element(): void
-    {
-        $xml = <<<'XML'
-        <Foo>
-            <Attr>Value</Attr>
-        </Foo>
-        XML;
+it('accepts a simple xml element', function () {
+    $xml = <<<'XML'
+    <Foo>
+        <Attr>Value</Attr>
+    </Foo>
+    XML;
 
-        $response = Response::fromXml(new SimpleXMLElement($xml));
+    $response = Response::fromXml(new SimpleXMLElement($xml));
 
-        self::assertInstanceOf(SimpleXMLElement::class, $response->response());
-        self::assertXmlStringEqualsXmlString($xml, $response->response()->asXML());
-    }
+    expect($response->response())->toBeInstanceOf(SimpleXMLElement::class);
 
-    /** @test */
-    public function can_have_raw_text(): void
-    {
-        $xml = <<<'XML'
-        <Foo>
-            <Attr>Value</Attr>
-        </Foo>
-        XML;
+    $this->assertXmlStringEqualsXmlString($xml, $response->response()->asXML());
+});
 
-        $response = Response::fromXml(new SimpleXMLElement($xml))
-            ->withText('foo');
+it('can have raw text', function () {
+    $xml = <<<'XML'
+    <Foo>
+        <Attr>Value</Attr>
+    </Foo>
+    XML;
 
-        self::assertSame('foo', $response->text());
-    }
-}
+    $response = Response::fromXml(new SimpleXMLElement($xml))
+        ->withText('foo');
+
+    expect($response->text())->toBe('foo');
+});

@@ -2,53 +2,32 @@
 
 declare(strict_types=1);
 
-namespace Rawilk\Ups\Tests\Unit\Requests;
-
 use Rawilk\Ups\Exceptions\InvalidRequest;
 use Rawilk\Ups\Exceptions\RequestFailed;
 use Rawilk\Ups\Tests\Apis\TestApi;
-use Rawilk\Ups\Tests\TestCase;
 
-class RequestTest extends TestCase
-{
-    /** @test */
-    public function can_send_requests_to_the_ups_api(): void
-    {
-        $response = (new TestApi)
-            ->sendRequest();
+it('can send requests to the ups api', function () {
+    $response = (new TestApi)
+        ->sendRequest();
 
-        self::assertTrue(isset($response->response()->SearchResults));
-        self::assertNotEmpty($response->text());
-    }
+    expect(isset($response->response()->SearchResults))->toBeTrue()
+        ->and($response->text())->not()->toBeEmpty();
+});
 
-    /** @test */
-    public function endpoint_is_required_to_send(): void
-    {
-        $this->expectException(InvalidRequest::class);
+it('requires an endpoint to send', function () {
+    (new TestApi)->requestWithNoEndpoint();
+})->expectException(InvalidRequest::class);
 
-        (new TestApi)
-            ->requestWithNoEndpoint();
-    }
+it('requires authentication to send a request', function () {
+    (new TestApi)
+        ->usingAccessKey('')
+        ->usingUserId('')
+        ->usingPassword('')
+        ->sendRequest();
+})->expectException(InvalidRequest::class);
 
-    /** @test */
-    public function authentication_is_required_to_send(): void
-    {
-        $this->expectException(InvalidRequest::class);
-
-        (new TestApi)
-            ->usingAccessKey('')
-            ->usingUserId('')
-            ->usingPassword('')
-            ->sendRequest();
-    }
-
-    /** @test */
-    public function invalid_access_key_throws_exception(): void
-    {
-        $this->expectException(RequestFailed::class);
-
-        (new TestApi)
-            ->usingAccessKey('invalid')
-            ->sendRequest();
-    }
-}
+it('throws an exception for an invalid access key', function () {
+    (new TestApi)
+        ->usingAccessKey('invalid')
+        ->sendRequest();
+})->expectException(RequestFailed::class);
