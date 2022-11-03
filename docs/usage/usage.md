@@ -6,7 +6,7 @@ sort: 1
 ## Entities
 
 Most of the classes you will interact with in this package are an `Entity`, which is a class that behaves very similar to
-Eloquent's Model classes. All the attributes on an Entity are snake case, e.g. `country_code`, and you can set them 
+Eloquent's Model classes. All the attributes on an Entity are snake case, e.g. `country_code`, and you can set them
 either through the constructor as an array, or directly on an entity instance.
 
 ```php
@@ -40,7 +40,7 @@ a new pull request with the new entities/attributes.
 
 ## API Usage
 
-Granted you have necessary credentials, the APIs are free to use through UPS for the most part. One exception is 
+Granted you have necessary credentials, the APIs are free to use through UPS for the most part. One exception is
 any shipments you create through the API you will of course have to pay for.
 
 The APIs this package uses have many possible data points that can both be sent and received through the API. This
@@ -49,4 +49,4 @@ out of the box. Like with the Entities, feel free to create pull requests for an
 bugs you happen to find in the package.
 
 Like with any API, you should read over the documentation provided by UPS first so you have an understanding
-of how each of the apis work and how to use them. 
+of how each of the apis work and how to use them.

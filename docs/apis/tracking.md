@@ -97,6 +97,7 @@ $activity->isDelivered();
 ## Options
 
 ### Reference Number
+
 UPS gives you the ability to track a package or shipment by using a reference number. Reference numbers can be a purchase order number,
 job number, etc. Reference Number is supplied when generating a shipment.
 
@@ -105,6 +106,7 @@ job number, etc. Reference Number is supplied when generating a shipment.
 ```
 
 ### Shipper Number
+
 Using your shipper number allows you to further limit the results to your account:
 
 ```php
@@ -112,6 +114,7 @@ Using your shipper number allows you to further limit the results to your accoun
 ```
 
 ### Request Option
+
 Allows for optional processing. Default is to include "All activity". Here are a couple ways you can specify the request option:
 
 ```php
@@ -126,7 +129,7 @@ $api->lastActivity(); // TrackingOptions::LAST_ACTIVITY
 ```
 
 > {tip} There are more options available, found in `Rawilk/Ups/Apis/Tracking/TrackingOptions`. We've just added convenience methods
-for our common use cases.
+> for our common use cases.
 
 ## Error Handling
 
