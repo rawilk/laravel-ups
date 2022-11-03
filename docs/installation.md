@@ -18,7 +18,7 @@ composer require rawilk/laravel-ups
 You may publish the config file like this:
 
 ```bash
-php artisan vendor:publish --provider="Rawilk\Ups\UpsServiceProvider" --tag="config"
+php artisan vendor:publish --tag="ups-config"
 ```
 
 See the default configuration values [here](https://github.com/rawilk/laravel-ups/blob/main/config/ups.php).
