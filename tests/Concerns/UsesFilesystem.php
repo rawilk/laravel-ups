@@ -13,7 +13,7 @@ trait UsesFilesystem
             $file .= '.xml';
         }
 
-        $path = __DIR__ . "/../fixtures/xml/{$file}";
+        $path = __DIR__."/../fixtures/xml/{$file}";
 
         return new SimpleXMLElement(
             file_get_contents($path)

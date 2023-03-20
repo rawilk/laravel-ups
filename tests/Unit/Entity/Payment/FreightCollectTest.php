@@ -14,7 +14,7 @@ class FreightCollectTest extends TestCase
     /** @test */
     public function converts_to_xml(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <FreightCollect>
             <BillReceiver>
                 <AccountNumber>123</AccountNumber>

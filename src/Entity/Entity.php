@@ -19,7 +19,6 @@ use SimpleXMLElement;
 abstract class Entity implements ArrayAccess, Arrayable, Jsonable, JsonSerializable, Xmlable
 {
     use EntityHasAttributes, HasRelationships;
-
     use HasAttributes {
         setAttribute as hasAttributesSetAttribute;
         getAttribute as hasAttributesGetAttribute;
@@ -55,7 +54,7 @@ abstract class Entity implements ArrayAccess, Arrayable, Jsonable, JsonSerializa
         $booted = [];
 
         foreach (class_uses_recursive($class) as $trait) {
-            $method = 'boot' . class_basename($trait);
+            $method = 'boot'.class_basename($trait);
 
             if (method_exists($class, $method) && ! in_array($method, $booted, true)) {
                 $this->$method();
@@ -144,7 +143,7 @@ abstract class Entity implements ArrayAccess, Arrayable, Jsonable, JsonSerializa
 
         if (JSON_ERROR_NONE !== json_last_error()) {
             throw new JsonEncodingException(
-                'Error encoding UPS entity [' . get_class($this) . '] to JSON: ' . json_last_error_msg()
+                'Error encoding UPS entity ['.get_class($this).'] to JSON: '.json_last_error_msg()
             );
         }
 
@@ -163,7 +162,7 @@ abstract class Entity implements ArrayAccess, Arrayable, Jsonable, JsonSerializa
         }
 
         if (is_null($parent)) {
-            $parent = new SimpleXMLElement('<' . $this->simpleXmlTagName() . ' />');
+            $parent = new SimpleXMLElement('<'.$this->simpleXmlTagName().' />');
         }
 
         $xml = $asChild

@@ -15,7 +15,7 @@ class OriginAddressTest extends TestCase
     /** @test */
     public function has_address_key_format(): void
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
         <OriginAddress>
             <AddressKeyFormat>
                 <City>Atlanta</City>
@@ -40,7 +40,7 @@ class OriginAddressTest extends TestCase
             ]),
         ]);
 
-        $expectedXml = <<<XML
+        $expectedXml = <<<'XML'
         <OriginAddress>
             <MaximumListSize>10</MaximumListSize>
             <AddressKeyFormat>
@@ -55,7 +55,7 @@ class OriginAddressTest extends TestCase
     /** @test */
     public function can_have_a_geocode(): void
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
         <OriginAddress>
             <Geocode>
                 <Latitude>123456</Latitude>
@@ -81,7 +81,7 @@ class OriginAddressTest extends TestCase
             ]),
         ]);
 
-        $expectedXml = <<<XML
+        $expectedXml = <<<'XML'
         <OriginAddress>
             <MaximumListSize>10</MaximumListSize>
             <Geocode>
@@ -102,7 +102,7 @@ class OriginAddressTest extends TestCase
     {
         $originAddress = new OriginAddress(['maximum_list_size' => 5]);
 
-        $expectedXml = <<<XML
+        $expectedXml = <<<'XML'
         <OriginAddress>
             <MaximumListSize>5</MaximumListSize>
         </OriginAddress>

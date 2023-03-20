@@ -14,5 +14,6 @@ class ShipmentIndicationType extends Entity
 {
     // Valid codes:
     public const HOLD_FOR_PICKUP = '01';
+
     public const UPS_ACCESS_POINT = '02';
 }

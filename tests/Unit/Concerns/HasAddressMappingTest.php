@@ -11,7 +11,8 @@ class HasAddressMappingTest extends TestCase
     /** @test */
     public function maps_address_lines_correctly(): void
     {
-        $class = new class extends Entity {
+        $class = new class extends Entity
+        {
             use HasAddressMapping;
         };
 
@@ -31,7 +32,8 @@ class HasAddressMappingTest extends TestCase
     /** @test */
     public function multiple_address_lines_can_be_set_from_a_string(): void
     {
-        $class = new class extends Entity {
+        $class = new class extends Entity
+        {
             use HasAddressMapping;
         };
 
@@ -46,7 +48,8 @@ class HasAddressMappingTest extends TestCase
     /** @test */
     public function a_single_address_line_can_be_set(): void
     {
-        $class = new class extends Entity {
+        $class = new class extends Entity
+        {
             use HasAddressMapping;
         };
 
@@ -61,7 +64,8 @@ class HasAddressMappingTest extends TestCase
     /** @test */
     public function maps_postal_code_correctly(): void
     {
-        $class = new class extends Entity {
+        $class = new class extends Entity
+        {
             use HasAddressMapping;
 
             public function filled(array $attributes): void

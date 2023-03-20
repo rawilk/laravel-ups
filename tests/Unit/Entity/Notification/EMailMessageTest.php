@@ -13,7 +13,7 @@ class EMailMessageTest extends TestCase
     /** @test */
     public function creates_from_xml(): void
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
         <EMailMessage>
             <EMailAddress>email@example.com</EMailAddress>
             <UndeliverableEMailAddress>email</UndeliverableEMailAddress>
@@ -37,7 +37,7 @@ class EMailMessageTest extends TestCase
     /** @test */
     public function converts_to_xml(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <EMailMessage>
             <EMailAddress>email@example.com</EMailAddress>
             <UndeliverableEMailAddress>email</UndeliverableEMailAddress>

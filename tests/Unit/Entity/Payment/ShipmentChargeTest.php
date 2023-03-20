@@ -18,7 +18,7 @@ class ShipmentChargeTest extends TestCase
     /** @test */
     public function converts_to_xml(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <ShipmentCharge>
             <Type>01</Type>
             <ConsigneeBilled />
@@ -39,7 +39,7 @@ class ShipmentChargeTest extends TestCase
     /** @test */
     public function omits_bill_receiver_and_bill_third_party_if_bill_shipper_present(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <ShipmentCharge>
             <Type>01</Type>
             <BillShipper>
@@ -83,7 +83,7 @@ class ShipmentChargeTest extends TestCase
     /** @test */
     public function bill_third_party_is_omitted_if_bill_receiver_present(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <ShipmentCharge>
             <Type>01</Type>
             <BillReceiver>

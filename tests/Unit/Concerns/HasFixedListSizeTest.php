@@ -14,7 +14,8 @@ class HasFixedListSizeTest extends TestCase
     /** @test */
     public function sets_a_default_list_size_automatically(): void
     {
-        $class = new class extends Entity {
+        $class = new class extends Entity
+        {
             use HasFixedListSize;
         };
 
@@ -25,14 +26,15 @@ class HasFixedListSizeTest extends TestCase
 
     /**
      * @test
+     *
      * @dataProvider invalidMaxListSizes
-     * @param int $size
      */
     public function throws_an_exception_for_invalid_list_sizes(int $size): void
     {
         $this->expectException(InvalidMaxListSize::class);
 
-        $class = new class extends Entity {
+        $class = new class extends Entity
+        {
             use HasFixedListSize;
         };
 

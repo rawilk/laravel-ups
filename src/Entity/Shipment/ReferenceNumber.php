@@ -26,26 +26,47 @@ class ReferenceNumber extends Entity
 
     // Codes
     public const ACCOUNTS_RECEIVABLE_CUSTOMER_ACCOUNT = 'AJ';
+
     public const APPROPRIATION_NUMBER = 'AT';
+
     public const BILL_OF_LADING_NUMBER = 'BM';
+
     public const COLLECT_ON_DELIVERY_COD_NUMBER = '9V';
+
     public const DEALER_ORDER_NUMBER = 'ON';
+
     public const DEPARTMENT_NUMBER = 'DP';
+
     public const FOOD_AND_DRUG_ADMINISTRATION_PRODUCT_CODE = '3Q';
+
     public const INVOICE_NUMBER = 'IK';
+
     public const MANIFEST_KEY_NUMBER = 'MK';
+
     public const MODEL_NUMBER = 'MJ';
+
     public const PART_NUMBER = 'PM';
+
     public const PRODUCTION_CODE = 'PC';
+
     public const PURCHASE_ORDER_NUMBER = 'PO';
+
     public const PURCHASE_REQUEST_NUMBER = 'RQ';
+
     public const RETURN_AUTHORIZATION_NUMBER = 'RZ';
+
     public const SALESPERSON_NUMBER = 'SA';
+
     public const SERIAL_NUMBER = 'SE';
+
     public const STORE_NUMBER = 'ST';
+
     public const TRANSACTION_REFERENCE_NUMBER = 'TN';
+
     public const EMPLOYER_ID_NUMBER = 'EI';
+
     public const FEDERAL_TAXPAYER_ID = 'TJ';
+
     public const SOCIAL_SECURITY_NUMBER = 'SY';
 
     protected array $attributeKeyMap = [

@@ -12,7 +12,7 @@ class LabelDeliveryTest extends TestCase
     /** @test */
     public function converts_to_xml(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <LabelDelivery>
             <LabelLinksIndicator />
         </LabelDelivery>

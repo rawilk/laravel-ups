@@ -40,8 +40,6 @@ class VoidResponse extends Entity
 
     /**
      * Callback for HandlesApiFailures::failed()
-     *
-     * @return bool
      */
     public function onFailed(): bool
     {

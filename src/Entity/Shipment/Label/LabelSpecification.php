@@ -20,25 +20,45 @@ class LabelSpecification extends Entity
 {
     // Character sets
     public const CHAR_DANISH = 'dan';
+
     public const CHAR_DUTCH = 'nld';
+
     public const CHAR_FINNISH = 'fin';
+
     public const CHAR_FRENCH = 'fra';
+
     public const CHAR_GERMAN = 'deu';
+
     public const CHAR_ITALIAN = 'itl';
+
     public const CHAR_NORWEGIAN = 'nor';
+
     public const CHAR_POLISH = 'pol';
+
     public const CHAR_PORTUGUESE = 'por';
+
     public const CHAR_SPANISH = 'spa';
+
     public const CHAR_SWEDISH = 'swe';
+
     public const CHAR_CZECH = 'ces';
+
     public const CHAR_HUNGARIAN = 'hun';
+
     public const CHAR_SLOVAK = 'slk';
+
     public const CHAR_RUSSIAN = 'rus';
+
     public const CHAR_TURKISH = 'tur';
+
     public const CHAR_ROMANIAN = 'ron';
+
     public const CHAR_BULGARIAN = 'bul';
+
     public const CHAR_ESTONIAN = 'est';
+
     public const CHAR_GREEK = 'ell';
+
     public const CHAR_LATVIAN = 'lav';
 
     public function getHttpUserAgentXmlTag(): string

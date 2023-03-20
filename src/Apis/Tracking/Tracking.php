@@ -16,10 +16,15 @@ class Tracking extends Api
     protected const ENDPOINT = '/Track';
 
     protected string $requestOption = TrackingOptions::ALL_ACTIVITY;
+
     protected string $trackingNumber = '';
+
     protected string $shipmentIdentificationNumber = '';
+
     protected string $referenceNumber = '';
+
     protected $shipperNumber = '';
+
     protected string $shipmentType = ShipmentType::PACKAGE;
 
     public function track(): TrackingResponse
@@ -135,7 +140,7 @@ class Tracking extends Api
     {
         $patterns = [
             // UPS Mail Innovations tracking numbers
-            '/^MI\d{6}\d{1,22}$/',// MI 000000 00000000+
+            '/^MI\d{6}\d{1,22}$/', // MI 000000 00000000+
 
             // USPS - Certified Mail
             '/^94071\d{17}$/',    // 9407 1000 0000 0000 0000 00

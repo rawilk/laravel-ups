@@ -22,7 +22,7 @@ class AddressClassificationTest extends TestCase
     /** @test */
     public function converts_to_simple_xml(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <AddressClassification>
             <Code>1</Code>
             <Description>Commercial</Description>
@@ -43,7 +43,7 @@ class AddressClassificationTest extends TestCase
     /** @test */
     public function creates_from_xml(): void
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
         <AddressClassification>
             <Code>1</Code>
             <Description>Commercial</Description>

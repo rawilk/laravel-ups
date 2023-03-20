@@ -8,6 +8,7 @@ use Rawilk\Ups\Entity\Entity;
 
 /**
  * @proeprty string $code
+ *
  * @property null|string $description
  */
 class LabelMethod extends Entity
@@ -17,9 +18,13 @@ class LabelMethod extends Entity
 
     // Valid codes:
     public const PRINT_AND_MAIL = '01';
+
     public const ONE_ATTEMPT = '02';
+
     public const THREE_ATTEMPTS = '03';
+
     public const ELECTRONIC_LABEL = '04';
+
     public const PRINT_LABEL = '05';
 
     public function setDescriptionAttribute($description): void

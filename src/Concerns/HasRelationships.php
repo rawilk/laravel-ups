@@ -8,8 +8,6 @@ trait HasRelationships
      * Any keys in this array will have their keys stripped when attributes
      * are filled on the entity and they are inside of a "container"
      * element.
-     *
-     * @var array
      */
     protected array $relationshipParentKeyMap = [];
 

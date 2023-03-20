@@ -23,8 +23,11 @@ class Request
     protected const RESPONSE_CODE_ERROR = 0;
 
     protected string $accessXml = '';
+
     protected string $endpoint = '';
+
     protected string $requestXml = '';
+
     protected bool $throwExceptionOnError = true;
 
     public function send(): Response
@@ -36,7 +39,7 @@ class Request
 
         $response = Http::accept('UTF-8')
             ->withBody(
-                $this->accessXml . $this->requestXml,
+                $this->accessXml.$this->requestXml,
                 'application/x-www-form-urlencoded'
             )
             ->post($this->endpoint);

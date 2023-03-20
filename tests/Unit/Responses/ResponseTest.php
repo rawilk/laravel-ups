@@ -13,7 +13,7 @@ class ResponseTest extends TestCase
     /** @test */
     public function accepts_a_simple_xml_element(): void
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
         <Foo>
             <Attr>Value</Attr>
         </Foo>
@@ -28,7 +28,7 @@ class ResponseTest extends TestCase
     /** @test */
     public function can_have_raw_text(): void
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
         <Foo>
             <Attr>Value</Attr>
         </Foo>

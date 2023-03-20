@@ -4,6 +4,7 @@ namespace Rawilk\Ups\Concerns;
 
 /**
  * @mixin \Rawilk\Ups\Entity\Entity
+ *
  * @property array $response
  * @property null|string $error_code
  * @property null|string $error_description
@@ -12,8 +13,6 @@ trait HandlesApiFailures
 {
     /**
      * The code returned from the api when the request failed.
-     *
-     * @var string
      */
     protected static string $failureCode = '0';
 

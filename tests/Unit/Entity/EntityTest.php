@@ -69,7 +69,8 @@ class EntityTest extends TestCase
     /** @test */
     public function can_be_extended_with_an_accessor(): void
     {
-        $child = new class extends Entity {
+        $child = new class extends Entity
+        {
             public function getFooAttribute($original): string
             {
                 return 'baz';
@@ -85,7 +86,8 @@ class EntityTest extends TestCase
     /** @test */
     public function can_be_transformed_to_array_with_accessor(): void
     {
-        $child = new class extends Entity {
+        $child = new class extends Entity
+        {
             public function getFooAttribute($original): string
             {
                 return 'baz';
@@ -176,7 +178,7 @@ class EntityTest extends TestCase
     /** @test */
     public function can_be_created_from_xml(): void
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
         <Address>
             <City>Foo city</City>
             <StateProvinceCode>Foo state</StateProvinceCode>
@@ -202,7 +204,7 @@ class EntityTest extends TestCase
     /** @test */
     public function from_xml_can_handle_nested_data_sets(): void
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
         <Address>
             <City>Foo city</City>
             <NestedDataset>
@@ -236,7 +238,7 @@ class EntityTest extends TestCase
     /** @test */
     public function from_xml_supports_boolean_indicators(): void
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
         <Address>
             <Foo>bar</Foo>
             <SomeIndicator />
@@ -244,7 +246,8 @@ class EntityTest extends TestCase
         </Address>
         XML;
 
-        $class = new class extends Entity {
+        $class = new class extends Entity
+        {
             protected $casts = [
                 'some_indicator' => 'boolean',
                 'another' => 'boolean',
@@ -278,7 +281,7 @@ class EntityTest extends TestCase
     /** @test */
     public function can_have_relationships(): void
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
         <WithRelationship>
             <Foo>Bar</Foo>
             <RelatedEntity>
@@ -297,7 +300,7 @@ class EntityTest extends TestCase
     /** @test */
     public function can_have_a_has_many_relationship(): void
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
         <WithRelationship>
             <RelatedEntity>
                 <Name>Related 1</Name>

@@ -229,7 +229,7 @@ class Shipment extends Entity
         }
 
         if (! $package instanceof Package) {
-            throw new InvalidArgumentException('$package must be an instance of ' . Package::class);
+            throw new InvalidArgumentException('$package must be an instance of '.Package::class);
         }
 
         $packages = $this->packages->push($package)->toArray();
@@ -257,8 +257,6 @@ class Shipment extends Entity
     /**
      * Indicates if the shipment has been picked up.
      * Only applies to tracking api requests.
-     *
-     * @return bool
      */
     public function isPickedUp(): bool
     {

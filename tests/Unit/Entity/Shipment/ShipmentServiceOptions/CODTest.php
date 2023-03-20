@@ -13,7 +13,7 @@ class CODTest extends TestCase
     /** @test */
     public function converts_to_xml(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <COD>
             <CODCode>3</CODCode>
             <CODFundsCode>RU</CODFundsCode>

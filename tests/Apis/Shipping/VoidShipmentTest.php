@@ -15,8 +15,8 @@ class VoidShipmentTest extends TestCase
 {
     /**
      * @test
+     *
      * @dataProvider validShipmentVoidNumbers
-     * @param string $shipmentIdentificationNumber
      */
     public function can_void_shipments(string $shipmentIdentificationNumber): void
     {
@@ -191,8 +191,8 @@ class VoidShipmentTest extends TestCase
 
     /**
      * @test
+     *
      * @dataProvider invalidShipmentIdNumbers
-     * @param string $id
      */
     public function requires_a_valid_shipment_identification_number(string $id): void
     {
@@ -203,8 +203,8 @@ class VoidShipmentTest extends TestCase
 
     /**
      * @test
+     *
      * @dataProvider invalidShipmentIdNumbers
-     * @param string $id
      */
     public function requires_valid_tracking_numbers(string $id): void
     {

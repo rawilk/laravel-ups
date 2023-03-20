@@ -22,8 +22,11 @@ class ShipConfirm extends Api
     protected const ENDPOINT = '/ShipConfirm';
 
     protected string $requestOption = ShipConfirmOptions::NON_VALIDATE;
+
     protected ?Shipment $shipment = null;
+
     protected ?LabelSpecification $labelSpecification = null;
+
     protected ?ReceiptSpecification $receiptSpecification = null;
 
     public function getDigest(): ShipConfirmResponse

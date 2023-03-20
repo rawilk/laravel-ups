@@ -13,7 +13,7 @@ class CreditCardTest extends TestCase
     /** @test */
     public function converts_to_xml(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <CreditCard>
             <Type>visa</Type>
             <Number>4111</Number>

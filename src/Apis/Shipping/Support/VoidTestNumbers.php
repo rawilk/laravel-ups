@@ -36,13 +36,12 @@ class VoidTestNumbers
      * @var string
      */
     public const SHIPMENT_VOIDED_AT_SHIPMENT_LEVEL = '1Z12345E0390856432';
+
     public const SHIPMENT_VOIDED_AT_SHIPMENT_LEVEL2 = '1Z12345E0193081456';
 
     /**
      * The intention of this test case is to prove one can void the lead package in a shipment
      * and the shipment ID will survive the void of the lead package.
-     *
-     * @var array
      */
     public static array $partialVoidLeadPackage = [
         'shipment_id' => '1Z12345E1234567890',
@@ -65,8 +64,6 @@ class VoidTestNumbers
      * Multi-package shipment with a package that cannot be voided. A successful
      * shipment partially voided XML response will be returned for a package level void request.
      * Tracking number 1Z12345E1593518308 will not be voided.
-     *
-     * @var array
      */
     public static array $multiPackageShipmentWithNonVoidablePackage = [
         'shipment_id' => '1Z12345E1234567890',
@@ -81,8 +78,6 @@ class VoidTestNumbers
      * A successful shipment voided XML response will be returned for a
      * package level void request. The request will void all of the remaining
      * packages in the shipment. The shipment will be completely voided.
-     *
-     * @var array
      */
     public static array $multiPackageWithTwoRemainingUnvoided = [
         'shipment_id' => '1Z12345E2318693258',

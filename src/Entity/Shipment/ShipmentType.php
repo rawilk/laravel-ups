@@ -15,7 +15,9 @@ class ShipmentType extends Entity
 {
     // Valid codes:
     public const PACKAGE = '01'; // default
+
     public const FREIGHT = '02';
+
     public const MAIL_INNOVATIONS = '03';
 
     protected function booted(): void

@@ -11,8 +11,6 @@ trait HasAttributes
     /**
      * A mapping of keys to use instead of the ones provided by
      * an xml object returned from the API.
-     *
-     * @var array
      */
     protected array $attributeKeyMap = [];
 
@@ -20,8 +18,6 @@ trait HasAttributes
      * In the UPS API some fields are sent in the XML as an "Indicator" empty
      * field, which gets converted to an empty array in fromXml(). In those
      * cases we want that value to show up as true instead of false.
-     *
-     * @var bool
      */
     protected bool $castEmptyArraysAsTrue = true;
 

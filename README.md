@@ -1,10 +1,14 @@
-# laravel-ups
+# UPS Wrapper for Laravel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/rawilk/laravel-ups.svg?style=flat-square)](https://packagist.org/packages/rawilk/laravel-ups)
 ![Tests](https://github.com/rawilk/laravel-ups/workflows/Tests/badge.svg?style=flat-square)
 [![Total Downloads](https://img.shields.io/packagist/dt/rawilk/laravel-ups.svg?style=flat-square)](https://packagist.org/packages/rawilk/laravel-ups)
+[![PHP from Packagist](https://img.shields.io/packagist/php-v/rawilk/laravel-ups?style=flat-square)](https://packagist.org/packages/rawilk/laravel-ups)
+[![License](https://img.shields.io/github/license/rawilk/laravel-ups?style=flat-square)](https://github.com/rawilk/laravel-ups/blob/main/LICENSE.md)
 
-This package acts as an api wrapper for the [UPS Api](https://www.ups.com/upsdeveloperkit?loc=en_US). Currently this package allows you to validate addresses,
+![social image](https://banners.beyondco.de/UPS%20API%20Wrapper.png?theme=light&packageManager=composer+require&packageName=rawilk%2Flaravel-ups&pattern=architect&style=style_1&description=UPS+api+wrapper+for+Laravel.&md=1&showWatermark=0&fontSize=100px&images=truck)
+
+This package acts as an api wrapper for the [UPS Api](https://www.ups.com/upsdeveloperkit?loc=en_US). Currently, this package allows you to validate addresses,
 create shipments, void shipments, recover labels, and track shipments. Before using this package, you should have at least a basic understanding
 of the UPS Api.
 
@@ -13,7 +17,7 @@ of the UPS Api.
 You can install the package via composer:
 
 ```bash
-composer require rawilk/laravel-ups
+composer require rawilk/laravel-ups:1.0
 ```
 
 You can publish the config file with:
@@ -92,6 +96,10 @@ Please review [my security policy](.github/SECURITY.md) on how to report securit
 
 - [Randall Wilk](https://github.com/rawilk)
 - [All Contributors](../../contributors)
+- 
+## Disclaimer
+
+This package is not affiliated with, maintained, authorized, endorsed or sponsored by Laravel or any of its affiliates. It is also not affiliated with, maintained, authorized, endorsed or sponsored by UPS.
 
 ## License
 

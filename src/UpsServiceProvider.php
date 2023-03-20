@@ -10,13 +10,13 @@ class UpsServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../config/ups.php' => config_path('ups.php'),
+                __DIR__.'/../config/ups.php' => config_path('ups.php'),
             ], 'config');
         }
     }
 
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/ups.php', 'ups');
+        $this->mergeConfigFrom(__DIR__.'/../config/ups.php', 'ups');
     }
 }

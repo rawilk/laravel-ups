@@ -37,7 +37,7 @@ class AddressValidationAddressTest extends TestCase
     /** @test */
     public function can_have_address_classification(): void
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
         <AddressKeyFormat>
             <AddressLine>123 Any street</AddressLine>
             <AddressClassification>

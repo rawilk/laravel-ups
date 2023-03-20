@@ -30,7 +30,7 @@ class ShipAcceptResponse extends Entity
         ];
 
         foreach ($keysToPopulate as $key) {
-            $methodName = 'set' . Str::of($key)->studly()->ucfirst();
+            $methodName = 'set'.Str::of($key)->studly()->ucfirst();
 
             if (array_key_exists($key, $shipmentResults) && method_exists($this, $methodName)) {
                 $this->$methodName($shipmentResults[$key]);

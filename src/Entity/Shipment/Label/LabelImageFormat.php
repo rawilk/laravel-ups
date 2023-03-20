@@ -13,5 +13,6 @@ class LabelImageFormat extends Entity
 {
     // Valid formats:
     public const GIF = 'GIF';
+
     public const PNG = 'PNG';
 }

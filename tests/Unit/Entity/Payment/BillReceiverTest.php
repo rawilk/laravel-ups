@@ -13,7 +13,7 @@ class BillReceiverTest extends TestCase
     /** @test */
     public function converts_to_xml(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <BillReceiver>
             <AccountNumber>123456</AccountNumber>
             <Address>

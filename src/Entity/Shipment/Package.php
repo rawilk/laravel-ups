@@ -34,7 +34,9 @@ use Rawilk\Ups\Entity\Tracking\EstimatedDeliveryWindow;
 class Package extends Entity
 {
     public const OVERSIZE1 = '1';
+
     public const OVERSIZE2 = '2';
+
     public const LARGE = '4';
 
     protected array $attributeKeyMap = [
@@ -119,8 +121,6 @@ class Package extends Entity
     /**
      * Indicates if the package has been delivered.
      * This method is only applicable when using the tracking api.
-     *
-     * @return bool
      */
     public function isDelivered(): bool
     {
@@ -136,8 +136,6 @@ class Package extends Entity
     /**
      * Indicates if the package has been picked up.
      * Only applicable when using the tracking api.
-     *
-     * @return bool
      */
     public function isPickedUp(): bool
     {
@@ -153,8 +151,6 @@ class Package extends Entity
     /**
      * Returns the name of the person who signed for the package if
      * it has been delivered when using the tracking api.
-     *
-     * @return string|null
      */
     public function signedForByName(): ?string
     {

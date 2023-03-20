@@ -13,7 +13,7 @@ class ShipToTest extends TestCase
     /** @test */
     public function converts_to_xml(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <ShipTo>
             <Address>
                 <City>foo</City>
@@ -44,7 +44,7 @@ class ShipToTest extends TestCase
     /** @test */
     public function defaults_address_to_new_instance(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <ShipTo>
             <Address />
         </ShipTo>

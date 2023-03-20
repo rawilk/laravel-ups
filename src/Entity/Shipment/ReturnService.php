@@ -13,20 +13,35 @@ class ReturnService extends Entity
 {
     // Return service codes (types):
     public const PRINT_AND_MAIL = '2';
+
     public const RETURN_SERVICE_1_ATTEMPT = '3';
+
     public const RETURN_SERVICE_3_ATTEMPTS = '5';
+
     public const ELECTRONIC_RETURN_LABEL = '8';
+
     public const PRINT_RETURN_LABEL = '9';
+
     public const EXCHANGE_PRINT_RETURN_LABEL = '10';
+
     public const PACK_AND_COLLECT_SERVICE_1_ATTEMPT_BOX_1 = '11';
+
     public const PACK_AND_COLLECT_SERVICE_1_ATTEMPT_BOX_2 = '12';
+
     public const PACK_AND_COLLECT_SERVICE_1_ATTEMPT_BOX_3 = '13';
+
     public const PACK_AND_COLLECT_SERVICE_1_ATTEMPT_BOX_4 = '14';
+
     public const PACK_AND_COLLECT_SERVICE_1_ATTEMPT_BOX_5 = '15';
+
     public const PACK_AND_COLLECT_SERVICE_3_ATTEMPT_BOX_1 = '16';
+
     public const PACK_AND_COLLECT_SERVICE_3_ATTEMPT_BOX_2 = '17';
+
     public const PACK_AND_COLLECT_SERVICE_3_ATTEMPT_BOX_3 = '18';
+
     public const PACK_AND_COLLECT_SERVICE_3_ATTEMPT_BOX_4 = '19';
+
     public const PACK_AND_COLLECT_SERVICE_3_ATTEMPT_BOX_5 = '20';
 
     public const DEFAULT_SERVICE_CODE = self::PRINT_RETURN_LABEL;
@@ -38,8 +53,6 @@ class ReturnService extends Entity
 
     /**
      * Convenience method to get the return services offered by UPS.
-     *
-     * @return array
      */
     public static function availableServices(): array
     {

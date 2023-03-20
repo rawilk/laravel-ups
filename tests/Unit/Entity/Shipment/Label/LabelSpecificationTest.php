@@ -15,7 +15,7 @@ class LabelSpecificationTest extends TestCase
     /** @test */
     public function converts_to_xml(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <LabelSpecification>
             <HTTPUserAgent>foo</HTTPUserAgent>
             <CharacterSet>nld</CharacterSet>
@@ -53,7 +53,7 @@ class LabelSpecificationTest extends TestCase
     /** @test */
     public function can_be_sent_as_gif(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <LabelSpecification>
             <LabelPrintMethod>
                 <Code>GIF</Code>
@@ -76,7 +76,7 @@ class LabelSpecificationTest extends TestCase
     /** @test */
     public function can_be_sent_as_png(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <LabelSpecification>
             <LabelPrintMethod>
                 <Code>GIF</Code>

@@ -59,8 +59,8 @@ class AddressValidationTest extends TestCase
 
     /**
      * @test
+     *
      * @dataProvider invalidRequestOptions
-     * @param int $option
      */
     public function invalid_request_options_are_not_allowed(int $option): void
     {

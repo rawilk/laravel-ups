@@ -13,7 +13,7 @@ class WarningTest extends TestCase
     /** @test */
     public function creates_from_xml(): void
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
         <Warning>
             <ErrorCode>1</ErrorCode>
             <ErrorDescription>Some error</ErrorDescription>

@@ -13,7 +13,7 @@ class ThirdPartyTest extends TestCase
     /** @test */
     public function converts_to_xml(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <ThirdParty>
             <Address>
                 <City>foo</City>

@@ -21,7 +21,6 @@ class PaymentInformation extends Entity
     /**
      * Convenience method to use "prepaid bill shipper".
      *
-     * @param string $accountNumber
      * @return $this
      */
     public static function prepaidForAccount(string $accountNumber): self

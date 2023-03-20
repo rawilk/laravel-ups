@@ -8,7 +8,7 @@ sort: 3
 laravel-ups can be installed via composer:
 
 ```bash
-composer require rawilk/laravel-ups
+composer require rawilk/laravel-ups:1.0
 ```
 
 ## Configuration

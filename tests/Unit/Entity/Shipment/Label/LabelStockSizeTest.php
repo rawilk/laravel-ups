@@ -13,7 +13,7 @@ class LabelStockSizeTest extends TestCase
     /** @test */
     public function sets_width_and_height_automatically(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <LabelStockSize>
             <Height>4</Height>
             <Width>6</Width>
@@ -29,7 +29,7 @@ class LabelStockSizeTest extends TestCase
     /** @test */
     public function width_can_be_customized(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <LabelStockSize>
             <Height>4</Height>
             <Width>8</Width>

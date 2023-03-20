@@ -17,8 +17,11 @@ class LabelRecovery extends Api
     protected const ENDPOINT = '/LabelRecovery';
 
     protected ?LabelSpecification $labelSpecification = null;
+
     protected ?Translate $translate = null;
+
     protected ?LabelDelivery $labelDelivery = null;
+
     protected string $trackingNumber = '';
 
     public function recover(): LabelRecoveryResponse

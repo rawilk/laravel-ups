@@ -9,6 +9,7 @@ use SimpleXMLElement;
 class Response
 {
     protected SimpleXMLElement $responseXml;
+
     protected string $rawText = '';
 
     public function __construct(SimpleXMLElement $responseXml)

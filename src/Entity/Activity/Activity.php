@@ -35,8 +35,6 @@ class Activity extends Entity
 
     /**
      * Indicates if this activity is a pickup activity.
-     *
-     * @return bool
      */
     public function isPickup(): bool
     {
@@ -49,8 +47,6 @@ class Activity extends Entity
 
     /**
      * Indicates if this activity is a delivered activity.
-     *
-     * @return bool
      */
     public function isDelivered(): bool
     {

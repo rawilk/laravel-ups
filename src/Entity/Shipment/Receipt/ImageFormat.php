@@ -14,8 +14,12 @@ class ImageFormat extends Entity
 {
     // Valid codes:
     public const EPL = 'EPL';
+
     public const SPL = 'SPL';
+
     public const ZPL = 'ZPL';
+
     public const STARPL = 'STARPL';
+
     public const HTML = 'HTML';
 }

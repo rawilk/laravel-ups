@@ -13,7 +13,7 @@ class DimensionsTest extends TestCase
     /** @test */
     public function converts_to_xml(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <Dimensions>
             <Length>2</Length>
             <Width>4</Width>

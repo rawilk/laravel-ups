@@ -14,7 +14,7 @@ class LabelImageTest extends TestCase
     /** @test */
     public function creates_from_xml(): void
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
         <LabelImage>
             <LabelImageFormat>
                 <Code>GIF</Code>

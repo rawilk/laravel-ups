@@ -13,7 +13,7 @@ class HazMatTest extends TestCase
     /** @test */
     public function converts_to_xml(): void
     {
-        $expected = <<<XML
+        $expected = <<<'XML'
         <HazMat>
             <aDRItemNumber>1</aDRItemNumber>
             <aDRPackagingGroupLetter>a</aDRPackagingGroupLetter>
@@ -39,8 +39,8 @@ class HazMatTest extends TestCase
 
     /**
      * @test
+     *
      * @dataProvider invalidPackagingTypeQuantities
-     * @param int $quantity
      */
     public function throws_exceptions_for_invalid_packaging_type_quantity(int $quantity): void
     {

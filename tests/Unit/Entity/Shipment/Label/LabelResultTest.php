@@ -15,7 +15,7 @@ class LabelResultTest extends TestCase
     /** @test */
     public function creates_from_xml(): void
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
         <LabelResult>
             <TrackingNumber>1Z...</TrackingNumber>
             <LabelImage>
