@@ -51,8 +51,6 @@ class ReturnService extends Entity
 
     /**
      * Convenience method to get the return services offered by UPS.
-     *
-     * @return array
      */
     public static function availableServices(): array
     {

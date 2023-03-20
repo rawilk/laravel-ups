@@ -2,6 +2,8 @@
 
 namespace Rawilk\Ups\Concerns;
 
+use function get_parent_class;
+
 trait HasRelationships
 {
     /*
@@ -14,6 +16,19 @@ trait HasRelationships
     public function hasRelationship(string $relationship): bool
     {
         return method_exists($this, $relationship);
+    }
+
+    public function relationResolver($class, $key)
+    {
+        if ($resolver = static::$relationResolvers[$class][$key] ?? null) {
+            return $resolver;
+        }
+
+        if ($parent = get_parent_class($class)) {
+            return $this->relationResolver($parent, $key);
+        }
+
+        return null;
     }
 
     protected function createRelationshipFromArray(string $relationship, array $data, string $parentKey = null)
