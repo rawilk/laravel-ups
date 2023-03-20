@@ -7,6 +7,7 @@ use Rawilk\Ups\Exceptions\InvalidMonetaryValue;
 /**
  * @property null|string $currency_code
  * @property float $monetary_value
+ *
  * @mixin \Illuminate\Database\Eloquent\Concerns\HasAttributes
  */
 trait HasMonetaryValue
