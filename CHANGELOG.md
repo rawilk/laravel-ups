@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-ups` will be documented in this file
 
+## v2.1.6 - 2023-03-20
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.4 to 1.3.5 by @dependabot in https://github.com/rawilk/laravel-ups/pull/10
+- Bump dependabot/fetch-metadata from 1.3.5 to 1.3.6 by @dependabot in https://github.com/rawilk/laravel-ups/pull/13
+- Bump creyD/prettier_action from 4.2 to 4.3 by @dependabot in https://github.com/rawilk/laravel-ups/pull/14
+- Add laravel 10.x support by @rawilk in https://github.com/rawilk/laravel-ups/pull/16
+- Add php 8.2 support by @rawilk in https://github.com/rawilk/laravel-ups/pull/17
+
+**Full Changelog**: https://github.com/rawilk/laravel-ups/compare/v2.1.5...v2.1.6
+
 ## v2.1.5 - 2022-11-03
 
 ### What's Changed
