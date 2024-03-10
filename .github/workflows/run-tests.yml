@@ -66,7 +66,7 @@ jobs:
                 run: composer show -D
 
             -   name: Execute tests
-                run: vendor/bin/pest -p
+                run: vendor/bin/pest
                 env:
                     UPS_ACCESS_KEY: ${{ secrets.UPS_ACCESS_KEY }}
                     UPS_USER_ID: ${{ secrets.UPS_USER_ID }}
