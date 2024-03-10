@@ -13,7 +13,7 @@ use Rawilk\Ups\Entity\Entity;
  *
  * @property string $cod_code
  * @property string $cod_funds_code
- *      For valid values refer to: Rating and Shipping COD Supported Countries or Territories in the UPS developer docs Appendix.
+ *                                  For valid values refer to: Rating and Shipping COD Supported Countries or Territories in the UPS developer docs Appendix.
  * @property \Rawilk\Ups\Entity\Shipment\ShipmentServiceOptions\CODAmount $cod_amount
  */
 class COD extends Entity

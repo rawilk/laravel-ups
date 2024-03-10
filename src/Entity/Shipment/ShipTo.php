@@ -9,7 +9,7 @@ use Rawilk\Ups\Entity\Entity;
 
 /**
  * @property null|string $location_id
- *      LocationID is a unique identifier referring to a specific shipping/receiving location.
+ *                                    LocationID is a unique identifier referring to a specific shipping/receiving location.
  * @property string $receiving_address_name
  * @property string $bookmark
  * @property string $shipper_assigned_identification_number

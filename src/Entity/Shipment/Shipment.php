@@ -17,26 +17,26 @@ use Rawilk\Ups\Entity\Shipment\ShipmentServiceOptions\ShipmentServiceOptions;
 
 /**
  * @property null|string $description
- *      The description of Goods for the shipment. Applies to international and domestic shipments.
+ *                                    The description of Goods for the shipment. Applies to international and domestic shipments.
  * @property bool $documents_only
- *      Indicates a shipment contains written typed, or printed communication of no commercial value.
+ *                                Indicates a shipment contains written typed, or printed communication of no commercial value.
  * @property bool $goods_not_in_free_circulation
  * @property null|int $num_of_pieces_in_shipment
- *      Total number of pieces in all pallets in a UPS World Wide Express Freight Shipment.
+ *                                               Total number of pieces in all pallets in a UPS World Wide Express Freight Shipment.
  * @property bool $rating_method_requested
- *      If true, Billable Weight Collection information and Rating Method information would be returned
- *      in response.
+ *                                         If true, Billable Weight Collection information and Rating Method information would be returned
+ *                                         in response.
  * @property bool $tax_information
- *      If true, any taxes that may be applicable to a shipment would be returned in a response.
+ *                                 If true, any taxes that may be applicable to a shipment would be returned in a response.
  * @property bool $master_carton
  * @property null|string $master_carton_id
  * @property null|\Rawilk\Ups\Entity\Shipment\ReturnService $return_service
- *      Type of return service. When this entity is present, the shipment is a return shipment.
+ *                                                                          Type of return service. When this entity is present, the shipment is a return shipment.
  * @property \Rawilk\Ups\Entity\Shipment\Shipper $shipper
- *      Container for the shipper's information.
+ *                                                        Container for the shipper's information.
  * @property \Rawilk\Ups\Entity\Shipment\ShipTo $ship_to
  * @property \Rawilk\Ups\Entity\Shipment\ShipFrom $ship_from
- *      Required for return shipment or if pickup location is different than the shipper's address.
+ *                                                           Required for return shipment or if pickup location is different than the shipper's address.
  * @property null|\Rawilk\Ups\Entity\Shipment\SoldTo $sold_to
  * @property null|\Rawilk\Ups\Entity\Payment\PaymentInformation $payment_information
  * @property null|\Rawilk\Ups\Entity\Payment\ItemizedPaymentInformation $itemized_payment_information
@@ -48,9 +48,9 @@ use Rawilk\Ups\Entity\Shipment\ShipmentServiceOptions\ShipmentServiceOptions;
  * @property \Illuminate\Support\Collection|\Rawilk\Ups\Entity\Shipment\Package[] $packages
  * @property null|\Rawilk\Ups\Entity\Shipment\ShipmentIndicationType $shipment_indication_type
  * @property null|\Rawilk\Ups\Entity\Shipment\ReferenceNumber $reference_number
- *      Shipment reference number. Applies to tracking api responses.
+ *                                                                              Shipment reference number. Applies to tracking api responses.
  * @property null|\Carbon\Carbon $pickup_date
- *      Date shipment was picked up. Only applies to tracking api responses. Format: YYYYMMDD.
+ *                                            Date shipment was picked up. Only applies to tracking api responses. Format: YYYYMMDD.
  * @property null|string $shipment_identification_number Only applies to tracking api responses.
  */
 class Shipment extends Entity

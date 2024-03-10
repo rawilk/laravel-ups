@@ -17,7 +17,7 @@ use Rawilk\Ups\Entity\Shipment\ShipmentServiceOptions\DeliveryConfirmation;
  * @property null|\Rawilk\Ups\Entity\Shipment\ShipmentServiceOptions\COD $cod
  * @property null|\Rawilk\Ups\Entity\Shipment\ShipmentServiceOptions\AccessPointCOD $access_point_cod
  * @property null|\Rawilk\Ups\Entity\Shipment\PackageServiceOptions\HazMat|\Rawilk\Ups\Entity\Shipment\PackageServiceOptions\HazMat[] $haz_mat
- *      Max of 3 allowed.
+ *                                                                                                                                             Max of 3 allowed.
  * @property null|\Rawilk\Ups\Entity\Shipment\PackageServiceOptions\HazMatPackageInformation $haz_mat_package_information
  */
 class PackageServiceOptions extends Entity

@@ -11,7 +11,7 @@ use Rawilk\Ups\Entity\Shipment\Label\LabelResult;
 /**
  * @property array $response
  * @property string $shipment_identification_number
- *      Tracking number of the leading package in the shipment.
+ *                                                  Tracking number of the leading package in the shipment.
  * @property \Illuminate\Support\Collection|\Rawilk\Ups\Entity\Shipment\Label\LabelResult[] $labels
  */
 class LabelRecoveryResponse extends Entity

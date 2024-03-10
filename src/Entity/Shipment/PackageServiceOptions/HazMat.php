@@ -9,14 +9,14 @@ use Rawilk\Ups\Exceptions\InvalidAttribute;
 
 /**
  * @property int $packaging_type_quantity
- *      The number of pieces of the specific commodity.
+ *                                        The number of pieces of the specific commodity.
  * @property string $sub_risk_class
  * @property string $adr_item_number
- *      The type of regulated goods for an ADR package where ADR is for Europe to Europe ground movement.
+ *                                   The type of regulated goods for an ADR package where ADR is for Europe to Europe ground movement.
  * @property string $adr_packaging_group_letter
  * @property string $technical_name
  * @property string $hazard_label_required
- *      Defines the type of label that is required on the package for the commodity.
+ *                                         Defines the type of label that is required on the package for the commodity.
  * @property string $class_division_number
  * @property string $reference_number
  * @property string $quantity
