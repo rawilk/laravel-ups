@@ -23,11 +23,11 @@ class ShipConfirm extends Api
 
     protected string $requestOption = ShipConfirmOptions::NON_VALIDATE;
 
-    protected null|Shipment $shipment = null;
+    protected ?Shipment $shipment = null;
 
-    protected null|LabelSpecification $labelSpecification = null;
+    protected ?LabelSpecification $labelSpecification = null;
 
-    protected null|ReceiptSpecification $receiptSpecification = null;
+    protected ?ReceiptSpecification $receiptSpecification = null;
 
     public function getDigest(): ShipConfirmResponse
     {

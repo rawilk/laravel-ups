@@ -15,7 +15,7 @@ use Rawilk\Ups\Entity\Shipment\PackageResult;
  * @property \Illuminate\Support\Collection|\Rawilk\Ups\Entity\Payment\Charge[] $shipment_charges
  * @property \Illuminate\Support\Collection|\Rawilk\Ups\Entity\Payment\Charge[] $negotiated_rates
  * @property string $shipment_identification_number
- *      Returned UPS shipment ID number; 1Z number of the first package in the shipment.
+ *                                                  Returned UPS shipment ID number; 1Z number of the first package in the shipment.
  * @property \Illuminate\Support\Collection|\Rawilk\Ups\Entity\Shipment\PackageResult[] $packages
  * @property \Rawilk\Ups\Entity\Shipment\BillingWeight $billing_weight
  */

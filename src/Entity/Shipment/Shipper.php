@@ -10,18 +10,18 @@ use Rawilk\Ups\Exceptions\InvalidAttribute;
 
 /**
  * @property string $name
- *      Shipper's company name. for forward shipment 35 characters are accepted, but only 30 characters will
- *      be printed on the label.
+ *                        Shipper's company name. for forward shipment 35 characters are accepted, but only 30 characters will
+ *                        be printed on the label.
  * @property null|string $attention_name
  * @property null|string $company_displayable_name
  * @property string $shipper_number
- *      Shipper's six digit account number. Must be associated with the UserId specified in the AccessRequest XML.
+ *                                  Shipper's six digit account number. Must be associated with the UserId specified in the AccessRequest XML.
  * @property null|string $tax_identification_number
  * @property null|string $phone_number
  * @property null|string $fax_number
  * @property null|string $email
  * @property \Rawilk\Ups\Entity\Address\Address $address
- *      The package should be returned to this address if the package is undeliverable.
+ *                                                       The package should be returned to this address if the package is undeliverable.
  */
 class Shipper extends Entity
 {

@@ -22,11 +22,11 @@ class AddressValidation extends Api
 
     protected int $requestOption = AddressValidationOption::ADDRESS_VALIDATION;
 
-    protected null|Address $address = null;
+    protected ?Address $address = null;
 
     protected static array $supportedCountries = ['US', 'PR'];
 
-    public function validate(Address $address = null): AddressValidationResponse
+    public function validate(?Address $address = null): AddressValidationResponse
     {
         // The UPS Customer Integration Environment (sandbox = true) only allows certain states to be
         // validated, so we will always use the production api instead since it's free anyways.

@@ -13,9 +13,9 @@ use Rawilk\Ups\Entity\Tracking\EstimatedDeliveryWindow;
 /**
  * @property bool $additional_handling Additional handling required.
  * @property null|string $description
- *      Merchandise description of package. Required for shipment with return service.
+ *                                    Merchandise description of package. Required for shipment with return service.
  * @property null|string $pallet_description
- *      Description of articles & special marks. Applicable for Air Freight only.
+ *                                           Description of articles & special marks. Applicable for Air Freight only.
  * @property bool $is_large
  * @property string $tracking_number
  * @property bool $ups_premium_care_indicator
@@ -29,7 +29,7 @@ use Rawilk\Ups\Entity\Tracking\EstimatedDeliveryWindow;
  * @property \Rawilk\Ups\Entity\Shipment\ReferenceNumber $reference_number
  * @property \Rawilk\Ups\Entity\Shipment\ReferenceNumber $reference_number2
  * @property null|\Rawilk\Ups\Entity\Tracking\EstimatedDeliveryWindow $estimated_delivery_window
- *      Only applies to tracking api responses.
+ *                                                                                               Only applies to tracking api responses.
  */
 class Package extends Entity
 {
@@ -152,7 +152,7 @@ class Package extends Entity
      * Returns the name of the person who signed for the package if
      * it has been delivered when using the tracking api.
      */
-    public function signedForByName(): null|string
+    public function signedForByName(): ?string
     {
         if (! $this->isDelivered()) {
             return null;

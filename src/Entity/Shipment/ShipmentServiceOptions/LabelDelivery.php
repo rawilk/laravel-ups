@@ -9,8 +9,8 @@ use Rawilk\Ups\Entity\Notification\EMailMessage;
 
 /**
  * @property bool $label_links
- *      Indicates the Label and Receipt URL's links that needs to be returned in
- *      the XML response.
+ *                             Indicates the Label and Receipt URL's links that needs to be returned in
+ *                             the XML response.
  * @property null|\Rawilk\Ups\Entity\Notification\EMailMessage $email_message
  */
 class LabelDelivery extends Entity

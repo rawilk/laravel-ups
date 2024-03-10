@@ -20,7 +20,7 @@ class RequestFailed extends Exception
         return new static('The UPS api request failed: response is in an unexpected format.');
     }
 
-    public static function error(string $error, int $errorCode = null): self
+    public static function error(string $error, ?int $errorCode = null): self
     {
         return new static(
             "UPS api request failed: {$error} ({$errorCode})",
