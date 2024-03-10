@@ -23,7 +23,7 @@ class BadRequest extends BadMethodCallException
         return new static('[UPS] Invalid request option supplied.');
     }
 
-    public static function missingRequiredData(string $message = null): self
+    public static function missingRequiredData(?string $message = null): self
     {
         return new static("[UPS] Request is missing required data. {$message}");
     }

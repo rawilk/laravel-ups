@@ -22,7 +22,7 @@ class PackageResult extends Entity
         return LabelImage::class;
     }
 
-    public function getDecodedImageContent(): null|string
+    public function getDecodedImageContent(): ?string
     {
         if (! $this->label_image->graphic_image) {
             return null;

@@ -8,11 +8,11 @@ use Rawilk\Ups\Entity\Entity;
 
 /**
  * @property null|string $http_user_agent
- *      Browser HTTPUserAgent String. This is the preferred way of identifying GIF image type to be generated.
+ *                                        Browser HTTPUserAgent String. This is the preferred way of identifying GIF image type to be generated.
  * @property null|string $character_set
  * @property \Rawilk\Ups\Entity\Shipment\Label\LabelPrintMethod $label_print_method
  * @property null|\Rawilk\Ups\Entity\Shipment\Label\LabelStockSize $label_stock_size
- *      For EPL2, ZPL, STARPL, and SPL labels.
+ *                                                                                   For EPL2, ZPL, STARPL, and SPL labels.
  * @property \Rawilk\Ups\Entity\Shipment\Label\LabelImageFormat $label_image_format
  * @property null|\Rawilk\Ups\Entity\Shipment\Label\Instruction $instruction
  */

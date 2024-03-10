@@ -21,7 +21,7 @@ trait HasAttributes
      */
     protected bool $castEmptyArraysAsTrue = true;
 
-    public function convertPropertyNamesToSnakeCase(array $data, string $parentKey = null): array
+    public function convertPropertyNamesToSnakeCase(array $data, ?string $parentKey = null): array
     {
         $properties = [];
 

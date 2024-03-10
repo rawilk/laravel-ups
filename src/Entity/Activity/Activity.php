@@ -17,7 +17,7 @@ use Rawilk\Ups\Entity\Tracking\Status;
  * @property null|string $gmt_offset Format: (+/-) hh:mm
  * @property \Carbon\Carbon $date_time Parsed date and time object. Tries to use GMT date/time first, but falls back on date/time.
  * @property null|string $signed_for_by_name
- *      If this activity is a delivery activity and there is a signature, it will be returned from the <ActivityLocation> Container.
+ *                                           If this activity is a delivery activity and there is a signature, it will be returned from the <ActivityLocation> Container.
  * @property null|\Rawilk\Ups\Entity\Activity\ActivityLocation $activity_location
  * @property null|\Rawilk\Ups\Entity\Tracking\Status $status Package activity status container.
  */
@@ -57,7 +57,7 @@ class Activity extends Entity
         return $this->status->isDelivered();
     }
 
-    public function getSignedForByNameAttribute(): null|string
+    public function getSignedForByNameAttribute(): ?string
     {
         return $this->activity_location->signed_for_by_name ?? null;
     }

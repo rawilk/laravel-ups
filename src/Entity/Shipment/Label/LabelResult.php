@@ -9,8 +9,8 @@ use Rawilk\Ups\Entity\Shipment\Receipt\Receipt;
 
 /**
  * @property null|string $tracking_number
- *      Package Tracking number. Package 1Z number. Returned only if TrackingNumber or Combination of Reference Number
- *      and Shipper Number is present in request.
+ *                                        Package Tracking number. Package 1Z number. Returned only if TrackingNumber or Combination of Reference Number
+ *                                        and Shipper Number is present in request.
  * @property \Rawilk\Ups\Entity\Shipment\Label\LabelImage $label_image
  * @property null|\Rawilk\Ups\Entity\Shipment\Receipt\Receipt $receipt
  */

@@ -15,7 +15,7 @@ use Rawilk\Ups\Entity\Entity;
  * @property null|string $state
  * @property null|string $postal_code
  * @property null|string $postcode_extended_low
- *      Low-end extended postal code in a range. Example in quotes: Postal Code 30076-'1234'. Only returned in candidate list. May be alphanumeric.
+ *                                              Low-end extended postal code in a range. Example in quotes: Postal Code 30076-'1234'. Only returned in candidate list. May be alphanumeric.
  * @property string $country_code
  * @property null|string $consignee_name Name of business, company or person. Not returned if user selects the RegionalRequestIndicator.
  * @property null|string $building_name Name of building. Not returned if user selects the RegionalRequestIndicator.

@@ -8,11 +8,11 @@ use Rawilk\Ups\Entity\Entity;
 
 /**
  * @property bool $negotiated_rates
- *      If true and the shipper is authorized, then Negotiated Rates should be returned in the response.
+ *                                  If true and the shipper is authorized, then Negotiated Rates should be returned in the response.
  * @property bool $rate_chart
- *      If true, the response will contain a RateChart Element.
+ *                            If true, the response will contain a RateChart Element.
  * @property bool $user_level_discount
- *      If true, user level discount will be applied to rates if applicable.
+ *                                     If true, user level discount will be applied to rates if applicable.
  */
 class RateInformation extends Entity
 {

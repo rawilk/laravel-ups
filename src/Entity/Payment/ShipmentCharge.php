@@ -12,7 +12,7 @@ use Rawilk\Ups\Entity\Entity;
  * @property null|\Rawilk\Ups\Entity\Payment\BillReceiver $bill_receiver
  * @property null|\Rawilk\Ups\Entity\Payment\BillThirdParty $bill_third_party
  * @property bool $consignee_billed
- *     Valid for shipment charge type of transportation only.
+ *                                  Valid for shipment charge type of transportation only.
  */
 class ShipmentCharge extends Entity
 {
