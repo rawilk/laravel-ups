@@ -8,7 +8,7 @@ use Rawilk\Ups\Entity\Entity;
 
 /**
  * @property string $code
- *      Indicates the type of shipment being tracked during Reference number tracking.
+ *                        Indicates the type of shipment being tracked during Reference number tracking.
  * @property null|string $description
  */
 class ShipmentType extends Entity

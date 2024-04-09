@@ -16,11 +16,11 @@ class LabelRecovery extends Api
     /** @var string */
     protected const ENDPOINT = '/LabelRecovery';
 
-    protected null|LabelSpecification $labelSpecification = null;
+    protected ?LabelSpecification $labelSpecification = null;
 
-    protected null|Translate $translate = null;
+    protected ?Translate $translate = null;
 
-    protected null|LabelDelivery $labelDelivery = null;
+    protected ?LabelDelivery $labelDelivery = null;
 
     protected string $trackingNumber = '';
 

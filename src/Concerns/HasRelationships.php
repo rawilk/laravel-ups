@@ -31,7 +31,7 @@ trait HasRelationships
         return null;
     }
 
-    protected function createRelationshipFromArray(string $relationship, array $data, string $parentKey = null)
+    protected function createRelationshipFromArray(string $relationship, array $data, ?string $parentKey = null)
     {
         // If we have a non-associative array, we probably have an array of related entities.
         if (! $this->isAssociativeArray($data)) {

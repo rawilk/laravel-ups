@@ -16,14 +16,14 @@ use Rawilk\Ups\Contracts\Xmlable;
 use Rawilk\Ups\Support\Xml;
 use SimpleXMLElement;
 
-abstract class Entity implements ArrayAccess, Arrayable, Jsonable, JsonSerializable, Xmlable
+abstract class Entity implements Arrayable, ArrayAccess, Jsonable, JsonSerializable, Xmlable
 {
     use EntityHasAttributes;
-    use HasRelationships;
     use HasAttributes {
         setAttribute as hasAttributesSetAttribute;
         getAttribute as hasAttributesGetAttribute;
     }
+    use HasRelationships;
 
     public $exists = false;
 
@@ -144,7 +144,7 @@ abstract class Entity implements ArrayAccess, Arrayable, Jsonable, JsonSerializa
     {
         $json = json_encode($this->jsonSerialize(), $options);
 
-        if (JSON_ERROR_NONE !== json_last_error()) {
+        if (json_last_error() !== JSON_ERROR_NONE) {
             throw new JsonEncodingException(
                 'Error encoding UPS entity [' . get_class($this) . '] to JSON: ' . json_last_error_msg()
             );

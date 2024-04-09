@@ -42,9 +42,9 @@ class VoidShipment extends Api
 
         return VoidResponse::fromXml(
             $this
-                    ->allowRequestErrors()
-                    ->processRequest()
-                    ->response()
+                ->allowRequestErrors()
+                ->processRequest()
+                ->response()
         );
     }
 

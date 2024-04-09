@@ -9,9 +9,9 @@ use Rawilk\Ups\Entity\Entity;
 /**
  * @property bool $barcode
  * @property string $code
- *      Reference Number type code. For the entire shipment, the code specifies the reference name.
+ *                        Reference Number type code. For the entire shipment, the code specifies the reference name.
  * @property string $value
- *      The customer supplied reference number.
+ *                         The customer supplied reference number.
  */
 class ReferenceNumber extends Entity
 {
