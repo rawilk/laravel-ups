@@ -6,6 +6,4 @@ namespace Rawilk\Ups\Tests\Entity;
 
 use Rawilk\Ups\Entity\Entity;
 
-class BasicEntity extends Entity
-{
-}
+class BasicEntity extends Entity {}

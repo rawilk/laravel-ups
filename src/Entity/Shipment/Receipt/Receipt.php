@@ -10,6 +10,4 @@ use Rawilk\Ups\Entity\Entity;
  * @property string $html_image
  * @property null|string $url
  */
-class Receipt extends Entity
-{
-}
+class Receipt extends Entity {}

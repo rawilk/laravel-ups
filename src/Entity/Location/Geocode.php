@@ -10,6 +10,4 @@ use Rawilk\Ups\Entity\Entity;
  * @property string $latitude
  * @property string $longitude
  */
-class Geocode extends Entity
-{
-}
+class Geocode extends Entity {}

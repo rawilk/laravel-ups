@@ -7,6 +7,4 @@ namespace Rawilk\Ups\Entity\Activity;
 use Rawilk\Ups\Entity\Address\Address;
 
 /** @property string $country */
-class AddressArtifactFormat extends Address
-{
-}
+class AddressArtifactFormat extends Address {}

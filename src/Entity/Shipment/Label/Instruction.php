@@ -10,6 +10,4 @@ use Rawilk\Ups\Entity\Entity;
  * @param  string  $code
  * @param  null|string  $description
  */
-class Instruction extends Entity
-{
-}
+class Instruction extends Entity {}

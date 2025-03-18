@@ -6,6 +6,4 @@ namespace Rawilk\Ups\Entity\Tracking;
 
 use Rawilk\Ups\Entity\Entity;
 
-class Manifest extends Entity
-{
-}
+class Manifest extends Entity {}

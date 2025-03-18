@@ -10,6 +10,4 @@ use Rawilk\Ups\Entity\Entity;
  * @property string $begin_date
  * @property string $end_date
  */
-class PickupDateRange extends Entity
-{
-}
+class PickupDateRange extends Entity {}

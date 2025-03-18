@@ -10,6 +10,4 @@ use Rawilk\Ups\Entity\Entity;
  * @property string $date
  * @property string $time
  */
-class Arrival extends Entity
-{
-}
+class Arrival extends Entity {}

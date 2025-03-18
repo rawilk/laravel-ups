@@ -10,9 +10,7 @@ class Response
 {
     protected string $rawText = '';
 
-    public function __construct(protected SimpleXMLElement $responseXml)
-    {
-    }
+    public function __construct(protected SimpleXMLElement $responseXml) {}
 
     public static function fromXml(SimpleXMLElement $responseXml): self
     {
