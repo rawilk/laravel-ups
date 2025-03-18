@@ -2,6 +2,19 @@
 
 All notable changes to `laravel-ups` will be documented in this file
 
+## v2.1.7 - 2025-03-18
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 1.3.6 to 1.4.0 by @dependabot in https://github.com/rawilk/laravel-ups/pull/21
+* Bump dependabot/fetch-metadata from 1.4.0 to 1.5.0 by @dependabot in https://github.com/rawilk/laravel-ups/pull/22
+* Bump dependabot/fetch-metadata from 1.5.0 to 1.5.1 by @dependabot in https://github.com/rawilk/laravel-ups/pull/24
+* Bump dependabot/fetch-metadata from 1.5.1 to 1.6.0 by @dependabot in https://github.com/rawilk/laravel-ups/pull/29
+* Bump dependabot/fetch-metadata from 1.6.0 to 2.1.0 by @dependabot in https://github.com/rawilk/laravel-ups/pull/39
+* Laravel 11/12.x support
+
+**Full Changelog**: https://github.com/rawilk/laravel-ups/compare/v2.1.6...v2.1.7
+
 ## v2.1.6 - 2023-03-20
 
 ### What's Changed
@@ -36,7 +49,7 @@ All notable changes to `laravel-ups` will be documented in this file
 
 ### Updated
 
-- Add Laravel 9.\* support - [#3](https://github.com/rawilk/laravel-ups/issues/3)
+- Add Laravel 9.* support - [#3](https://github.com/rawilk/laravel-ups/issues/3)
 - Add PHP 8.1 support
 
 ### Fixed
