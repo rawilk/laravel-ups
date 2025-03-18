@@ -1,3 +1,5 @@
+> Note: This package is not currently actively maintained, and I'm not sure if I will maintain it again. Use at your own risk.
+
 # UPS Wrapper for Laravel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/rawilk/laravel-ups.svg?style=flat-square)](https://packagist.org/packages/rawilk/laravel-ups)
