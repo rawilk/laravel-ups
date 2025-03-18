@@ -9,8 +9,8 @@ The Shipping Api allows you to register shipments, including return shipments.
 
 The shipping flow consists of two steps:
 
--   **Confirm:** Send information to UPS to get it validated and get a digest you can use to accept the shipment.
--   **Accept:** Finalize the shipment, mark it as will be shipped. Get label and additional information.
+- **Confirm:** Send information to UPS to get it validated and get a digest you can use to accept the shipment.
+- **Accept:** Finalize the shipment, mark it as will be shipped. Get label and additional information.
 
 ## Usage
 
