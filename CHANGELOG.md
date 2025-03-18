@@ -36,7 +36,7 @@ All notable changes to `laravel-ups` will be documented in this file
 
 ### Updated
 
-- Add Laravel 9.* support - [#3](https://github.com/rawilk/laravel-ups/issues/3)
+- Add Laravel 9.\* support - [#3](https://github.com/rawilk/laravel-ups/issues/3)
 - Add PHP 8.1 support
 
 ### Fixed

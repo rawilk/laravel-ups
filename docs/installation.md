@@ -30,10 +30,10 @@ file, or directly in the config file (not recommended).
 
 At a minimum, you will need:
 
--   Account Access Key (`UPS_ACCESS_KEY`): Your account needs an api access key, which can be obtained here: [https://www.ups.com/upsdeveloperkit/manageaccesskeys?loc=en_US](https://www.ups.com/upsdeveloperkit/manageaccesskeys?loc=en_US)
--   User ID (`UPS_USER_ID`): The username you use to login to your UPS account.
--   Password (`UPS_PASSWORD`): The password you use to login to your UPS account.
--   Shipper Number (`UPS_SHIPPER_NUMBER`): This is a 6 digit number assigned to you by UPS.
+- Account Access Key (`UPS_ACCESS_KEY`): Your account needs an api access key, which can be obtained here: [https://www.ups.com/upsdeveloperkit/manageaccesskeys?loc=en_US](https://www.ups.com/upsdeveloperkit/manageaccesskeys?loc=en_US)
+- User ID (`UPS_USER_ID`): The username you use to login to your UPS account.
+- Password (`UPS_PASSWORD`): The password you use to login to your UPS account.
+- Shipper Number (`UPS_SHIPPER_NUMBER`): This is a 6 digit number assigned to you by UPS.
 
 If your account has negotiated rates enabled for it, you can set `UPS_NEGOTIATED_RATES` to `true`.
 
