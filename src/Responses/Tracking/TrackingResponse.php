@@ -8,7 +8,7 @@ use Rawilk\Ups\Concerns\HandlesApiFailures;
 use Rawilk\Ups\Entity\Entity;
 use Rawilk\Ups\Entity\Shipment\Shipment;
 
-/** @property \Rawilk\Ups\Entity\Shipment\Shipment $shipment */
+/** @property Shipment $shipment */
 class TrackingResponse extends Entity
 {
     use HandlesApiFailures;

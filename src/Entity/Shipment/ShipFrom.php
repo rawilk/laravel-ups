@@ -12,11 +12,11 @@ use Rawilk\Ups\Entity\Entity;
  * @property null|string $attention_name Contact name at the pickup location.
  * @property null|string $tax_identification_number
  *                                                  Company's tax identification number at the pickup location.
- * @property null|\Rawilk\Ups\Entity\Shipment\TaxIDType $tax_id_type
- *                                                                   Applies to EEI form only.
+ * @property null|TaxIDType $tax_id_type
+ *                                       Applies to EEI form only.
  * @property null|string $phone_number Origin location's phone number.
  * @property null|string $fax_number Origin location's fax number.
- * @property \Rawilk\Ups\Entity\Address\Address $address Address of the pickup location.
+ * @property Address $address Address of the pickup location.
  */
 class ShipFrom extends Entity
 {

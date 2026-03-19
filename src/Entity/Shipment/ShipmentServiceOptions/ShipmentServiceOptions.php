@@ -31,16 +31,16 @@ use Rawilk\Ups\Entity\Entity;
  * @property null|string $locale
  *                               Represents 5 character ISO Locale that allows the user to request Reference Number Code on Label, Label Instructions
  *                               and Receipt Instructions (if applicable) in desired language. E.g. en_US
- * @property null|\Rawilk\Ups\Entity\Shipment\ShipmentServiceOptions\COD $cod
- *                                                                            Indicates COD requested.
- *                                                                            Shipment COD is only available from EU origin countries or territories and for shipper's account type
- *                                                                            Daily Pickup and Drop Shipping. Not available to shipment with return service.
- * @property null|\Rawilk\Ups\Entity\Shipment\ShipmentServiceOptions\AccessPointCOD $access_point_cod
- *                                                                                                    Indicates Access Point COD is requested for a shipment.
- * @property null|\Rawilk\Ups\Entity\Shipment\ShipmentServiceOptions\LabelDelivery $label_delivery
- * @property null|\Rawilk\Ups\Entity\Shipment\ShipmentServiceOptions\DeliveryConfirmation $delivery_confirmation
- * @property null|\Rawilk\Ups\Entity\Shipment\ShipmentServiceOptions\LabelMethod $label_method
- *                                                                                             Type of ImportControl label.
+ * @property null|COD $cod
+ *                         Indicates COD requested.
+ *                         Shipment COD is only available from EU origin countries or territories and for shipper's account type
+ *                         Daily Pickup and Drop Shipping. Not available to shipment with return service.
+ * @property null|AccessPointCOD $access_point_cod
+ *                                                 Indicates Access Point COD is requested for a shipment.
+ * @property null|LabelDelivery $label_delivery
+ * @property null|DeliveryConfirmation $delivery_confirmation
+ * @property null|LabelMethod $label_method
+ *                                          Type of ImportControl label.
  */
 class ShipmentServiceOptions extends Entity
 {

@@ -7,7 +7,7 @@ namespace Rawilk\Ups\Entity\Payment;
 use Rawilk\Ups\Entity\Entity;
 
 /**
- * @property \Rawilk\Ups\Entity\Payment\BillReceiver $bill_receiver
+ * @property BillReceiver $bill_receiver
  */
 class FreightCollect extends Entity
 {

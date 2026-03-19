@@ -7,7 +7,7 @@ namespace Rawilk\Ups\Entity\Shipment\Receipt;
 use Rawilk\Ups\Entity\Entity;
 
 /**
- * @property \Rawilk\Ups\Entity\Shipment\Receipt\ImageFormat $image_format
+ * @property ImageFormat $image_format
  */
 class ReceiptSpecification extends Entity
 {

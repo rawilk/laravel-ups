@@ -7,8 +7,8 @@ namespace Rawilk\Ups\Entity\Tracking;
 use Rawilk\Ups\Entity\Entity;
 
 /**
- * @property \Rawilk\Ups\Entity\Tracking\StatusType $status_type
- * @property null|\Rawilk\Ups\Entity\Tracking\StatusCode $status_code
+ * @property StatusType $status_type
+ * @property null|StatusCode $status_code
  */
 class Status extends Entity
 {

@@ -7,7 +7,7 @@ namespace Rawilk\Ups\Entity\Payment;
 use Rawilk\Ups\Entity\Entity;
 
 /**
- * @property \Rawilk\Ups\Entity\Payment\ShipmentCharge[] $shipment_charges
+ * @property ShipmentCharge[] $shipment_charges
  * @property bool $split_duty_vat
  *                                The presence indicates the payer specified for Transportation Charges will pay
  *                                transportation charges and any duties that apply to the shipment.

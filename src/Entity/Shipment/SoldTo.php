@@ -18,7 +18,7 @@ use Rawilk\Ups\Entity\Entity;
  * @property null|string $attention_name Contact name.
  * @property null|string $tax_identification_number
  * @property null|string $phone_number
- * @property null|\Rawilk\Ups\Entity\Address\Address $address
+ * @property null|Address $address
  */
 class SoldTo extends Entity
 {

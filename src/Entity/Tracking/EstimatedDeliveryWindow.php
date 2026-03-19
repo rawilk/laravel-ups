@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use Rawilk\Ups\Entity\Entity;
 
 /**
- * @property \Carbon\Carbon $date
+ * @property Carbon $date
  * @property string $start_time Format: HH:MM:SS
  * @property string $end_time Format: HH:MM:SS
  */

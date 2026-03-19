@@ -8,7 +8,7 @@ use Rawilk\Ups\Entity\Entity;
 
 /**
  * @property null|string $package_bill_type
- * @property \Rawilk\Ups\Entity\Tracking\Pickup $pickup
+ * @property Pickup $pickup
  */
 class DeliveryTimeInformation extends Entity
 {

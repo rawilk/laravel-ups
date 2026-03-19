@@ -8,8 +8,8 @@ use Rawilk\Ups\Entity\Address\Address;
 use Rawilk\Ups\Entity\Entity;
 
 /**
- * @property \Rawilk\Ups\Entity\Address\Address $address
- * @property null|\Rawilk\Ups\Entity\Activity\AddressArtifactFormat $address_artifact_format
+ * @property Address $address
+ * @property null|AddressArtifactFormat $address_artifact_format
  * @property string $code Activity Location code
  * @property string $description Activity location description
  * @property null|string $signed_for_by_name Name of the person who signed

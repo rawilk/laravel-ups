@@ -10,8 +10,8 @@ use Rawilk\Ups\Entity\Location\Geocode;
 
 /**
  * @property int $maximum_list_size
- * @property \Rawilk\Ups\Entity\Address\AddressKeyFormat $address_key_format
- * @property \Rawilk\Ups\Entity\Location\Geocode $geocode
+ * @property AddressKeyFormat $address_key_format
+ * @property Geocode $geocode
  */
 class OriginAddress extends Entity
 {

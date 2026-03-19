@@ -12,7 +12,7 @@ use Rawilk\Ups\Entity\Entity;
  * @property string $number
  * @property string $expiration_date
  * @property string $security_code
- * @property \Rawilk\Ups\Entity\Address\Address $address
+ * @property Address $address
  */
 class CreditCard extends Entity
 {

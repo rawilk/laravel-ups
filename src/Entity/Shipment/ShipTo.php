@@ -19,7 +19,7 @@ use Rawilk\Ups\Entity\Entity;
  * @property string $tax_identification_number
  * @property string $fax_number
  * @property string $email_address
- * @property \Rawilk\Ups\Entity\Address\Address $address
+ * @property Address $address
  */
 class ShipTo extends Entity
 {

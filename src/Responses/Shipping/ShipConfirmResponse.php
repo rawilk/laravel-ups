@@ -13,7 +13,7 @@ use Rawilk\Ups\Entity\Warning;
  *                                                  Returned UPS shipment ID number; 1Z number of the first package in the shipment.
  * @property string $shipment_digest
  *                                   Encoded shipment parameters required to be passed in the accept phase.
- * @property \Illuminate\Support\Collection|\Rawilk\Ups\Entity\Warning[] $warnings
+ * @property Collection|Warning[] $warnings
  */
 class ShipConfirmResponse extends Entity
 {

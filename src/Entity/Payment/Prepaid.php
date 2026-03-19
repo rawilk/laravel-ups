@@ -7,7 +7,7 @@ namespace Rawilk\Ups\Entity\Payment;
 use Rawilk\Ups\Entity\Entity;
 
 /**
- * @property \Rawilk\Ups\Entity\Payment\BillShipper $bill_shipper
+ * @property BillShipper $bill_shipper
  */
 class Prepaid extends Entity
 {

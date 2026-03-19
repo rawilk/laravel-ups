@@ -13,7 +13,7 @@ use Rawilk\Ups\Entity\Shipment\Label\LabelImage;
  * PackageResult is an entity returned from a ShipAccept response.
  *
  * @property string $tracking_number
- * @property null|\Rawilk\Ups\Entity\Shipment\Label\LabelImage $label_image
+ * @property null|LabelImage $label_image
  */
 class PackageResult extends Entity
 {

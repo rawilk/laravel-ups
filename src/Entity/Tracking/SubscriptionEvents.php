@@ -9,8 +9,8 @@ use Rawilk\Ups\Entity\Entity;
 /**
  * @property string $name
  * @property string $number
- * @property \Rawilk\Ups\Entity\Tracking\SubscriptionStatus $subscription_status
- * @property \Rawilk\Ups\Entity\Tracking\DateRange $date_range
+ * @property SubscriptionStatus $subscription_status
+ * @property DateRange $date_range
  */
 class SubscriptionEvents extends Entity
 {

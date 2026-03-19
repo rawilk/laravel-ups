@@ -9,7 +9,7 @@ use Rawilk\Ups\Entity\Entity;
 /**
  * @property null|string $account_number
  *                                       UPS account number. Must be the same account number as the one provided in Shipment/Shipper/ShipperNumber attribute.
- * @property null|\Rawilk\Ups\Entity\Payment\CreditCard $credit_card
+ * @property null|CreditCard $credit_card
  */
 class BillShipper extends Entity
 {

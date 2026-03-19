@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace Rawilk\Ups\Responses\Shipping;
 
+use Illuminate\Support\Collection;
 use Rawilk\Ups\Concerns\HandlesApiFailures;
 use Rawilk\Ups\Entity\Entity;
 use Rawilk\Ups\Entity\Shipment\PackageLevelResult;
 use Rawilk\Ups\Entity\Shipment\VoidStatus;
 
 /**
- * @property null|\Rawilk\Ups\Entity\Shipment\VoidStatus $status
- * @property null|\Illuminate\Support\Collection|\Rawilk\Ups\Entity\Shipment\PackageLevelResult[] $package_level_results
+ * @property null|VoidStatus $status
+ * @property null|Collection|PackageLevelResult[] $package_level_results
  */
 class VoidResponse extends Entity
 {

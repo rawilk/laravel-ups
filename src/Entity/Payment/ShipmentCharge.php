@@ -8,9 +8,9 @@ use Rawilk\Ups\Entity\Entity;
 
 /**
  * @property string $type
- * @property null|\Rawilk\Ups\Entity\Payment\BillShipper $bill_shipper
- * @property null|\Rawilk\Ups\Entity\Payment\BillReceiver $bill_receiver
- * @property null|\Rawilk\Ups\Entity\Payment\BillThirdParty $bill_third_party
+ * @property null|BillShipper $bill_shipper
+ * @property null|BillReceiver $bill_receiver
+ * @property null|BillThirdParty $bill_third_party
  * @property bool $consignee_billed
  *                                  Valid for shipment charge type of transportation only.
  */

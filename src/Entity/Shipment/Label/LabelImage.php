@@ -7,7 +7,7 @@ namespace Rawilk\Ups\Entity\Shipment\Label;
 use Rawilk\Ups\Entity\Entity;
 
 /**
- * @property \Rawilk\Ups\Entity\Shipment\Label\LabelImageFormat $label_image_format
+ * @property LabelImageFormat $label_image_format
  * @property string $graphic_image Base 64 encoded graphic image
  * @property string $html_image
  *                              Base 64 encoded html browser image rendering software. This is only returned for GIF image formats.

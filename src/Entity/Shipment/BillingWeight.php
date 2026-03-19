@@ -9,7 +9,7 @@ use Rawilk\Ups\Entity\UnitOfMeasurement;
 
 /**
  * @property string $weight
- * @property \Rawilk\Ups\Entity\UnitOfMeasurement $unit_of_measurement
+ * @property UnitOfMeasurement $unit_of_measurement
  */
 class BillingWeight extends Entity
 {
