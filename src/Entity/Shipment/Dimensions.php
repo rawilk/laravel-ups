@@ -11,7 +11,7 @@ use Rawilk\Ups\Entity\UnitOfMeasurement;
  * @property int $length
  * @property int $width
  * @property int $height
- * @property \Rawilk\Ups\Entity\UnitOfMeasurement $unit_of_measurement
+ * @property UnitOfMeasurement $unit_of_measurement
  */
 class Dimensions extends Entity
 {

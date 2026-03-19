@@ -8,7 +8,7 @@ use Rawilk\Ups\Entity\Address\Address;
 use Rawilk\Ups\Entity\Entity;
 
 /**
- * @property \Rawilk\Ups\Entity\Address\Address $address
+ * @property Address $address
  */
 class ThirdParty extends Entity
 {

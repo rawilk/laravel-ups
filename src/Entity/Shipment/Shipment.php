@@ -30,27 +30,27 @@ use Rawilk\Ups\Entity\Shipment\ShipmentServiceOptions\ShipmentServiceOptions;
  *                                 If true, any taxes that may be applicable to a shipment would be returned in a response.
  * @property bool $master_carton
  * @property null|string $master_carton_id
- * @property null|\Rawilk\Ups\Entity\Shipment\ReturnService $return_service
- *                                                                          Type of return service. When this entity is present, the shipment is a return shipment.
- * @property \Rawilk\Ups\Entity\Shipment\Shipper $shipper
- *                                                        Container for the shipper's information.
- * @property \Rawilk\Ups\Entity\Shipment\ShipTo $ship_to
- * @property \Rawilk\Ups\Entity\Shipment\ShipFrom $ship_from
- *                                                           Required for return shipment or if pickup location is different than the shipper's address.
- * @property null|\Rawilk\Ups\Entity\Shipment\SoldTo $sold_to
- * @property null|\Rawilk\Ups\Entity\Payment\PaymentInformation $payment_information
- * @property null|\Rawilk\Ups\Entity\Payment\ItemizedPaymentInformation $itemized_payment_information
- * @property null|\Rawilk\Ups\Entity\Payment\PromotionalDiscountInformation $promotional_discount_information
- * @property null|\Rawilk\Ups\Entity\Payment\RateInformation $rate_information
- * @property \Rawilk\Ups\Entity\Shipment\Service $service
- * @property \Rawilk\Ups\Entity\Payment\InvoiceLineTotal $invoice_line_total
- * @property \Rawilk\Ups\Entity\Shipment\ShipmentServiceOptions\ShipmentServiceOptions $shipment_service_options
- * @property \Illuminate\Support\Collection|\Rawilk\Ups\Entity\Shipment\Package[] $packages
- * @property null|\Rawilk\Ups\Entity\Shipment\ShipmentIndicationType $shipment_indication_type
- * @property null|\Rawilk\Ups\Entity\Shipment\ReferenceNumber $reference_number
- *                                                                              Shipment reference number. Applies to tracking api responses.
- * @property null|\Carbon\Carbon $pickup_date
- *                                            Date shipment was picked up. Only applies to tracking api responses. Format: YYYYMMDD.
+ * @property null|ReturnService $return_service
+ *                                              Type of return service. When this entity is present, the shipment is a return shipment.
+ * @property Shipper $shipper
+ *                            Container for the shipper's information.
+ * @property ShipTo $ship_to
+ * @property ShipFrom $ship_from
+ *                               Required for return shipment or if pickup location is different than the shipper's address.
+ * @property null|SoldTo $sold_to
+ * @property null|PaymentInformation $payment_information
+ * @property null|ItemizedPaymentInformation $itemized_payment_information
+ * @property null|PromotionalDiscountInformation $promotional_discount_information
+ * @property null|RateInformation $rate_information
+ * @property Service $service
+ * @property InvoiceLineTotal $invoice_line_total
+ * @property ShipmentServiceOptions $shipment_service_options
+ * @property Collection|Package[] $packages
+ * @property null|ShipmentIndicationType $shipment_indication_type
+ * @property null|ReferenceNumber $reference_number
+ *                                                  Shipment reference number. Applies to tracking api responses.
+ * @property null|Carbon $pickup_date
+ *                                    Date shipment was picked up. Only applies to tracking api responses. Format: YYYYMMDD.
  * @property null|string $shipment_identification_number Only applies to tracking api responses.
  */
 class Shipment extends Entity

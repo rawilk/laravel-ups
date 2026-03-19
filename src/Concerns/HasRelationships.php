@@ -2,6 +2,8 @@
 
 namespace Rawilk\Ups\Concerns;
 
+use Rawilk\Ups\Entity\Entity;
+
 use function get_parent_class;
 
 trait HasRelationships
@@ -46,7 +48,7 @@ trait HasRelationships
 
         $relatedClass = $this->$relationship();
 
-        /** @var \Rawilk\Ups\Entity\Entity $related */
+        /** @var Entity $related */
         $related = new $relatedClass;
 
         return $related->fill(

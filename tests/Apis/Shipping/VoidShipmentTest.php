@@ -74,13 +74,13 @@ it('can void packages even if some of the sent packages cannot be voided', funct
         ->and($response->status->partiallyVoided())->toBeTrue()
         ->and($response->package_level_results)->toHaveCount(2);
 
-    /** @var \Rawilk\Ups\Entity\Shipment\PackageLevelResult $shouldBeVoided */
+    /** @var PackageLevelResult $shouldBeVoided */
     $shouldBeVoided = $response->package_level_results
         ->firstWhere('tracking_number', VoidTestNumbers::$multiPackageShipmentWithNonVoidablePackage['tracking_numbers'][0]);
 
     expect($shouldBeVoided->voided())->toBeTrue();
 
-    /** @var \Rawilk\Ups\Entity\Shipment\PackageLevelResult $shouldNotBeVoided */
+    /** @var PackageLevelResult $shouldNotBeVoided */
     $shouldNotBeVoided = $response->package_level_results
         ->firstWhere('tracking_number', VoidTestNumbers::$multiPackageShipmentWithNonVoidablePackage['tracking_numbers'][1]);
 

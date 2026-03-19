@@ -7,9 +7,9 @@ namespace Rawilk\Ups\Entity\Payment;
 use Rawilk\Ups\Entity\Entity;
 
 /**
- * @property null|\Rawilk\Ups\Entity\Payment\Prepaid $prepaid
- * @property null|\Rawilk\Ups\Entity\Payment\BillThirdParty $bill_third_party
- * @property null|\Rawilk\Ups\Entity\Payment\FreightCollect $freight_collect
+ * @property null|Prepaid $prepaid
+ * @property null|BillThirdParty $bill_third_party
+ * @property null|FreightCollect $freight_collect
  * @property bool $consignee_billed
  */
 class PaymentInformation extends Entity

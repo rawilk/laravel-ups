@@ -8,10 +8,10 @@ use Rawilk\Ups\Entity\Entity;
 
 /**
  * @property null|string $file_name
- * @property \Rawilk\Ups\Entity\Tracking\Delivery $delivery
- * @property \Rawilk\Ups\Entity\Tracking\Manifest $manifest
- * @property \Rawilk\Ups\Entity\Tracking\Origin $origin
- * @property \Rawilk\Ups\Entity\Tracking\StatusType $status_type
+ * @property Delivery $delivery
+ * @property Manifest $manifest
+ * @property Origin $origin
+ * @property StatusType $status_type
  */
 class SubscriptionFile extends Entity
 {

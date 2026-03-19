@@ -14,8 +14,8 @@ use Rawilk\Ups\Entity\Entity;
  * @property bool $ambiguous
  * @property bool $no_candidates
  * @property bool $valid
- * @property \Illuminate\Support\Collection|\Rawilk\Ups\Entity\AddressValidation\AddressValidationAddress[] $candidates
- * @property null|\Rawilk\Ups\Entity\AddressValidation\AddressClassification $address_classification
+ * @property Collection|AddressValidationAddress[] $candidates
+ * @property null|AddressClassification $address_classification
  */
 class AddressValidationResponse extends Entity
 {

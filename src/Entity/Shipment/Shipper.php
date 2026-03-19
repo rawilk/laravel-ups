@@ -20,8 +20,8 @@ use Rawilk\Ups\Exceptions\InvalidAttribute;
  * @property null|string $phone_number
  * @property null|string $fax_number
  * @property null|string $email
- * @property \Rawilk\Ups\Entity\Address\Address $address
- *                                                       The package should be returned to this address if the package is undeliverable.
+ * @property Address $address
+ *                            The package should be returned to this address if the package is undeliverable.
  */
 class Shipper extends Entity
 {

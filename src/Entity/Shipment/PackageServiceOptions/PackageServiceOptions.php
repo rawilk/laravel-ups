@@ -12,13 +12,13 @@ use Rawilk\Ups\Entity\Shipment\ShipmentServiceOptions\DeliveryConfirmation;
 /**
  * @property bool $shipper_release
  * @property bool $ups_premium_care
- * @property null|\Rawilk\Ups\Entity\Shipment\ShipmentServiceOptions\DeliveryConfirmation $delivery_confirmation
- * @property null|\Rawilk\Ups\Entity\Shipment\PackageServiceOptions\InsuredValue $insured_value
- * @property null|\Rawilk\Ups\Entity\Shipment\ShipmentServiceOptions\COD $cod
- * @property null|\Rawilk\Ups\Entity\Shipment\ShipmentServiceOptions\AccessPointCOD $access_point_cod
- * @property null|\Rawilk\Ups\Entity\Shipment\PackageServiceOptions\HazMat|\Rawilk\Ups\Entity\Shipment\PackageServiceOptions\HazMat[] $haz_mat
- *                                                                                                                                             Max of 3 allowed.
- * @property null|\Rawilk\Ups\Entity\Shipment\PackageServiceOptions\HazMatPackageInformation $haz_mat_package_information
+ * @property null|DeliveryConfirmation $delivery_confirmation
+ * @property null|InsuredValue $insured_value
+ * @property null|COD $cod
+ * @property null|AccessPointCOD $access_point_cod
+ * @property null|HazMat|HazMat[] $haz_mat
+ *                                         Max of 3 allowed.
+ * @property null|HazMatPackageInformation $haz_mat_package_information
  */
 class PackageServiceOptions extends Entity
 {

@@ -24,7 +24,7 @@ it('can make api calls', function () {
 
     $this->assertContainsOnlyInstancesOf(Package::class, $response->shipment->packages);
 
-    /** @var \Rawilk\Ups\Entity\Shipment\Package $firstPackage */
+    /** @var Package $firstPackage */
     $firstPackage = $response->shipment->packages->first();
 
     expect($firstPackage->isDelivered())->toBeTrue()
@@ -37,7 +37,7 @@ it('can determine if delivered from last activity only', function () {
         ->lastActivity()
         ->track();
 
-    /** @var \Rawilk\Ups\Entity\Shipment\Package $package */
+    /** @var Package $package */
     $package = $response->shipment->packages->first();
 
     expect($package->activities)->count()->toBe(1)
@@ -56,7 +56,7 @@ it('can get tracking info for multiple packages in a shipment', function () {
         ->and($response->shipment->packages)->toHaveCount(2)
         ->and($response->shipment->isPickedUp())->toBeTrue();
 
-    /** @var \Rawilk\Ups\Entity\Shipment\Package $firstPackage */
+    /** @var Package $firstPackage */
     $firstPackage = $response->shipment->packages->first();
 
     expect($firstPackage->tracking_number)->toBe(TrackingTestNumbers::$deliveredShipmentWithMultiplePackages['shipment_identification_number'])
@@ -98,7 +98,7 @@ it('can be delivered with no signature', function () {
 
     expect($response->shipment->isPickedUp())->toBeTrue();
 
-    /** @var \Rawilk\Ups\Entity\Shipment\Package $package */
+    /** @var Package $package */
     $package = $response->shipment->packages->first();
 
     expect($package->isDelivered())->toBeTrue()

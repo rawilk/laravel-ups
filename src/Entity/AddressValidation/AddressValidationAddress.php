@@ -20,7 +20,7 @@ use Rawilk\Ups\Entity\Entity;
  * @property null|string $consignee_name Name of business, company or person. Not returned if user selects the RegionalRequestIndicator.
  * @property null|string $building_name Name of building. Not returned if user selects the RegionalRequestIndicator.
  * @property null|string $urbanization Puerto Rico Political Division 3. Only valid for Puerto Rico.
- * @property null|\Rawilk\Ups\Entity\AddressValidation\AddressClassification $address_classification
+ * @property null|AddressClassification $address_classification
  */
 class AddressValidationAddress extends Entity
 {

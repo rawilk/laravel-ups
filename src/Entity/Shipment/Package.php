@@ -21,15 +21,15 @@ use Rawilk\Ups\Entity\Tracking\EstimatedDeliveryWindow;
  * @property bool $ups_premium_care_indicator
  * @property null|string $num_of_pieces Applicable for Air Freight only.
  * @property null|string $unit_price Unit price of commodity. Applicable for Air Freight only.
- * @property \Illuminate\Support\Collection|\Rawilk\Ups\Entity\Activity\Activity[] $activities
- * @property null|\Rawilk\Ups\Entity\Shipment\Dimensions $dimensions
- * @property \Rawilk\Ups\Entity\Shipment\PackageServiceOptions\PackageServiceOptions $package_service_options
- * @property \Rawilk\Ups\Entity\Shipment\PackagingType $packaging_type
- * @property \Rawilk\Ups\Entity\Shipment\PackageWeight $package_weight
- * @property \Rawilk\Ups\Entity\Shipment\ReferenceNumber $reference_number
- * @property \Rawilk\Ups\Entity\Shipment\ReferenceNumber $reference_number2
- * @property null|\Rawilk\Ups\Entity\Tracking\EstimatedDeliveryWindow $estimated_delivery_window
- *                                                                                               Only applies to tracking api responses.
+ * @property Collection|Activity[] $activities
+ * @property null|Dimensions $dimensions
+ * @property PackageServiceOptions $package_service_options
+ * @property PackagingType $packaging_type
+ * @property PackageWeight $package_weight
+ * @property ReferenceNumber $reference_number
+ * @property ReferenceNumber $reference_number2
+ * @property null|EstimatedDeliveryWindow $estimated_delivery_window
+ *                                                                   Only applies to tracking api responses.
  */
 class Package extends Entity
 {
@@ -158,7 +158,7 @@ class Package extends Entity
             return null;
         }
 
-        /** @var \Rawilk\Ups\Entity\Activity\Activity $activity */
+        /** @var Activity $activity */
         $activity = $this->activities
             ->filter(fn (Activity $a) => $a->isDelivered())
             ->first();

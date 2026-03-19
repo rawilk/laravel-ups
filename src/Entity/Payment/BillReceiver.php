@@ -9,7 +9,7 @@ use Rawilk\Ups\Entity\Entity;
 
 /**
  * @property string $account_number The UPS account number of Freight Collect.
- * @property null|\Rawilk\Ups\Entity\Address\Address $address
+ * @property null|Address $address
  */
 class BillReceiver extends Entity
 {

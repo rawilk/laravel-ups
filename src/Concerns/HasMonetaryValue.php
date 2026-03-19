@@ -2,13 +2,14 @@
 
 namespace Rawilk\Ups\Concerns;
 
+use Illuminate\Database\Eloquent\Concerns\HasAttributes;
 use Rawilk\Ups\Exceptions\InvalidMonetaryValue;
 
 /**
  * @property null|string $currency_code
  * @property float $monetary_value
  *
- * @mixin \Illuminate\Database\Eloquent\Concerns\HasAttributes
+ * @mixin HasAttributes
  */
 trait HasMonetaryValue
 {
